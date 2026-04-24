@@ -1,0 +1,265 @@
+/* ============================================
+   Iron Vault Security — Responsive Styles
+   ============================================ */
+
+/* ---------- Tablet (768px–1024px) ---------- */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .hero-section {
+    height: 560px;
+    margin-top: 98px;
+  }
+
+  .intro-section h1 {
+    font-size: 2.25rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-right .subtitle {
+    text-align: left;
+  }
+
+  .benefits-grid {
+    gap: 30px;
+  }
+
+  .pricing-card {
+    flex: 0 0 calc(50% - 15px);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .contact-right .subtitle {
+    text-align: left;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 30px;
+  }
+
+  .footer-cta {
+    text-align: left;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+  }
+}
+
+/* ---------- Mobile (<768px) ---------- */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .hero-section {
+    height: 420px;
+    margin-top: 90px;
+  }
+
+  .slider-nav {
+    right: 20px;
+    gap: 12px;
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .intro-section {
+    padding: 60px 0;
+  }
+
+  .intro-section h1 {
+    font-size: 1.75rem;
+  }
+
+  .section-rule {
+    height: 6px;
+  }
+
+  .services-section {
+    padding: 60px 0;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .services-footer {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-section h2 {
+    font-size: 1.875rem;
+    margin-bottom: 30px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stats-section {
+    padding: 60px 0;
+  }
+
+  .stats-section h2 {
+    font-size: 1.875rem;
+    margin-bottom: 40px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .stat-number,
+  .stat-suffix {
+    font-size: 3rem;
+  }
+
+  .pricing-section {
+    padding: 60px 0;
+  }
+
+  .pricing-section h2 {
+    font-size: 1.875rem;
+  }
+
+  .pricing-card {
+    flex: 0 0 100%;
+    padding: 40px 30px;
+  }
+
+  .testimonials-section {
+    padding: 60px 0;
+  }
+
+  .testimonials-section h2 {
+    font-size: 1.875rem;
+  }
+
+  .testimonial-content > p {
+    font-size: 1.125rem;
+  }
+
+  .testimonial-nav {
+    gap: 12px;
+  }
+
+  .testimonial-dot {
+    width: 48px;
+    height: 48px;
+  }
+
+  .tracking-section {
+    padding: 60px 0;
+  }
+
+  .tracking-section h2 {
+    font-size: 1.875rem;
+  }
+
+  .tracking-panel {
+    padding: 24px;
+  }
+
+  .tracking-input-row {
+    flex-direction: column;
+  }
+
+  .tracking-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contact-section {
+    padding: 60px 0;
+  }
+
+  .contact-left h2 {
+    font-size: 1.875rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .map-section iframe {
+    height: 320px;
+  }
+
+  .site-footer {
+    padding: 60px 0 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer-cta {
+    text-align: left;
+  }
+
+  .social-icons {
+    justify-content: flex-start;
+  }
+
+  .top-bar {
+    display: none;
+  }
+}
+
+/* ---------- Small Mobile (<480px) ---------- */
+@media (max-width: 480px) {
+  .hero-section {
+    height: 340px;
+    margin-top: 82px;
+  }
+
+  .logo img {
+    width: 200px;
+    height: auto;
+  }
+
+  .pricing-card h3 {
+    font-size: 2.25rem;
+  }
+
+  .tracking-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .search-form input {
+    font-size: 1.25rem;
+  }
+
+  .mobile-nav a {
+    font-size: 1.25rem;
+  }
+}
+

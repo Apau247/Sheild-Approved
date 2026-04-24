@@ -1,0 +1,15 @@
+/* ============================================
+   Iron Vault Security — Default Color Scheme
+   ============================================ */
+
+.scheme_default {
+  --color-primary-dark: #1a1a1a;
+  --color-accent-gold: #d4af37;
+  --color-accent-steel: #4a90a4;
+  --color-success-green: #2e8b57;
+  --color-bg-light: #f4f4f2;
+  --color-white: #ffffff;
+  --color-text: #333333;
+  --color-text-muted: #666666;
+}
+

@@ -1,0 +1,78 @@
+/* ============================================
+   Iron Vault Security — Dark Color Scheme
+   ============================================ */
+
+.scheme_dark {
+  --color-primary-dark: #0d0d0d;
+  --color-accent-gold: #e6c250;
+  --color-accent-steel: #5ba3b8;
+  --color-success-green: #3aa86a;
+  --color-bg-light: #1e1e1e;
+  --color-white: #f0f0f0;
+  --color-text: #e0e0e0;
+  --color-text-muted: #999999;
+}
+
+.scheme_dark body {
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+}
+
+.scheme_dark .site-header {
+  background-color: #141414;
+}
+
+.scheme_dark .top-bar {
+  background-color: #1a1a1a;
+  border-bottom-color: rgba(255,255,255,0.05);
+}
+
+.scheme_dark .services-section,
+.scheme_dark .pricing-section,
+.scheme_dark .tracking-section {
+  background-color: #181818;
+}
+
+.scheme_dark .about-section,
+.scheme_dark .testimonials-section {
+  background-color: #1e1e1e;
+}
+
+.scheme_dark .service-card h3 {
+  color: var(--color-white);
+}
+
+.scheme_dark .pricing-card {
+  background-color: #252525;
+}
+
+.scheme_dark .form-field input,
+.scheme_dark .form-field textarea,
+.scheme_dark .tracking-input-row input {
+  background-color: #2a2a2a;
+  border-color: rgba(255,255,255,0.1);
+  color: var(--color-white);
+}
+
+.scheme_dark .tracking-panel {
+  background-color: #252525;
+  border-color: rgba(255,255,255,0.06);
+}
+
+.scheme_dark .tracking-result {
+  background-color: #2a2a2a;
+}
+
+.scheme_dark .cargo-table tbody td {
+  color: var(--color-text);
+  border-bottom-color: rgba(255,255,255,0.06);
+}
+
+.scheme_dark .cargo-table thead th {
+  border-bottom-color: rgba(255,255,255,0.1);
+}
+
+.scheme_dark .cargo-table tbody tr:hover {
+  background-color: rgba(255,255,255,0.03);
+}
+

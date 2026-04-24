@@ -386,7 +386,80 @@
         </div>
     </section>
 
-    <!-- 10. Contact Section -->
+    <!-- 10. Cargo & Delivery Tracking -->
+    <section class="tracking-section" id="tracking">
+        <div class="container">
+            <h2>Cargo & Delivery Tracking</h2>
+            <p>Monitor the real-time status of your secure shipments and high-value cargo in transit.</p>
+
+            <div class="tracking-panel">
+                <div class="tracking-input-row">
+                    <input type="text" id="trackInput" placeholder="Enter Tracking ID (e.g. IVS-78432)" aria-label="Tracking ID">
+                    <button type="button" class="btn" id="trackBtn">Track Shipment</button>
+                </div>
+                <div class="tracking-result" id="trackingResult"></div>
+            </div>
+
+            <div class="cargo-table-wrap">
+                <table class="cargo-table">
+                    <thead>
+                        <tr>
+                            <th>Tracking ID</th>
+                            <th>Contents</th>
+                            <th>Origin</th>
+                            <th>Destination</th>
+                            <th>Status</th>
+                            <th>ETA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>IVS-78432</strong></td>
+                            <td>Gold bullion — 12 kg</td>
+                            <td>London, UK</td>
+                            <td>Zurich, Switzerland</td>
+                            <td><span class="status-badge status-in-transit">In Transit</span></td>
+                            <td>18 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IVS-99102</strong></td>
+                            <td>Diamond collection — 45 pcs</td>
+                            <td>London, UK</td>
+                            <td>Aarhus, Denmark</td>
+                            <td><span class="status-badge status-delivered">Delivered</span></td>
+                            <td>12 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IVS-22011</strong></td>
+                            <td>Fine jewelry — 8 pcs</td>
+                            <td>New York, USA</td>
+                            <td>London, UK</td>
+                            <td><span class="status-badge status-processing">Processing</span></td>
+                            <td>22 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IVS-55678</strong></td>
+                            <td>Precious metals — 25 kg</td>
+                            <td>London, UK</td>
+                            <td>Singapore</td>
+                            <td><span class="status-badge status-in-transit">In Transit</span></td>
+                            <td>25 Jun 2025</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IVS-11223</strong></td>
+                            <td>Rare gemstones — 3 pcs</td>
+                            <td>London, UK</td>
+                            <td>Hong Kong</td>
+                            <td><span class="status-badge status-exception">Exception</span></td>
+                            <td>Delayed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Contact Section -->
     <section class="contact-section" id="contact" style="background-image: url('images/bg-6.jpg');">
         <div class="container">
             <div class="contact-grid">
@@ -434,7 +507,7 @@
         </div>
     </section>
 
-    <!-- 11. Google Map -->
+    <!-- 12. Google Map -->
     <section class="map-section">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.905675723384!2d-0.09737038434278113!3d51.51351661808996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604a7f0b9e4f9%3A0x3e5b5e5e5e5e5e5e!2s45%20Bankside%20Lane%2C%20London%20EC2V%207NQ%2C%20UK!5e0!3m2!1sen!2suk!4v1234567890"
@@ -448,7 +521,7 @@
         </iframe>
     </section>
 
-    <!-- 12. Footer -->
+    <!-- 13. Footer -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
