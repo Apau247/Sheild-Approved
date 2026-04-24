@@ -13,4 +13,5 @@
 10. [x] Add tracking-specific styles to CSS
 11. [x] Verify all contact details, links, and responsive behavior
 12. [x] Final review and completion
+13. [x] Fix broken image references — map all missing images to existing assets
 
