@@ -1,17 +1,13 @@
-# Iron Vault Security Website Build - TODO
+# Iron Vault Security — Enhancement TODO
 
-## Steps
-1. [x] Create project directory structure (css/, js/, images/)
-2. [x] Build index.html with all 12 sections
-3. [x] Build css/style.css with custom variables and base styles
-4. [x] Build css/__custom.css for overrides
-5. [x] Build css/__colors_default.css for default scheme
-6. [x] Build css/__colors_dark.css for dark scheme
-7. [x] Build css/responsive.css for mobile/tablet
-8. [x] Build js/__scripts.js for sliders, menu, counters
-9. [x] Add Cargo & Delivery Tracking section to index.html
-10. [x] Add tracking-specific styles to CSS
-11. [x] Verify all contact details, links, and responsive behavior
-12. [x] Final review and completion
-13. [x] Fix broken image references — map all missing images to existing assets
+## Plan
+1. [ ] Update `index.html`: Replace `hero1.jpg` with `hero5.jpg`, add `hero1.avif` as 5th slide, update slider dots
+2. [ ] Fix empty footer social links in `index.html` (Facebook, Twitter, LinkedIn)
+3. [ ] Update vault login links in `index.html` to point to local `login.html`; add Sign Up links
+4. [ ] Add 4th testimonial to `index.html` using `face4.jpg`
+5. [ ] Update `js/__scripts.js`: `slideCount` 4→5, testimonial rotation count 3→4
+6. [ ] Add auth form styles to `css/style.css`
+7. [ ] Create `login.html` — premium dark login page
+8. [ ] Create `signup.html` — premium dark registration page
+9. [ ] Final review and verification
 
