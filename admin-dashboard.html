@@ -27,10 +27,10 @@
     <section class="inner-page-hero">
         <div class="container">
             <h1>Admin Operations Center</h1>
-            <p>Review client signups, monitor secure assets, and audit cargo activity from the admin view.</p>
+            <p>Use the admin login to manage client records, add assets, and set vault storage prices properly from the site.</p>
             <div class="page-actions">
                 <a href="#inventory" class="btn">Inventory</a>
-                <a href="#logs" class="btn btn-simple">Requests Queue</a>
+                <a href="#adminTools" class="btn btn-simple">Admin Tools</a>
             </div>
         </div>
     </section>
@@ -39,10 +39,54 @@
             <div class="table-panel">
                 <h3>Asset Inventory</h3>
                 <table class="cargo-table">
-                    <thead><tr><th>Client</th><th>Asset</th><th>Type</th><th>Quantity</th><th>Vault</th><th>Status</th></tr></thead>
-                    <tbody id="adminAssetRows"><tr><td colspan="6" class="empty-copy">Loading asset data...</td></tr></tbody>
+                    <thead><tr><th>Client</th><th>Asset</th><th>Type</th><th>Quantity</th><th>Vault</th><th>Vault Price</th><th>Status</th></tr></thead>
+                    <tbody id="adminAssetRows"><tr><td colspan="7" class="empty-copy">Loading asset data...</td></tr></tbody>
                 </table>
             </div>
+        </div>
+    </section>
+    <section class="page-section" id="adminTools">
+        <div class="container">
+            <div class="asset-management">
+                <div class="asset-panel">
+                    <div class="asset-panel-head">
+                        <h3>Add or Update Asset</h3>
+                        <p>Admins can assign a vault and set the storage price for each asset record.</p>
+                    </div>
+                    <form id="adminAssetForm" class="dashboard-form dashboard-form-grid">
+                        <div class="form-field"><input type="text" name="assetId" placeholder="Asset ID for update (optional)" aria-label="Asset ID"></div>
+                        <div class="form-field"><input type="text" name="owner" placeholder="Client Name" required aria-label="Client Name"></div>
+                        <div class="form-field"><input type="text" name="assetName" placeholder="Asset Name" required aria-label="Asset Name"></div>
+                        <div class="form-field"><input type="text" name="assetType" placeholder="Asset Type" required aria-label="Asset Type"></div>
+                        <div class="form-field"><input type="text" name="quantity" placeholder="Quantity / Weight" required aria-label="Quantity"></div>
+                        <div class="form-field"><input type="text" name="vault" placeholder="Vault Assignment" required aria-label="Vault Assignment"></div>
+                        <div class="form-field"><input type="text" name="storagePrice" placeholder="Vault Storage Price" required aria-label="Vault Storage Price"></div>
+                        <div class="form-field"><input type="text" name="status" placeholder="Stored / Verified / Pending" required aria-label="Status"></div>
+                        <button type="submit" class="btn btn-submit">Save Asset Record</button>
+                    </form>
+                </div>
+                <div class="asset-panel">
+                    <div class="asset-panel-head">
+                        <h3>Update User Details</h3>
+                        <p>Admins can update client contact and onboarding details directly.</p>
+                    </div>
+                    <form id="adminUserForm" class="dashboard-form dashboard-form-grid">
+                        <div class="form-field"><input type="text" name="id" placeholder="User ID" required aria-label="User ID"></div>
+                        <div class="form-field"><input type="text" name="fullName" placeholder="Full Name" required aria-label="Full Name"></div>
+                        <div class="form-field"><input type="email" name="email" placeholder="Email Address" required aria-label="Email Address"></div>
+                        <div class="form-field"><input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number"></div>
+                        <div class="form-field"><input type="text" name="company" placeholder="Company" aria-label="Company"></div>
+                        <div class="form-field"><input type="text" name="country" placeholder="Country" required aria-label="Country"></div>
+                        <div class="form-field"><input type="text" name="city" placeholder="City" required aria-label="City"></div>
+                        <div class="form-field"><input type="text" name="address" placeholder="Address" required aria-label="Address"></div>
+                        <div class="form-field"><input type="text" name="preferredService" placeholder="Preferred Service" required aria-label="Preferred Service"></div>
+                        <div class="form-field"><input type="text" name="assetType" placeholder="Primary Asset Type" required aria-label="Primary Asset Type"></div>
+                        <div class="form-field"><input type="text" name="status" placeholder="active / pending / suspended" required aria-label="User Status"></div>
+                        <button type="submit" class="btn btn-submit">Save User Record</button>
+                    </form>
+                </div>
+            </div>
+            <div id="adminMessage" class="dashboard-message" aria-live="polite"></div>
         </div>
     </section>
     <section class="page-section" id="logs">
@@ -78,6 +122,10 @@
         return;
       }
 
+      const adminMessage = document.getElementById('adminMessage');
+      const adminAssetForm = document.getElementById('adminAssetForm');
+      const adminUserForm = document.getElementById('adminUserForm');
+
       document.getElementById('adminWelcome').textContent = 'Signed in as ' + (currentUser.fullName || currentUser.email);
       document.getElementById('adminLogout').addEventListener('click', function (event) {
         event.preventDefault();
@@ -85,36 +133,100 @@
         window.location.href = 'login.html';
       });
 
-      try {
-        const [dashboardResponse, authResponse] = await Promise.all([
-          fetch('/api/dashboard'),
-          fetch('/api/users')
-        ]);
-        const dashboardPayload = await dashboardResponse.json();
-        const authPayload = await authResponse.json();
-        const dashboardData = dashboardPayload.data || dashboardPayload;
-        const authData = authPayload.data || authPayload;
-
-        document.getElementById('adminAssetRows').innerHTML = (dashboardData.assets || []).map(function (asset) {
-          return '<tr><td>' + asset.owner + '</td><td>' + asset.assetName + '</td><td>' + asset.assetType + '</td><td>' + asset.quantity + '</td><td>' + asset.vault + '</td><td>' + asset.status + '</td></tr>';
-        }).join('') || '<tr><td colspan="6" class="empty-copy">No asset data available.</td></tr>';
-
-        const queue = []
-          .concat((authData.users || []).filter(function (user) { return user.role === 'client'; }).map(function (item) {
-            const details = [item.phone, item.company, item.country, item.city, item.preferredService, item.assetType].filter(Boolean).join(' | ');
-            return { name: item.fullName, email: item.email, meta: details, createdAt: item.createdAt || 'New' };
-          }))
-          .concat((dashboardData.contacts || []).map(function (item) {
-            return { name: item.name, email: item.email, meta: item.message || '', createdAt: item.createdAt || 'New' };
-          }));
-
-        document.getElementById('adminQueueRows').innerHTML = queue.map(function (entry) {
-          return '<tr><td>' + entry.name + '</td><td>' + entry.email + '</td><td>' + entry.meta + '</td><td>' + entry.createdAt + '</td></tr>';
-        }).join('') || '<tr><td colspan="4" class="empty-copy">No signup or contact requests available.</td></tr>';
-      } catch (error) {
-        document.getElementById('adminAssetRows').innerHTML = '<tr><td colspan="6" class="empty-copy">API unavailable.</td></tr>';
-        document.getElementById('adminQueueRows').innerHTML = '<tr><td colspan="4" class="empty-copy">API unavailable.</td></tr>';
+      function showMessage(text, type) {
+        adminMessage.textContent = text;
+        adminMessage.className = 'dashboard-message active ' + type;
       }
+
+      async function safeJson(response) {
+        const text = await response.text();
+        if (!text) {
+          return {};
+        }
+        try {
+          return JSON.parse(text);
+        } catch (error) {
+          throw new Error('The server returned an invalid response.');
+        }
+      }
+
+      async function loadAdminData() {
+        try {
+          const [dashboardResponse, authResponse] = await Promise.all([
+            fetch('/api/dashboard'),
+            fetch('/api/users')
+          ]);
+          const dashboardPayload = await safeJson(dashboardResponse);
+          const authPayload = await safeJson(authResponse);
+          const dashboardData = dashboardPayload.data || dashboardPayload;
+          const authData = authPayload.data || authPayload;
+
+          document.getElementById('adminAssetRows').innerHTML = (dashboardData.assets || []).map(function (asset) {
+            return '<tr><td>' + asset.owner + '</td><td>' + asset.assetName + '<br><small>' + asset.assetId + '</small></td><td>' + asset.assetType + '</td><td>' + asset.quantity + '</td><td>' + asset.vault + '</td><td>' + asset.storagePrice + '</td><td>' + asset.status + '</td></tr>';
+          }).join('') || '<tr><td colspan="7" class="empty-copy">No asset data available.</td></tr>';
+
+          const queue = []
+            .concat((authData.users || []).filter(function (user) { return user.role === 'client'; }).map(function (item) {
+              const details = [item.id, item.phone, item.company, item.country, item.city, item.preferredService, item.assetType].filter(Boolean).join(' | ');
+              return { name: item.fullName, email: item.email, meta: details, createdAt: item.createdAt || 'New' };
+            }))
+            .concat((dashboardData.contacts || []).map(function (item) {
+              return { name: item.name, email: item.email, meta: item.message || '', createdAt: item.createdAt || 'New' };
+            }));
+
+          document.getElementById('adminQueueRows').innerHTML = queue.map(function (entry) {
+            return '<tr><td>' + entry.name + '</td><td>' + entry.email + '</td><td>' + entry.meta + '</td><td>' + entry.createdAt + '</td></tr>';
+          }).join('') || '<tr><td colspan="4" class="empty-copy">No signup or contact requests available.</td></tr>';
+        } catch (error) {
+          document.getElementById('adminAssetRows').innerHTML = '<tr><td colspan="7" class="empty-copy">API unavailable.</td></tr>';
+          document.getElementById('adminQueueRows').innerHTML = '<tr><td colspan="4" class="empty-copy">API unavailable.</td></tr>';
+          showMessage(error.message || 'Could not load admin data.', 'error');
+        }
+      }
+
+      adminAssetForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const formData = new FormData(adminAssetForm);
+        const payload = Object.fromEntries(formData.entries());
+        const action = payload.assetId ? 'updateAsset' : 'addAsset';
+
+        try {
+          const response = await fetch('/api/dashboard', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: action, payload: payload })
+          });
+          const result = await safeJson(response);
+          if (!response.ok) throw new Error(result.error || 'Could not save asset.');
+          showMessage('Asset record saved successfully.', 'success');
+          adminAssetForm.reset();
+          loadAdminData();
+        } catch (error) {
+          showMessage(error.message || 'Could not save asset.', 'error');
+        }
+      });
+
+      adminUserForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const formData = new FormData(adminUserForm);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'updateUser', payload: payload })
+          });
+          const result = await safeJson(response);
+          if (!response.ok) throw new Error(result.error || 'Could not save user.');
+          showMessage('User record saved successfully.', 'success');
+          loadAdminData();
+        } catch (error) {
+          showMessage(error.message || 'Could not save user.', 'error');
+        }
+      });
+
+      loadAdminData();
     })();
     </script>
 </body>

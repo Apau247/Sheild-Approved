@@ -63,27 +63,33 @@
   ],
   "assets": [
     {
+      "assetId": "asset-seed-1",
       "owner": "Kenneth Johnson",
       "assetName": "Investment Gold Reserve",
       "assetType": "Bullion",
       "quantity": "12 kg",
       "vault": "Vault A-12",
+      "storagePrice": "2500",
       "status": "Stored"
     },
     {
+      "assetId": "asset-seed-2",
       "owner": "Benson Elio",
       "assetName": "Zurich Diamond Collection",
       "assetType": "Diamonds",
       "quantity": "45 pcs",
       "vault": "Vault D-04",
+      "storagePrice": "4200",
       "status": "Verified"
     },
     {
+      "assetId": "asset-seed-3",
       "owner": "Bright Archie",
       "assetName": "Estate Jewelry Set",
       "assetType": "Jewelry",
       "quantity": "8 pcs",
       "vault": "Vault J-18",
+      "storagePrice": "1800",
       "status": "Awaiting Intake"
     }
   ],

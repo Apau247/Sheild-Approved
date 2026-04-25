@@ -98,14 +98,36 @@ function applyAction(state, action, payload) {
 
   if (action === 'addAsset') {
     next.assets.unshift({
+      assetId: payload.assetId || `asset-${Date.now()}`,
       owner: payload.owner || 'Client Record',
       assetName: payload.assetName || 'Unspecified Asset',
       assetType: payload.assetType || 'Asset',
       quantity: payload.quantity || '1',
       vault: payload.vault || 'Pending Vault',
+      storagePrice: payload.storagePrice || '0',
       status: payload.status || 'Stored'
     });
     next.stats.assetsSecured += 1;
+    return next;
+  }
+
+  if (action === 'updateAsset') {
+    const assetId = String(payload.assetId || '').trim();
+    const index = next.assets.findIndex((asset) => asset.assetId === assetId);
+
+    if (index >= 0) {
+      next.assets[index] = {
+        ...next.assets[index],
+        owner: payload.owner || next.assets[index].owner,
+        assetName: payload.assetName || next.assets[index].assetName,
+        assetType: payload.assetType || next.assets[index].assetType,
+        quantity: payload.quantity || next.assets[index].quantity,
+        vault: payload.vault || next.assets[index].vault,
+        storagePrice: payload.storagePrice || next.assets[index].storagePrice || '0',
+        status: payload.status || next.assets[index].status
+      };
+    }
+
     return next;
   }
 
@@ -178,7 +200,16 @@ function normalizeState(data) {
       deliveriesCompleted: Number(data?.stats?.deliveriesCompleted ?? defaultState.stats.deliveriesCompleted)
     },
     shipments: Array.isArray(data?.shipments) ? data.shipments : [],
-    assets: Array.isArray(data?.assets) ? data.assets : [],
+    assets: Array.isArray(data?.assets) ? data.assets.map((asset, index) => ({
+      assetId: asset.assetId || `asset-seed-${index + 1}`,
+      owner: asset.owner || 'Client Record',
+      assetName: asset.assetName || 'Unspecified Asset',
+      assetType: asset.assetType || 'Asset',
+      quantity: asset.quantity || '1',
+      vault: asset.vault || 'Pending Vault',
+      storagePrice: asset.storagePrice || '0',
+      status: asset.status || 'Stored'
+    })) : [],
     signups: Array.isArray(data?.signups) ? data.signups : [],
     contacts: Array.isArray(data?.contacts) ? data.contacts : []
   };

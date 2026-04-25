@@ -96,6 +96,18 @@
       const message = document.getElementById('signupMessage');
       if (!form) return;
 
+      async function safeJson(response) {
+        const text = await response.text();
+        if (!text) {
+          return {};
+        }
+        try {
+          return JSON.parse(text);
+        } catch (error) {
+          throw new Error('The server returned an invalid response.');
+        }
+      }
+
       form.addEventListener('submit', async function (event) {
         event.preventDefault();
         const formData = new FormData(form);
@@ -113,7 +125,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ action: 'signup', payload: payload })
           });
-          const result = await response.json();
+          const result = await safeJson(response);
           if (!response.ok) throw new Error(result.error || 'Signup failed');
 
           localStorage.setItem('ivsCurrentUser', JSON.stringify(result.user));
