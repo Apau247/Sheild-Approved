@@ -54,6 +54,17 @@
   color: var(--color-white);
 }
 
+.scheme_dark .btn-request-access {
+  color: var(--color-white);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.scheme_dark .btn-request-access:hover {
+  background-color: var(--color-accent-gold);
+  border-color: var(--color-accent-gold);
+  color: var(--color-primary-dark);
+}
+
 .scheme_dark .tracking-panel {
   background-color: #252525;
   border-color: rgba(255,255,255,0.06);

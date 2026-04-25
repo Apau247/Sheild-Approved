@@ -157,6 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$loggedInUser) {
                     <?php if ($loggedInUser): ?>
                         <a href="login.php?logout=1" class="btn-secure-vault">Logout</a>
                     <?php else: ?>
+                        <a href="index.html#contact" class="btn-request-access">Request Access</a>
                         <a href="login.php" class="btn-secure-vault">Secure Vault</a>
                     <?php endif; ?>
                 </div>
@@ -343,7 +344,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$loggedInUser) {
                     </div>
 
                     <div class="auth-footer">
-                        <p>Need a vault? <a href="index.html#contact" class="auth-link">Contact our team</a></p>
+                        <p>Need a vault? <a href="index.html#contact" class="auth-link">Request Vault Access</a></p>
                     </div>
                 </div>
             <?php endif; ?>
