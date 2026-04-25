@@ -12,6 +12,9 @@
       "address": "45 Bankside Lane, London EC2V 7NQ, UK",
       "preferredService": "Private Vault Storage",
       "assetType": "Administrative Access",
+      "nextOfKinName": "Operations Director",
+      "nextOfKinPhone": "+44 20 7000 1111",
+      "nextOfKinRelationship": "Operations",
       "role": "admin",
       "status": "active",
       "createdAt": "2026-04-25T00:00:00.000Z"
@@ -28,6 +31,9 @@
       "address": "Client Address On File",
       "preferredService": "Secure Cargo Delivery",
       "assetType": "Jewellery",
+      "nextOfKinName": "Family Representative",
+      "nextOfKinPhone": "+44 20 7000 2222",
+      "nextOfKinRelationship": "Next of Kin",
       "role": "client",
       "status": "active",
       "createdAt": "2026-04-25T00:00:00.000Z"

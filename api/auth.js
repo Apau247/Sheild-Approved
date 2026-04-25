@@ -21,6 +21,9 @@ const defaultUsers = {
       address: '45 Bankside Lane, London EC2V 7NQ, UK',
       preferredService: 'Private Vault Storage',
       assetType: 'Administrative Access',
+      nextOfKinName: 'Operations Director',
+      nextOfKinPhone: '+44 20 7000 1111',
+      nextOfKinRelationship: 'Operations',
       role: 'admin',
       status: 'active',
       createdAt: '2026-04-25T00:00:00.000Z'
@@ -37,6 +40,9 @@ const defaultUsers = {
       address: 'Client Address On File',
       preferredService: 'Secure Cargo Delivery',
       assetType: 'Jewellery',
+      nextOfKinName: 'Family Representative',
+      nextOfKinPhone: '+44 20 7000 2222',
+      nextOfKinRelationship: 'Next of Kin',
       role: 'client',
       status: 'active',
       createdAt: '2026-04-25T00:00:00.000Z'
@@ -86,9 +92,12 @@ export default async function handler(request, response) {
     const address = String(payload.address || '').trim();
     const preferredService = String(payload.preferredService || '').trim();
     const assetType = String(payload.assetType || '').trim();
+    const nextOfKinName = String(payload.nextOfKinName || '').trim();
+    const nextOfKinPhone = String(payload.nextOfKinPhone || '').trim();
+    const nextOfKinRelationship = String(payload.nextOfKinRelationship || '').trim();
     const needs = String(payload.needs || '').trim();
 
-    if (!fullName || !email || !password || !phone || !country || !city || !address || !preferredService || !assetType) {
+    if (!fullName || !email || !password || !phone || !country || !city || !address || !preferredService || !assetType || !nextOfKinName || !nextOfKinPhone || !nextOfKinRelationship) {
       return response.status(400).json({ ok: false, error: 'Please complete all required signup details.' });
     }
 
@@ -108,6 +117,9 @@ export default async function handler(request, response) {
       address,
       preferredService,
       assetType,
+      nextOfKinName,
+      nextOfKinPhone,
+      nextOfKinRelationship,
       needs,
       role: 'client',
       status: 'active',
@@ -139,6 +151,9 @@ function safeUser(user) {
     address: user.address,
     preferredService: user.preferredService,
     assetType: user.assetType,
+    nextOfKinName: user.nextOfKinName,
+    nextOfKinPhone: user.nextOfKinPhone,
+    nextOfKinRelationship: user.nextOfKinRelationship,
     role: user.role,
     status: user.status,
     createdAt: user.createdAt

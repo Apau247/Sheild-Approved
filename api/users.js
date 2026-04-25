@@ -13,23 +13,7 @@ export default async function handler(request, response) {
     return response.status(200).json({
       ok: true,
       data: {
-        users: (data.users || []).map(function (user) {
-          return {
-            id: user.id,
-            fullName: user.fullName,
-            email: user.email,
-            phone: user.phone,
-            company: user.company,
-            country: user.country,
-            city: user.city,
-            address: user.address,
-            preferredService: user.preferredService,
-            assetType: user.assetType,
-            role: user.role,
-            status: user.status,
-            createdAt: user.createdAt
-          };
-        })
+        users: (data.users || []).map(safeUser)
       }
     });
   }
@@ -38,6 +22,40 @@ export default async function handler(request, response) {
     const action = request.body?.action;
     const payload = request.body?.payload || {};
     const data = await readUsersStore();
+
+    if (action === 'createUser') {
+      const user = {
+        id: payload.id || `client-${Date.now()}`,
+        fullName: payload.fullName || '',
+        email: String(payload.email || '').trim().toLowerCase(),
+        password: payload.password || 'TempPass123!',
+        phone: payload.phone || '',
+        company: payload.company || '',
+        country: payload.country || '',
+        city: payload.city || '',
+        address: payload.address || '',
+        preferredService: payload.preferredService || '',
+        assetType: payload.assetType || '',
+        nextOfKinName: payload.nextOfKinName || '',
+        nextOfKinPhone: payload.nextOfKinPhone || '',
+        nextOfKinRelationship: payload.nextOfKinRelationship || '',
+        role: payload.role || 'client',
+        status: payload.status || 'active',
+        createdAt: new Date().toISOString()
+      };
+
+      if (!user.fullName || !user.email) {
+        return response.status(400).json({ ok: false, error: 'Full name and email are required.' });
+      }
+
+      if ((data.users || []).some((entry) => entry.email.toLowerCase() === user.email)) {
+        return response.status(409).json({ ok: false, error: 'A user with this email already exists.' });
+      }
+
+      data.users.unshift(user);
+      await writeUsersStore(data);
+      return response.status(201).json({ ok: true, data: { users: data.users.map(safeUser) } });
+    }
 
     if (action === 'updateUser') {
       const userId = String(payload.id || '').trim();
@@ -50,7 +68,7 @@ export default async function handler(request, response) {
       data.users[index] = {
         ...data.users[index],
         fullName: payload.fullName || data.users[index].fullName,
-        email: payload.email || data.users[index].email,
+        email: String(payload.email || data.users[index].email).trim().toLowerCase(),
         phone: payload.phone || data.users[index].phone,
         company: payload.company || data.users[index].company,
         country: payload.country || data.users[index].country,
@@ -58,12 +76,19 @@ export default async function handler(request, response) {
         address: payload.address || data.users[index].address,
         preferredService: payload.preferredService || data.users[index].preferredService,
         assetType: payload.assetType || data.users[index].assetType,
+        nextOfKinName: payload.nextOfKinName || data.users[index].nextOfKinName,
+        nextOfKinPhone: payload.nextOfKinPhone || data.users[index].nextOfKinPhone,
+        nextOfKinRelationship: payload.nextOfKinRelationship || data.users[index].nextOfKinRelationship,
+        role: payload.role || data.users[index].role,
         status: payload.status || data.users[index].status
       };
 
-      await writeUsersStore(data);
+      if (payload.password) {
+        data.users[index].password = payload.password;
+      }
 
-      return response.status(200).json({ ok: true, data });
+      await writeUsersStore(data);
+      return response.status(200).json({ ok: true, data: { users: data.users.map(safeUser) } });
     }
 
     return response.status(400).json({ ok: false, error: 'Unsupported user action.' });
@@ -71,6 +96,27 @@ export default async function handler(request, response) {
 
   response.setHeader('Allow', 'GET, POST');
   return response.status(405).json({ ok: false, error: 'Method not allowed.' });
+}
+
+function safeUser(user) {
+  return {
+    id: user.id,
+    fullName: user.fullName,
+    email: user.email,
+    phone: user.phone,
+    company: user.company,
+    country: user.country,
+    city: user.city,
+    address: user.address,
+    preferredService: user.preferredService,
+    assetType: user.assetType,
+    nextOfKinName: user.nextOfKinName,
+    nextOfKinPhone: user.nextOfKinPhone,
+    nextOfKinRelationship: user.nextOfKinRelationship,
+    role: user.role,
+    status: user.status,
+    createdAt: user.createdAt
+  };
 }
 
 async function readUsersStore() {
