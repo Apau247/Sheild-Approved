@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal | Iron Vault Security</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/__colors_default.css">
+    <link rel="stylesheet" href="css/__colors_dark.css">
+    <link rel="stylesheet" href="css/__custom.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="scheme_default">
+    <header class="site-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left"><span id="clientWelcome">Client portal access</span></div>
+                <div class="top-bar-right">
+                    <a href="index.html" class="btn-request-access">Home</a>
+                    <a href="#" id="clientLogout" class="btn-secure-vault">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div></div>
+    </header>
+    <section class="inner-page-hero">
+        <div class="container">
+            <h1>Client Portal</h1>
+            <p id="clientHeroCopy">Clients can review stored assets, monitor active shipments, and move between tracking and account actions from one page.</p>
+            <div class="page-actions">
+                <a href="#inventory" class="btn">Asset Inventory</a>
+                <a href="#tracking" class="btn btn-simple">Track Deliveries</a>
+            </div>
+        </div>
+    </section>
+    <section class="page-section page-section-alt" id="inventory">
+        <div class="container">
+            <div class="table-panel">
+                <h3>Client Asset Inventory</h3>
+                <table class="cargo-table">
+                    <thead><tr><th>Client</th><th>Asset</th><th>Type</th><th>Quantity</th><th>Vault</th><th>Status</th></tr></thead>
+                    <tbody id="clientAssetRows"><tr><td colspan="6" class="empty-copy">Loading asset data...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="page-section" id="tracking">
+        <div class="container">
+            <div class="table-panel">
+                <h3>Client Delivery Tracking</h3>
+                <table class="cargo-table">
+                    <thead><tr><th>Tracking ID</th><th>Contents</th><th>Destination</th><th>Status</th><th>ETA</th></tr></thead>
+                    <tbody id="clientShipmentRows"><tr><td colspan="5" class="empty-copy">Loading shipment data...</td></tr></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script>
+    (async function () {
+      const currentUserRaw = localStorage.getItem('ivsCurrentUser');
+      if (!currentUserRaw) {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      let currentUser;
+      try {
+        currentUser = JSON.parse(currentUserRaw);
+      } catch (error) {
+        localStorage.removeItem('ivsCurrentUser');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      if (currentUser.role !== 'client' && currentUser.role !== 'admin') {
+        window.location.href = 'login.html';
+        return;
+      }
+
+      document.getElementById('clientWelcome').textContent = 'Signed in as ' + (currentUser.fullName || currentUser.email);
+      document.getElementById('clientHeroCopy').textContent = (currentUser.fullName || 'Client') + ' can review stored assets, monitor active shipments, and move between tracking and account actions from one page.';
+      document.getElementById('clientLogout').addEventListener('click', function (event) {
+        event.preventDefault();
+        localStorage.removeItem('ivsCurrentUser');
+        window.location.href = 'login.html';
+      });
+
+      try {
+        const response = await fetch('/api/dashboard');
+        const payload = await response.json();
+        const data = payload.data || payload;
+        const assetRows = (data.assets || []).filter(function (asset) {
+          if (currentUser.role === 'admin') return true;
+          return String(asset.owner || '').toLowerCase().includes(String(currentUser.fullName || '').toLowerCase()) || String(asset.owner || '').toLowerCase().includes('client');
+        });
+        document.getElementById('clientAssetRows').innerHTML = assetRows.map(function (asset) {
+          return '<tr><td>' + asset.owner + '</td><td>' + asset.assetName + '</td><td>' + asset.assetType + '</td><td>' + asset.quantity + '</td><td>' + asset.vault + '</td><td>' + asset.status + '</td></tr>';
+        }).join('') || '<tr><td colspan="6" class="empty-copy">No asset data available for this user.</td></tr>';
+        document.getElementById('clientShipmentRows').innerHTML = (data.shipments || []).map(function (shipment) {
+          return '<tr><td>' + shipment.trackingId + '</td><td>' + shipment.contents + '</td><td>' + shipment.destination + '</td><td>' + shipment.status + '</td><td>' + shipment.eta + '</td></tr>';
+        }).join('') || '<tr><td colspan="5" class="empty-copy">No shipment data available.</td></tr>';
+      } catch (error) {
+        document.getElementById('clientAssetRows').innerHTML = '<tr><td colspan="6" class="empty-copy">API unavailable.</td></tr>';
+        document.getElementById('clientShipmentRows').innerHTML = '<tr><td colspan="5" class="empty-copy">API unavailable.</td></tr>';
+      }
+    })();
+    </script>
+</body>
+</html>

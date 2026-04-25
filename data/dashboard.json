@@ -1,0 +1,92 @@
+{
+  "stats": {
+    "assetsSecured": 2500,
+    "vaultsInOperation": 1200,
+    "deliveriesCompleted": 300
+  },
+  "shipments": [
+    {
+      "trackingId": "IVS-78432",
+      "status": "In Transit",
+      "origin": "London, UK",
+      "destination": "Zurich, Switzerland",
+      "eta": "18 Jun 2026",
+      "progress": 65,
+      "contents": "Gold bullion - 12 kg",
+      "current": "Paris, France",
+      "courier": "Iron Vault Secure Transport"
+    },
+    {
+      "trackingId": "IVS-99102",
+      "status": "Delivered",
+      "origin": "London, UK",
+      "destination": "Aarhus, Denmark",
+      "eta": "Delivered 12 Jun 2026",
+      "progress": 100,
+      "contents": "Diamond collection - 45 pcs",
+      "current": "Aarhus, Denmark",
+      "courier": "Iron Vault Secure Transport"
+    },
+    {
+      "trackingId": "IVS-22011",
+      "status": "Processing",
+      "origin": "New York, USA",
+      "destination": "London, UK",
+      "eta": "22 Jun 2026",
+      "progress": 15,
+      "contents": "Fine jewelry - 8 pcs",
+      "current": "New York, USA",
+      "courier": "Iron Vault Secure Transport"
+    },
+    {
+      "trackingId": "IVS-55678",
+      "status": "In Transit",
+      "origin": "London, UK",
+      "destination": "Singapore",
+      "eta": "25 Jun 2026",
+      "progress": 40,
+      "contents": "Precious metals - 25 kg",
+      "current": "Dubai, UAE",
+      "courier": "Iron Vault Secure Transport"
+    },
+    {
+      "trackingId": "IVS-11223",
+      "status": "Exception",
+      "origin": "London, UK",
+      "destination": "Hong Kong",
+      "eta": "Delayed - awaiting customs clearance",
+      "progress": 55,
+      "contents": "Rare gemstones - 3 pcs",
+      "current": "Frankfurt, Germany",
+      "courier": "Iron Vault Secure Transport"
+    }
+  ],
+  "assets": [
+    {
+      "owner": "Kenneth Johnson",
+      "assetName": "Investment Gold Reserve",
+      "assetType": "Bullion",
+      "quantity": "12 kg",
+      "vault": "Vault A-12",
+      "status": "Stored"
+    },
+    {
+      "owner": "Benson Elio",
+      "assetName": "Zurich Diamond Collection",
+      "assetType": "Diamonds",
+      "quantity": "45 pcs",
+      "vault": "Vault D-04",
+      "status": "Verified"
+    },
+    {
+      "owner": "Bright Archie",
+      "assetName": "Estate Jewelry Set",
+      "assetType": "Jewelry",
+      "quantity": "8 pcs",
+      "vault": "Vault J-18",
+      "status": "Awaiting Intake"
+    }
+  ],
+  "signups": [],
+  "contacts": []
+}

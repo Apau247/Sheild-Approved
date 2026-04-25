@@ -59,13 +59,14 @@
                     <span>Contact Us Via <a href="tel:+442079460958">+44 20 7946 0958</a></span>
                 </div>
                 <div class="top-bar-right">
-                    <a href="./login.php" class="btn-secure-vault">Secure Vault</a>
+                    <a href="signup.html" class="btn-request-access">Sign Up</a>
+                    <a href="login.html" class="btn-secure-vault">Login</a>
                 </div>
             </div>
         </div>
         <div class="main-nav" id="mainNav">
             <div class="container">
-                <a href="/" class="logo">
+                <a href="index.html" class="logo">
                     <img src="images/logo.png" alt="Iron Vault Security" width="258" height="57">
                 </a>
                 <div class="nav-actions">
@@ -94,16 +95,18 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-            <a href="/" class="mobile-logo">
+            <a href="index.html" class="mobile-logo">
                 <img src="images/logo.png" alt="Iron Vault Security" width="230" height="51">
             </a>
             <nav class="mobile-nav">
-                <a href="./login.php">Secure Vault</a>
-                <a href="#about">About Us</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact Us</a>
+                <a href="signup.html">Sign Up</a>
+                <a href="login.html">Login</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="client-portal.html#tracking">Tracking</a>
+                <a href="request-access.html">Contact Us</a>
             </nav>
-            <form class="mobile-search" action="/search" method="get">
+            <form class="mobile-search" action="search.html" method="get">
                 <input type="text" name="s" placeholder="Search..." aria-label="Search">
                 <button type="submit">Search</button>
             </form>
@@ -118,7 +121,7 @@
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         </button>
-        <form class="search-form" action="/search" method="get">
+        <form class="search-form" action="search.html" method="get">
             <input type="text" name="s" placeholder="Type to search..." aria-label="Search">
         </form>
     </div>
@@ -168,7 +171,7 @@
     <section class="services-section" id="services">
         <div class="container">
             <div class="services-grid">
-                <a href="#services" class="service-card">
+                <a href="services.html#vaulting-facilities" class="service-card">
                     <div class="service-image">
                         <img src="images/VaultFacilities.png" alt="Vaulting Facilities" loading="lazy" width="370" height="208">
                         <div class="service-overlay">
@@ -184,7 +187,7 @@
                     </div>
                     <h3>Vaulting Facilities</h3>
                 </a>
-                <a href="#services" class="service-card">
+                <a href="services.html#diamond-jewellery" class="service-card">
                     <div class="service-image">
                         <img src="images/Diamond.png" alt="Diamond & Jewellery" loading="lazy" width="370" height="208">
                         <div class="service-overlay">
@@ -200,7 +203,7 @@
                     </div>
                     <h3>Diamond & Jewellery</h3>
                 </a>
-                <a href="#services" class="service-card">
+                <a href="services.html#precious-metals" class="service-card">
                     <div class="service-image">
                         <img src="images/Predious.png" alt="Precious Metals" loading="lazy" width="370" height="208">
                         <div class="service-overlay">
@@ -219,7 +222,7 @@
             </div>
             <div class="services-footer">
                 <p>See what we can offer just for your needs</p>
-                <a href="#services" class="btn btn-arrow">
+                <a href="services.html" class="btn btn-arrow">
                     More services
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -237,7 +240,7 @@
             <div class="about-grid">
                 <div class="about-left">
                     <p>At Iron Vault Security, we provide elite, high-security vault storage for precious minerals, gold, diamonds, and fine jewelry. Situated in the heart of London's financial district, our world-class facility was founded with a singular purpose: to offer discreet, dependable, and internationally accredited protection for your most valuable assets.</p>
-                    <a href="#about" class="btn btn-simple">more info</a>
+                    <a href="about.html" class="btn btn-simple">more info</a>
                 </div>
                 <div class="about-right">
                     <h6 class="subtitle">benefits</h6>
@@ -260,31 +263,55 @@
         </div>
     </section>
 
-    <!-- 7. Statistics Counter -->
+    <!-- 7. Client Portal -->
+    <section class="portal-section" id="portal">
+        <div class="container">
+            <div class="portal-header">
+                <h2>Client Access, Delivery Oversight, and Live Asset Control</h2>
+                <p>Give clients a fast way to log in, create a profile, register new assets, and monitor secure cargo movements from one operations view.</p>
+            </div>
+            <div class="portal-grid">
+                <article class="portal-card">
+                    <span class="portal-kicker">Existing Clients</span>
+                    <h3>Log in to the secure vault portal</h3>
+                    <p>Access stored asset records, active vault requests, and high-value cargo status in one place.</p>
+                    <a href="login.html" class="btn">Login</a>
+                </article>
+                <article class="portal-card portal-card-accent">
+                    <span class="portal-kicker">New Clients</span>
+                    <h3>Create a monitored storage account</h3>
+                    <p>Register a client profile and send the details into your Vercel-hosted backend for follow-up and onboarding.</p>
+                    <a href="signup.html" class="btn btn-simple">Sign Up</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Statistics Counter -->
     <section class="stats-section" style="background-image: url('images/hero1.jpg');">
         <div class="container">
             <h2>Why people choose us</h2>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-number" data-target="2500">0</div>
+                    <div class="stat-number" data-target="2500" id="assetsSecuredCount">0</div>
                     <span class="stat-suffix">+</span>
                     <div class="stat-label">Assets Secured</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number" data-target="1200">0</div>
+                    <div class="stat-number" data-target="1200" id="vaultsCount">0</div>
                     <span class="stat-suffix">+</span>
                     <div class="stat-label">Private Vaults in Operation</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-number" data-target="300">0</div>
+                    <div class="stat-number" data-target="300" id="deliveriesCount">0</div>
                     <span class="stat-suffix">+</span>
-                    <div class="stat-label">High-Net-Worth Clients Served</div>
+                    <div class="stat-label">Tracked Deliveries Completed</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8. Storage Unit Sizes -->
+    <!-- 9. Storage Unit Sizes -->
     <section class="pricing-section" id="pricing">
         <div class="container">
             <h2>What size storage unit do you need?</h2>
@@ -293,22 +320,22 @@
                     <div class="pricing-card">
                         <h3>1m²</h3>
                         <p>Watches, small jewelry sets, coin collections</p>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk" class="btn">Enquire Now</a>
+                        <a href="request-access.html?unit=1m2" class="btn">Enquire Now</a>
                     </div>
                     <div class="pricing-card">
                         <h3>5m²</h3>
                         <p>Larger jewelry boxes, gold bars, luxury items</p>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk" class="btn">Enquire Now</a>
+                        <a href="request-access.html?unit=5m2" class="btn">Enquire Now</a>
                     </div>
                     <div class="pricing-card">
                         <h3>10m²</h3>
                         <p>Multiple safe boxes, diversified asset holdings</p>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk" class="btn">Enquire Now</a>
+                        <a href="request-access.html?unit=10m2" class="btn">Enquire Now</a>
                     </div>
                     <div class="pricing-card">
                         <h3>20m²</h3>
                         <p>Institutional or family holdings</p>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk" class="btn">Enquire Now</a>
+                        <a href="request-access.html?unit=20m2" class="btn">Enquire Now</a>
                     </div>
                 </div>
                 <div class="slider-controls">
@@ -325,7 +352,7 @@
                 </div>
             </div>
             <div class="pricing-footer">
-                <p>Need a custom solution? <a href="mailto:secure@ironvaultsecurity.co.uk">Contact us</a> for a private consultation.</p>
+                <p>Need a custom solution? <a href="request-access.html">Contact us</a> for a private consultation.</p>
             </div>
         </div>
     </section>
@@ -407,72 +434,157 @@
     <section class="tracking-section" id="tracking">
         <div class="container">
             <h2>Cargo & Delivery Tracking</h2>
-            <p>Monitor the real-time status of your secure shipments and high-value cargo in transit.</p>
+            <p>Track secure cargo, update shipment progress, and keep client asset records growing from one Vercel-connected dashboard.</p>
 
-            <div class="tracking-panel">
-                <div class="tracking-input-row">
-                    <input type="text" id="trackInput" placeholder="Enter Tracking ID (e.g. IVS-78432)" aria-label="Tracking ID">
-                    <button type="button" class="btn" id="trackBtn">Track Shipment</button>
+            <div class="ops-overview">
+                <div class="ops-card">
+                    <span class="ops-label">Assets on Record</span>
+                    <strong id="opsAssetsCount">0</strong>
+                    <p>Auto-updates as new client assets are added.</p>
                 </div>
-                <div class="tracking-result" id="trackingResult"></div>
+                <div class="ops-card">
+                    <span class="ops-label">Active Deliveries</span>
+                    <strong id="opsActiveDeliveries">0</strong>
+                    <p>Secure shipments currently processing or in transit.</p>
+                </div>
+                <div class="ops-card">
+                    <span class="ops-label">Delivered Cargo</span>
+                    <strong id="opsDeliveredCount">0</strong>
+                    <p>Completed deliveries stored in the same dataset.</p>
+                </div>
+                <div class="ops-card">
+                    <span class="ops-label">Client Signups</span>
+                    <strong id="opsSignupCount">0</strong>
+                    <p>New account requests captured for follow-up.</p>
+                </div>
             </div>
 
-            <div class="cargo-table-wrap">
-                <table class="cargo-table">
+            <div class="tracking-workspace">
+                <div class="tracking-stack">
+                    <div class="tracking-panel">
+                        <div class="tracking-input-row">
+                            <input type="text" id="trackInput" placeholder="Enter Tracking ID (e.g. IVS-78432)" aria-label="Tracking ID">
+                            <button type="button" class="btn" id="trackBtn">Track Shipment</button>
+                        </div>
+                        <div class="tracking-quick-list" id="trackingQuickList"></div>
+                        <div class="tracking-result" id="trackingResult"></div>
+                    </div>
+
+                    <div class="cargo-table-wrap">
+                        <table class="cargo-table">
+                            <thead>
+                                <tr>
+                                    <th>Tracking ID</th>
+                                    <th>Contents</th>
+                                    <th>Origin</th>
+                                    <th>Destination</th>
+                                    <th>Status</th>
+                                    <th>ETA</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cargoTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <aside class="ops-sidebar">
+                    <div class="ops-form-card">
+                        <h3>Update Delivery Data</h3>
+                        <p>Edit shipment status, location, ETA, and progress to simulate live delivery movement.</p>
+                        <form id="shipmentUpdateForm" class="dashboard-form">
+                            <div class="form-field">
+                                <input type="text" name="trackingId" placeholder="Tracking ID" required aria-label="Tracking ID">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="status" placeholder="Status" required aria-label="Status">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="current" placeholder="Current Location" required aria-label="Current Location">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="eta" placeholder="ETA or Delivery Note" required aria-label="ETA">
+                            </div>
+                            <div class="form-field">
+                                <input type="number" name="progress" min="0" max="100" placeholder="Progress %" required aria-label="Progress">
+                            </div>
+                            <button type="submit" class="btn btn-submit">Update Shipment</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="asset-management">
+                <div class="asset-panel">
+                    <div class="asset-panel-head">
+                        <h3>Client Asset Register</h3>
+                        <p>Add gold, gems, jewelry, documents, and other secured holdings to grow the live asset total.</p>
+                    </div>
+                    <form id="assetForm" class="dashboard-form dashboard-form-grid">
+                        <div class="form-field">
+                            <input type="text" name="owner" placeholder="Client Name" required aria-label="Client Name">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="assetName" placeholder="Asset Name" required aria-label="Asset Name">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="assetType" placeholder="Asset Type" required aria-label="Asset Type">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="quantity" placeholder="Quantity / Weight" required aria-label="Quantity">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="vault" placeholder="Vault Assignment" required aria-label="Vault Assignment">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="status" placeholder="Stored / Awaiting Intake" required aria-label="Asset Status">
+                        </div>
+                        <button type="submit" class="btn">Add Asset</button>
+                    </form>
+                </div>
+
+                <div class="asset-panel">
+                    <div class="asset-panel-head">
+                        <h3>New Client Sign Up</h3>
+                        <p>Collect onboarding details and send them to your Vercel backend for storage and follow-up.</p>
+                    </div>
+                    <form id="signupForm" class="dashboard-form dashboard-form-grid">
+                        <div class="form-field">
+                            <input type="text" name="fullName" placeholder="Full Name" required aria-label="Full Name">
+                        </div>
+                        <div class="form-field">
+                            <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
+                        </div>
+                        <div class="form-field">
+                            <input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="company" placeholder="Company or Family Office" aria-label="Company">
+                        </div>
+                        <div class="form-field form-field-full">
+                            <textarea name="needs" rows="4" placeholder="What assets or cargo do you need us to secure?" required aria-label="Storage Needs"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Create Sign Up Request</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="asset-list-wrap">
+                <table class="cargo-table asset-table">
                     <thead>
                         <tr>
-                            <th>Tracking ID</th>
-                            <th>Contents</th>
-                            <th>Origin</th>
-                            <th>Destination</th>
+                            <th>Client</th>
+                            <th>Asset</th>
+                            <th>Type</th>
+                            <th>Quantity</th>
+                            <th>Vault</th>
                             <th>Status</th>
-                            <th>ETA</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>IVS-78432</strong></td>
-                            <td>Gold bullion — 12 kg</td>
-                            <td>London, UK</td>
-                            <td>Zurich, Switzerland</td>
-                            <td><span class="status-badge status-in-transit">In Transit</span></td>
-                            <td>18 Jun 2025</td>
-                        </tr>
-                        <tr>
-                            <td><strong>IVS-99102</strong></td>
-                            <td>Diamond collection — 45 pcs</td>
-                            <td>London, UK</td>
-                            <td>Aarhus, Denmark</td>
-                            <td><span class="status-badge status-delivered">Delivered</span></td>
-                            <td>12 Jun 2025</td>
-                        </tr>
-                        <tr>
-                            <td><strong>IVS-22011</strong></td>
-                            <td>Fine jewelry — 8 pcs</td>
-                            <td>New York, USA</td>
-                            <td>London, UK</td>
-                            <td><span class="status-badge status-processing">Processing</span></td>
-                            <td>22 Jun 2025</td>
-                        </tr>
-                        <tr>
-                            <td><strong>IVS-55678</strong></td>
-                            <td>Precious metals — 25 kg</td>
-                            <td>London, UK</td>
-                            <td>Singapore</td>
-                            <td><span class="status-badge status-in-transit">In Transit</span></td>
-                            <td>25 Jun 2025</td>
-                        </tr>
-                        <tr>
-                            <td><strong>IVS-11223</strong></td>
-                            <td>Rare gemstones — 3 pcs</td>
-                            <td>London, UK</td>
-                            <td>Hong Kong</td>
-                            <td><span class="status-badge status-exception">Exception</span></td>
-                            <td>Delayed</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="assetTableBody"></tbody>
                 </table>
             </div>
+
+            <div class="dashboard-message" id="dashboardMessage" aria-live="polite"></div>
         </div>
     </section>
 
@@ -482,7 +594,7 @@
             <div class="contact-grid">
                 <div class="contact-left">
                     <h2>Have Questions? Contact Us!</h2>
-                    <form class="contact-form" action="/contact" method="post">
+                    <form class="contact-form" id="contactForm" action="request-access.html" method="post">
                         <div class="form-row">
                             <div class="form-field">
                                 <input type="text" name="name" placeholder="Enter Your Name" required aria-label="Name">
@@ -548,21 +660,21 @@
                 <div class="footer-col">
                     <h4>Company info</h4>
                     <nav>
-                        <a href="#about">About page</a>
+                        <a href="about.html">About page</a>
                     </nav>
                 </div>
                 <div class="footer-col">
                     <h4>Our services</h4>
                     <nav>
-                        <a href="#services">Services page</a>
+                        <a href="services.html">Services page</a>
                     </nav>
                 </div>
                 <div class="footer-col footer-cta">
-                    <a href="./login.php" class="btn btn-simple">Secure Vault</a>
+                    <a href="client-portal.html" class="btn btn-simple">Client Portal</a>
                     <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                        <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-                        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=Facebook%20Inquiry" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=X%20Inquiry" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=LinkedIn%20Inquiry" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
                     </div>
                 </div>
             </div>

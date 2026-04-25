@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "admin-001",
+      "fullName": "Vault Administrator",
+      "email": "secure@ironvaultsecurity.co.uk",
+      "password": "VaultAccess2025!",
+      "phone": "+44 20 7946 0958",
+      "company": "Iron Vault Security",
+      "country": "United Kingdom",
+      "city": "London",
+      "address": "45 Bankside Lane, London EC2V 7NQ, UK",
+      "preferredService": "Private Vault Storage",
+      "assetType": "Administrative Access",
+      "role": "admin",
+      "status": "active",
+      "createdAt": "2026-04-25T00:00:00.000Z"
+    },
+    {
+      "id": "client-001",
+      "fullName": "Valued Client",
+      "email": "client@ironvaultsecurity.co.uk",
+      "password": "ClientSecure99",
+      "phone": "+44 20 7000 0000",
+      "company": "Private Client",
+      "country": "United Kingdom",
+      "city": "London",
+      "address": "Client Address On File",
+      "preferredService": "Secure Cargo Delivery",
+      "assetType": "Jewellery",
+      "role": "client",
+      "status": "active",
+      "createdAt": "2026-04-25T00:00:00.000Z"
+    }
+  ]
+}
