@@ -1,23 +1,30 @@
-# Task TODO
+# Admin Dashboard Enhancement TODO
 
-## Plan
-1. Add Google Maps iframe section to client-portal.html (missing map) (missing map)
-2. Improve and style logout button in client-portal.html + css/style.css
-3. Add 6 new diverse client users to data/users.json
-4. Add 6 new client users to api/auth.js defaultUsers
-5. Add User Stats Overview section to client-portal.html
-6. Add Profile Card sidebar to client-portal.html
-7. Add Recent Activity feed to client-portal.html
-8. Add new CSS styles for portal enhancements in css/style.css
+## Task
+- Created date and view of admin should also be updated
+- Make further adjustment to the data — every data can be modified by admin
+- Create fields for the admin
+- Admin should be able to add data which automatically adds to user data without database
 
-## Progress
-- [ ] Step 1: Add Google Maps to Client Portal
-- [ ] Step 2: Style Logout Button
-- [ ] Step 3: Add 6 New Users to data/users.json
-- [ ] Step 4: Add 6 New Users to api/auth.js
-- [ ] Step 3: Add 6 New Users to data/users.json
-- [ ] Step 4: Add 6 New Users to api/auth.js
-- [ ] Step 5: Add Stats Overview to Client Portal
-- [ ] Step 6: Add Profile Card to Client Pts
-- [ ] Step 9: Verify and Test
+## Plan & Progress
+
+### 1. API Changes
+- [ ] `api/dashboard.js` — Add `createdAt`/`updatedAt` to assets, add delete/update actions for assets, shipments, contacts, signups, stats
+- [ ] `api/users.js` — Add `addUser` action, `deleteUser` action, `updatedAt` on updates
+
+### 2. Admin Dashboard UI
+- [ ] `admin-dashboard.html` — Add created/updated columns, delete/edit buttons, new user creation form, shipment management, contacts/signups queue with delete, stats editor
+
+### 3. Data Files
+- [ ] `data/dashboard.json` — Inject timestamps into existing assets
+- [ ] `data/users.json` — Ensure consistent schema
+
+### 4. Client Portal & Scripts
+- [ ] `client-portal.html` — Display timestamps for assets
+- [ ] `js/__scripts.js` — Update normalizeState and fallback functions
+
+### 5. Testing
+- [ ] Verify admin can add/edit/delete all data types
+- [ ] Verify client portal reflects changes
+- [ ] Ensure JSON writes correctly in local dev mode
 

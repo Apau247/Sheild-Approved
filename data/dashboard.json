@@ -106,6 +106,36 @@
       "vault": "Vault J-18",
       "storagePrice": "1800",
       "status": "Awaiting Intake"
+    },
+    {
+      "assetId": "asset-lkt-001",
+      "owner": "Lui Kyle Tan",
+      "assetName": "Philippine Gold Bullion Reserve",
+      "assetType": "Gold",
+      "quantity": "8 kg",
+      "vault": "Vault P-01",
+      "storagePrice": "3200",
+      "status": "Stored"
+    },
+    {
+      "assetId": "asset-lkt-002",
+      "owner": "Lui Kyle Tan",
+      "assetName": "Manila Gold Coins Collection",
+      "assetType": "Gold",
+      "quantity": "150 pcs",
+      "vault": "Vault P-02",
+      "storagePrice": "2100",
+      "status": "Verified"
+    },
+    {
+      "assetId": "asset-lkt-003",
+      "owner": "Lui Kyle Tan",
+      "assetName": "Laguna Estate Gold Bars",
+      "assetType": "Gold",
+      "quantity": "5 kg",
+      "vault": "Vault P-03",
+      "storagePrice": "1950",
+      "status": "Stored"
     }
   ],
   "signups": [],

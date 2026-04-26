@@ -88,6 +88,30 @@
         quantity: '8 pcs',
         vault: 'Vault J-18',
         status: 'Awaiting Intake'
+      },
+      {
+        owner: 'Lui Kyle Tan',
+        assetName: 'Philippine Gold Bullion Reserve',
+        assetType: 'Gold',
+        quantity: '8 kg',
+        vault: 'Vault P-01',
+        status: 'Stored'
+      },
+      {
+        owner: 'Lui Kyle Tan',
+        assetName: 'Manila Gold Coins Collection',
+        assetType: 'Gold',
+        quantity: '150 pcs',
+        vault: 'Vault P-02',
+        status: 'Verified'
+      },
+      {
+        owner: 'Lui Kyle Tan',
+        assetName: 'Laguna Estate Gold Bars',
+        assetType: 'Gold',
+        quantity: '5 kg',
+        vault: 'Vault P-03',
+        status: 'Stored'
       }
     ],
     signups: [],

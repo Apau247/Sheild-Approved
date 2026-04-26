@@ -116,17 +116,70 @@
     </section>
 
     <!-- Map Section -->
-    <section class="map-section">
+    <section class="map-section" id="clientMapSection">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.905675723384!2d-0.09737038434278113!3d51.51351661808996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604a7f0b9e4f9%3A0x3e5b5e5e5e5e5e5e!2s45%20Bankside%20Lane%2C%20London%20EC2V%207NQ%2C%20UK!5e0!3m2!1sen!2suk!4v1234567890"
+            id="clientMapFrame"
+            src="https://maps.google.com/maps?q=London,UK&t=k&z=14&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="450"
             style="border:0;"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Iron Vault Security Location">
+            title="Client Location Satellite View">
         </iframe>
+    </section>
+
+    <!-- Client Operations Map Overlay -->
+    <section class="page-section page-section-alt" id="opsMapOverlay">
+        <div class="container">
+            <h3 style="margin-bottom:1.5rem;">Client Operations Overview</h3>
+            <div class="ops-overview" id="clientOpsOverview">
+                <div class="ops-card">
+                    <span class="ops-label">Assets on Record</span>
+                    <strong id="opsAssetsCount">0</strong>
+                    <p>Auto-updates as new client assets are added.</p>
+                </div>
+                <div class="ops-card">
+                    <span class="ops-label">Active Deliveries</span>
+                    <strong id="opsActiveDeliveries">0</strong>
+                    <p>Secure shipments currently processing or in transit.</p>
+                </div>
+                <div class="ops-card">
+                    <span class="ops-label">Delivered Cargo</span>
+                    <strong id="opsDeliveredCount">0</strong>
+                    <p>Completed deliveries stored in the same dataset.</p>
+                </div>
+                <div class="ops-card">
+                    <span class="ops-label">Client Signups</span>
+                    <strong id="opsSignupCount">0</strong>
+                    <p>New account requests captured for follow-up.</p>
+                </div>
+            </div>
+            <div class="portal-layout" style="margin-top:2rem;">
+                <div class="portal-main">
+                    <div class="table-panel">
+                        <h4>Active Shipment Routes</h4>
+                        <div id="shipmentRoutesList">
+                            <p class="empty-copy">No active shipments to display.</p>
+                        </div>
+                    </div>
+                </div>
+                <aside class="portal-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <h4>Location Summary</h4>
+                        </div>
+                        <div class="profile-details">
+                            <div class="profile-item"><span class="profile-label">City</span><span id="mapCity">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Country</span><span id="mapCountry">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Address</span><span id="mapAddress">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Vault Region</span><span id="mapVaultRegion">-</span></div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
     </section>
     <script>
     (async function () {
@@ -166,6 +219,16 @@
       document.getElementById('profileCountry').textContent = currentUser.country || '-';
       document.getElementById('profileService').textContent = currentUser.preferredService || '-';
       document.getElementById('profileAssetType').textContent = currentUser.assetType || '-';
+
+      // Update satellite map to user location
+      var mapQuery = encodeURIComponent(currentUser.address || (currentUser.city + ', ' + currentUser.country) || 'London, UK');
+      document.getElementById('clientMapFrame').src = 'https://maps.google.com/maps?q=' + mapQuery + '&t=k&z=14&ie=UTF8&iwloc=&output=embed';
+
+      // Populate location summary
+      document.getElementById('mapCity').textContent = currentUser.city || '-';
+      document.getElementById('mapCountry').textContent = currentUser.country || '-';
+      document.getElementById('mapAddress').textContent = currentUser.address || '-';
+      document.getElementById('mapVaultRegion').textContent = currentUser.city || currentUser.country || '-';
 
       try {
         const response = await fetch('/api/dashboard');
@@ -225,6 +288,22 @@
           }
           return '<li class="activity-item"><span class="activity-icon">' + iconSvg + '</span><div class="activity-body">' + act.text + '<span class="activity-meta">' + act.meta + (act.time ? ' · ' + act.time : '') + '</span></div></li>';
         }).join('') || '<li class="activity-empty">No recent activity</li>';
+
+        // Populate operations overlay stats
+        document.getElementById('opsAssetsCount').textContent = assetRows.length;
+        document.getElementById('opsActiveDeliveries').textContent = userShipments.filter(function (s) { return s.status !== 'Delivered'; }).length;
+        document.getElementById('opsDeliveredCount').textContent = userShipments.filter(function (s) { return s.status === 'Delivered'; }).length;
+        document.getElementById('opsSignupCount').textContent = (data.signups || []).length;
+
+        // Populate active shipment routes
+        var activeRoutes = userShipments.filter(function (s) { return s.status !== 'Delivered'; });
+        document.getElementById('shipmentRoutesList').innerHTML = activeRoutes.map(function (shipment) {
+          return '<div style="padding:1rem;border:1px solid rgba(255,255,255,0.1);border-radius:6px;margin-bottom:0.75rem;">' +
+            '<div style="font-weight:700;margin-bottom:0.25rem;">' + shipment.trackingId + ' — ' + shipment.status + '</div>' +
+            '<div style="font-size:0.85rem;color:var(--color-text-secondary);">' + shipment.origin + ' → ' + (shipment.current || shipment.origin) + ' → ' + shipment.destination + '</div>' +
+            '<div style="font-size:0.8rem;color:var(--color-text-secondary);margin-top:0.25rem;">Contents: ' + shipment.contents + ' · ETA: ' + shipment.eta + '</div>' +
+          '</div>';
+        }).join('') || '<p class="empty-copy">No active shipments to display.</p>';
 
         renderDeliveryTracker(userShipments);
       } catch (error) {

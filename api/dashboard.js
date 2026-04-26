@@ -14,7 +14,68 @@ const defaultState = {
     deliveriesCompleted: 300
   },
   shipments: [],
-  assets: [],
+  assets: [
+    {
+      assetId: 'asset-seed-1',
+      owner: 'Kenneth Johnson',
+      assetName: 'Investment Gold Reserve',
+      assetType: 'Bullion',
+      quantity: '12 kg',
+      vault: 'Vault A-12',
+      storagePrice: '2500',
+      status: 'Stored'
+    },
+    {
+      assetId: 'asset-seed-2',
+      owner: 'Benson Elio',
+      assetName: 'Zurich Diamond Collection',
+      assetType: 'Diamonds',
+      quantity: '45 pcs',
+      vault: 'Vault D-04',
+      storagePrice: '4200',
+      status: 'Verified'
+    },
+    {
+      assetId: 'asset-seed-3',
+      owner: 'Bright Archie',
+      assetName: 'Estate Jewelry Set',
+      assetType: 'Jewelry',
+      quantity: '8 pcs',
+      vault: 'Vault J-18',
+      storagePrice: '1800',
+      status: 'Awaiting Intake'
+    },
+    {
+      assetId: 'asset-lkt-001',
+      owner: 'Lui Kyle Tan',
+      assetName: 'Philippine Gold Bullion Reserve',
+      assetType: 'Gold',
+      quantity: '8 kg',
+      vault: 'Vault P-01',
+      storagePrice: '3200',
+      status: 'Stored'
+    },
+    {
+      assetId: 'asset-lkt-002',
+      owner: 'Lui Kyle Tan',
+      assetName: 'Manila Gold Coins Collection',
+      assetType: 'Gold',
+      quantity: '150 pcs',
+      vault: 'Vault P-02',
+      storagePrice: '2100',
+      status: 'Verified'
+    },
+    {
+      assetId: 'asset-lkt-003',
+      owner: 'Lui Kyle Tan',
+      assetName: 'Laguna Estate Gold Bars',
+      assetType: 'Gold',
+      quantity: '5 kg',
+      vault: 'Vault P-03',
+      storagePrice: '1950',
+      status: 'Stored'
+    }
+  ],
   signups: [],
   contacts: []
 };
