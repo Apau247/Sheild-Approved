@@ -18,7 +18,7 @@
                 <div class="top-bar-left"><span id="clientWelcome">Client portal access</span></div>
                 <div class="top-bar-right">
                     <a href="index.html" class="btn-request-access">Home</a>
-                    <a href="#" id="clientLogout" class="btn-secure-vault">Logout</a>
+                    <a href="#" id="clientLogout" class="btn-logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -34,14 +34,71 @@
             </div>
         </div>
     </section>
+
+    <!-- Stats Overview -->
+    <section class="page-section" id="statsOverview">
+        <div class="container">
+            <div class="portal-stats-grid" id="portalStats">
+                <div class="portal-stat-card">
+                    <span class="portal-stat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></span>
+                    <strong id="statTotalAssets">0</strong>
+                    <span class="portal-stat-label">Total Assets</span>
+                </div>
+                <div class="portal-stat-card">
+                    <span class="portal-stat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></span>
+                    <strong id="statActiveShipments">0</strong>
+                    <span class="portal-stat-label">Active Shipments</span>
+                </div>
+                <div class="portal-stat-card">
+                    <span class="portal-stat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span>
+                    <strong id="statDelivered">0</strong>
+                    <span class="portal-stat-label">Delivered</span>
+                </div>
+                <div class="portal-stat-card">
+                    <span class="portal-stat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+                    <strong id="statAccountStatus">Active</strong>
+                    <span class="portal-stat-label">Account Status</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="page-section page-section-alt" id="inventory">
         <div class="container">
-            <div class="table-panel">
-                <h3>Client Asset Inventory</h3>
-                <table class="cargo-table">
-                    <thead><tr><th>Client</th><th>Asset</th><th>Type</th><th>Quantity</th><th>Vault</th><th>Status</th></tr></thead>
-                    <tbody id="clientAssetRows"><tr><td colspan="6" class="empty-copy">Loading asset data...</td></tr></tbody>
-                </table>
+            <div class="portal-layout">
+                <div class="portal-main">
+                    <div class="table-panel">
+                        <h3>Client Asset Inventory</h3>
+                        <table class="cargo-table">
+                            <thead><tr><th>Client</th><th>Asset</th><th>Type</th><th>Quantity</th><th>Vault</th><th>Status</th></tr></thead>
+                            <tbody id="clientAssetRows"><tr><td colspan="6" class="empty-copy">Loading asset data...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <aside class="portal-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <h4 id="profileName">Client</h4>
+                            <span id="profileRole" class="profile-role">Client</span>
+                        </div>
+                        <div class="profile-details">
+                            <div class="profile-item"><span class="profile-label">Email</span><span id="profileEmail">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Company</span><span id="profileCompany">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Country</span><span id="profileCountry">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Service</span><span id="profileService">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Asset Type</span><span id="profileAssetType">-</span></div>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <h4>Recent Activity</h4>
+                        <ul id="activityList" class="activity-list">
+                            <li class="activity-empty">Loading activity...</li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
         </div>
     </section>
@@ -56,6 +113,20 @@
                 </table>
             </div>
         </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.905675723384!2d-0.09737038434278113!3d51.51351661808996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604a7f0b9e4f9%3A0x3e5b5e5e5e5e5e5e!2s45%20Bankside%20Lane%2C%20London%20EC2V%207NQ%2C%20UK!5e0!3m2!1sen!2suk!4v1234567890"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Iron Vault Security Location">
+        </iframe>
     </section>
     <script>
     (async function () {
@@ -87,6 +158,15 @@
         window.location.href = 'login.html';
       });
 
+      // Populate profile card
+      document.getElementById('profileName').textContent = currentUser.fullName || 'Client';
+      document.getElementById('profileRole').textContent = currentUser.role === 'admin' ? 'Administrator' : 'Client';
+      document.getElementById('profileEmail').textContent = currentUser.email || '-';
+      document.getElementById('profileCompany').textContent = currentUser.company || '-';
+      document.getElementById('profileCountry').textContent = currentUser.country || '-';
+      document.getElementById('profileService').textContent = currentUser.preferredService || '-';
+      document.getElementById('profileAssetType').textContent = currentUser.assetType || '-';
+
       try {
         const response = await fetch('/api/dashboard');
         const payload = await response.json();
@@ -107,10 +187,53 @@
           return '<tr><td>' + shipment.trackingId + '</td><td>' + shipment.contents + '</td><td>' + shipment.destination + '</td><td>' + shipment.status + '</td><td>' + shipment.eta + '</td></tr>';
         }).join('') || '<tr><td colspan="5" class="empty-copy">No shipment data available.</td></tr>';
 
+        // Populate stats
+        document.getElementById('statTotalAssets').textContent = assetRows.length;
+        document.getElementById('statActiveShipments').textContent = userShipments.filter(function (s) { return s.status !== 'Delivered'; }).length;
+        document.getElementById('statDelivered').textContent = userShipments.filter(function (s) { return s.status === 'Delivered'; }).length;
+        document.getElementById('statAccountStatus').textContent = currentUser.status === 'active' ? 'Active' : 'Inactive';
+
+        // Populate recent activity
+        var activityList = document.getElementById('activityList');
+        var activities = [];
+        userShipments.slice(0, 5).forEach(function (s) {
+          activities.push({
+            icon: s.status === 'Delivered' ? 'check' : 'truck',
+            text: '<strong>' + s.trackingId + '</strong> — ' + s.status,
+            meta: s.current || s.destination,
+            time: s.eta
+          });
+        });
+        if (assetRows.length > 0) {
+          assetRows.slice(0, 3).forEach(function (a) {
+            activities.push({
+              icon: 'box',
+              text: '<strong>' + a.assetName + '</strong> — ' + a.status,
+              meta: a.vault,
+              time: ''
+            });
+          });
+        }
+        activityList.innerHTML = activities.slice(0, 6).map(function (act) {
+          var iconSvg = '';
+          if (act.icon === 'check') {
+            iconSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>';
+          } else if (act.icon === 'truck') {
+            iconSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>';
+          } else {
+            iconSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>';
+          }
+          return '<li class="activity-item"><span class="activity-icon">' + iconSvg + '</span><div class="activity-body">' + act.text + '<span class="activity-meta">' + act.meta + (act.time ? ' · ' + act.time : '') + '</span></div></li>';
+        }).join('') || '<li class="activity-empty">No recent activity</li>';
+
         renderDeliveryTracker(userShipments);
       } catch (error) {
         document.getElementById('clientAssetRows').innerHTML = '<tr><td colspan="6" class="empty-copy">API unavailable.</td></tr>';
         document.getElementById('clientShipmentRows').innerHTML = '<tr><td colspan="5" class="empty-copy">API unavailable.</td></tr>';
+        document.getElementById('statTotalAssets').textContent = '0';
+        document.getElementById('statActiveShipments').textContent = '0';
+        document.getElementById('statDelivered').textContent = '0';
+        document.getElementById('activityList').innerHTML = '<li class="activity-empty">No activity available</li>';
       }
     })();
 

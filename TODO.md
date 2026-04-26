@@ -1,17 +1,23 @@
 # Task TODO
 
 ## Plan
-1. Remove Demo Access from Login Page
-2. Add New User "Lui Kyle Tan" to users.json and api/auth.js
-3. Add Site Email IronVaultSecurity@protonmail.com to index.html
-4. Create Food-App-Style Delivery Tracking View in client-portal.html + css/style.css
-5. Add a Delivery for the New User in data/dashboard.json
+1. Add Google Maps iframe section to client-portal.html (missing map) (missing map)
+2. Improve and style logout button in client-portal.html + css/style.css
+3. Add 6 new diverse client users to data/users.json
+4. Add 6 new client users to api/auth.js defaultUsers
+5. Add User Stats Overview section to client-portal.html
+6. Add Profile Card sidebar to client-portal.html
+7. Add Recent Activity feed to client-portal.html
+8. Add new CSS styles for portal enhancements in css/style.css
 
 ## Progress
-- [x] Step 1: Remove Demo Access from Login Page
-- [x] Step 2: Add New User
-- [x] Step 3: Add Site Email
-- [x] Step 4: Create Delivery Tracking View
-- [x] Step 5: Add Delivery for New User
-- [x] Step 6: Verify and Test
+- [ ] Step 1: Add Google Maps to Client Portal
+- [ ] Step 2: Style Logout Button
+- [ ] Step 3: Add 6 New Users to data/users.json
+- [ ] Step 4: Add 6 New Users to api/auth.js
+- [ ] Step 3: Add 6 New Users to data/users.json
+- [ ] Step 4: Add 6 New Users to api/auth.js
+- [ ] Step 5: Add Stats Overview to Client Portal
+- [ ] Step 6: Add Profile Card to Client Pts
+- [ ] Step 9: Verify and Test
 

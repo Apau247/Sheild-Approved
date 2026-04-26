@@ -2247,6 +2247,246 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ---------- Portal Enhancements ---------- */
+.top-bar .btn-logout {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: transparent;
+  color: #c83232;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border: 1px solid #c83232;
+  margin-left: 8px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.top-bar .btn-logout:hover {
+  background-color: #c83232;
+  color: var(--color-white);
+}
+
+/* Portal Stats Overview */
+.portal-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.portal-stat-card {
+  background: var(--color-white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(26,26,26,0.07);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.portal-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(26,26,26,0.1);
+}
+
+.portal-stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(212, 175, 55, 0.12);
+  color: var(--color-accent-gold);
+  margin-bottom: 16px;
+}
+
+.portal-stat-card strong {
+  display: block;
+  font-family: var(--font-headline);
+  font-size: 2.25rem;
+  color: var(--color-primary-dark);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.portal-stat-label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+/* Portal Layout */
+.portal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: start;
+}
+
+.portal-main {
+  min-width: 0;
+}
+
+.portal-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Profile Card */
+.profile-card {
+  background: var(--color-white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 16px 40px rgba(26,26,26,0.07);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.12);
+  border: 2px solid rgba(212, 175, 55, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-gold);
+  margin: 0 auto 14px;
+}
+
+.profile-header h4 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.profile-role {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(46, 139, 87, 0.1);
+  color: var(--color-success-green);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.profile-label {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Recent Activity */
+.recent-activity {
+  background: var(--color-white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 16px 40px rgba(26,26,26,0.07);
+}
+
+.recent-activity h4 {
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-empty {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 0.9375rem;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.activity-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--color-accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.activity-body {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.activity-body strong {
+  color: var(--color-primary-dark);
+}
+
+.activity-meta {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 1024px) {
+  .portal-layout {
+    grid-template-columns: 1fr;
+  }
+  .portal-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .portal-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .site-footer {
   background-color: var(--color-primary-dark);
   padding: 80px 0 0;
