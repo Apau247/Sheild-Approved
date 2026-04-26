@@ -47,6 +47,7 @@
     </section>
     <section class="page-section" id="tracking">
         <div class="container">
+            <div id="deliveryTracker" style="display:none;"></div>
             <div class="table-panel">
                 <h3>Client Delivery Tracking</h3>
                 <table class="cargo-table">
@@ -94,17 +95,94 @@
           if (currentUser.role === 'admin') return true;
           return String(asset.owner || '').toLowerCase().includes(String(currentUser.fullName || '').toLowerCase()) || String(asset.owner || '').toLowerCase().includes('client');
         });
+        const userShipments = (data.shipments || []).filter(function (shipment) {
+          if (currentUser.role === 'admin') return true;
+          return String(shipment.owner || '').toLowerCase().includes(String(currentUser.fullName || '').toLowerCase()) ||
+                 (String(currentUser.fullName || '').toLowerCase().includes('client') && String(shipment.owner || '').toLowerCase().includes('client'));
+        });
         document.getElementById('clientAssetRows').innerHTML = assetRows.map(function (asset) {
           return '<tr><td>' + asset.owner + '</td><td>' + asset.assetName + '</td><td>' + asset.assetType + '</td><td>' + asset.quantity + '</td><td>' + asset.vault + '</td><td>' + asset.status + '</td></tr>';
         }).join('') || '<tr><td colspan="6" class="empty-copy">No asset data available for this user.</td></tr>';
-        document.getElementById('clientShipmentRows').innerHTML = (data.shipments || []).map(function (shipment) {
+        document.getElementById('clientShipmentRows').innerHTML = userShipments.map(function (shipment) {
           return '<tr><td>' + shipment.trackingId + '</td><td>' + shipment.contents + '</td><td>' + shipment.destination + '</td><td>' + shipment.status + '</td><td>' + shipment.eta + '</td></tr>';
         }).join('') || '<tr><td colspan="5" class="empty-copy">No shipment data available.</td></tr>';
+
+        renderDeliveryTracker(userShipments);
       } catch (error) {
         document.getElementById('clientAssetRows').innerHTML = '<tr><td colspan="6" class="empty-copy">API unavailable.</td></tr>';
         document.getElementById('clientShipmentRows').innerHTML = '<tr><td colspan="5" class="empty-copy">API unavailable.</td></tr>';
       }
     })();
+
+    function renderDeliveryTracker(shipments) {
+      var trackerContainer = document.getElementById('deliveryTracker');
+      if (!trackerContainer) return;
+      var activeShipments = shipments.filter(function (s) { return ['Delivery Started', 'In Transit', 'Out for Delivery'].indexOf(s.status) >= 0; });
+      if (activeShipments.length === 0) {
+        trackerContainer.innerHTML = '';
+        trackerContainer.style.display = 'none';
+        return;
+      }
+      trackerContainer.style.display = 'block';
+      trackerContainer.innerHTML = activeShipments.map(function (shipment) {
+        var steps = ['Pickup', 'In Transit', 'Out for Delivery', 'Delivered'];
+        var currentStep = 0;
+        if (shipment.status === 'In Transit') currentStep = 1;
+        if (shipment.status === 'Out for Delivery') currentStep = 2;
+        if (shipment.status === 'Delivered') currentStep = 3;
+        if (shipment.status === 'Delivery Started') currentStep = 0;
+
+        var timelineHtml = steps.map(function (step, idx) {
+          var activeClass = idx <= currentStep ? 'active' : '';
+          var completedClass = idx < currentStep ? 'completed' : '';
+          return '<div class="tracker-step ' + activeClass + ' ' + completedClass + '"><span class="step-dot"></span><span class="step-label">' + step + '</span></div>';
+        }).join('');
+
+        return '<div class="live-tracker-card">' +
+          '<div class="tracker-header">' +
+            '<div class="tracker-status-badge">' + shipment.status + '</div>' +
+            '<div class="tracker-meta">Tracking ID: <strong>' + shipment.trackingId + '</strong></div>' +
+          '</div>' +
+          '<div class="tracker-timeline">' + timelineHtml + '</div>' +
+          '<div class="tracker-progress-bar">' +
+            '<div class="tracker-progress-fill" style="width:' + (shipment.progress || 0) + '%"></div>' +
+          '</div>' +
+          '<div class="tracker-route">' +
+            '<div class="route-origin">' +
+              '<span class="route-pin"></span>' +
+              '<span class="route-city">' + shipment.origin + '</span>' +
+            '</div>' +
+            '<div class="route-arrow">&#10132;</div>' +
+            '<div class="route-current">' +
+              '<span class="pulse-dot"></span>' +
+              '<span class="route-city">Now: ' + shipment.current + '</span>' +
+            '</div>' +
+            '<div class="route-arrow">&#10132;</div>' +
+            '<div class="route-dest">' +
+              '<span class="route-pin dest"></span>' +
+              '<span class="route-city">' + shipment.destination + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="tracker-driver">' +
+            '<div class="driver-avatar">' +
+              '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' +
+            '</div>' +
+            '<div class="driver-info">' +
+              '<strong>' + (shipment.driverName || 'Secure Agent') + '</strong>' +
+              '<span>' + (shipment.driverVehicle || 'Armored Transport') + '</span>' +
+              '<span class="driver-phone">' + (shipment.driverPhone || '+44 20 7946 0958') + '</span>' +
+            '</div>' +
+            '<div class="driver-cta">' +
+              '<a href="tel:' + (shipment.driverPhone || '+442079460958') + '" class="btn-driver-call">Call</a>' +
+            '</div>' +
+          '</div>' +
+          '<div class="tracker-footer">' +
+            '<span>Contents: <strong>' + shipment.contents + '</strong></span>' +
+            '<span>ETA: <strong>' + shipment.eta + '</strong></span>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
     </script>
 </body>
 </html>

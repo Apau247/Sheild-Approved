@@ -1,13 +1,17 @@
-# Iron Vault Security — Enhancement TODO
+# Task TODO
 
 ## Plan
-1. [x] Update `index.html`: Replace `hero1.jpg` with `hero5.jpg`, add `hero1.avif` as 5th slide, update slider dots
-2. [x] Fix empty footer social links in `index.html` (Facebook, Twitter, LinkedIn)
-3. [x] Update vault login links in `index.html` to point to local `login.html`; add Sign Up links
-4. [x] Add 4th testimonial to `index.html` using `face4.jpg`
-5. [x] Update `js/__scripts.js`: `slideCount` 4→5, testimonial rotation count 3→4
-6. [x] Add auth form styles to `css/style.css`
-7. [x] Create `login.php` — premium dark self-processing login page
-8. [x] Update `index.html` login links to `./login.php`
-9. [x] Final review and verification
+1. Remove Demo Access from Login Page
+2. Add New User "Lui Kyle Tan" to users.json and api/auth.js
+3. Add Site Email IronVaultSecurity@protonmail.com to index.html
+4. Create Food-App-Style Delivery Tracking View in client-portal.html + css/style.css
+5. Add a Delivery for the New User in data/dashboard.json
+
+## Progress
+- [x] Step 1: Remove Demo Access from Login Page
+- [x] Step 2: Add New User
+- [x] Step 3: Add Site Email
+- [x] Step 4: Create Delivery Tracking View
+- [x] Step 5: Add Delivery for New User
+- [x] Step 6: Verify and Test
 

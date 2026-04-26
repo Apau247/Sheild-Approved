@@ -113,6 +113,10 @@ function safeUser(user) {
     nextOfKinName: user.nextOfKinName,
     nextOfKinPhone: user.nextOfKinPhone,
     nextOfKinRelationship: user.nextOfKinRelationship,
+    nextOfKinEmail: user.nextOfKinEmail,
+    occupation: user.occupation,
+    province: user.province,
+    clientStatus: user.clientStatus,
     role: user.role,
     status: user.status,
     createdAt: user.createdAt

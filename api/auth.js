@@ -46,6 +46,29 @@ const defaultUsers = {
       role: 'client',
       status: 'active',
       createdAt: '2026-04-25T00:00:00.000Z'
+    },
+    {
+      id: 'client-002',
+      fullName: 'Lui Kyle Tan',
+      email: 'luikyle@protonmail.com',
+      password: 'LuiKyle2025!',
+      phone: '+63 912 345 6789',
+      company: 'Philippine National Police',
+      country: 'Philippines',
+      city: 'San Pablo',
+      address: '384Q+Qm8, San Pablo City, Laguna, Philippines',
+      preferredService: 'Private Vault',
+      assetType: 'Gold',
+      nextOfKinName: 'Abe Yna Lui',
+      nextOfKinPhone: '+63 912 345 6790',
+      nextOfKinRelationship: 'Next of Kin',
+      nextOfKinEmail: 'Yanhans0@gmail.com',
+      occupation: 'Police Officer',
+      province: 'Laguna',
+      clientStatus: 'Deceased',
+      role: 'client',
+      status: 'active',
+      createdAt: '2026-04-25T00:00:00.000Z'
     }
   ]
 };
@@ -154,6 +177,10 @@ function safeUser(user) {
     nextOfKinName: user.nextOfKinName,
     nextOfKinPhone: user.nextOfKinPhone,
     nextOfKinRelationship: user.nextOfKinRelationship,
+    nextOfKinEmail: user.nextOfKinEmail,
+    occupation: user.occupation,
+    province: user.province,
+    clientStatus: user.clientStatus,
     role: user.role,
     status: user.status,
     createdAt: user.createdAt
