@@ -1,19 +1,27 @@
-# Admin Dashboard Enhancement TODO
+# Navigation & Client Portal Enhancement TODO
 
-## Completed
-- [x] `api/dashboard.js` — Added createdAt/updatedAt to assets, delete/update actions for assets, shipments, contacts, signups, stats
-- [x] `api/users.js` — Added addUser action, deleteUser action, updatedAt on updates, full support for new fields
-- [x] `api/auth.js` — Updated safeUser with new fields, updated login to handle null emails, added Phil Alan default data
-- [x] `data/dashboard.json` — Injected timestamps into existing assets, added Phil Alan's asset (asset-pa-001)
-- [x] `data/users.json` — Replaced client-006 (James O'Brien) with Phil Alan including images, assetDetails, logistics
-- [x] `client-portal.html` — Displays client/next-of-kin images, asset details panel, logistics panel, extended profile fields
+## Phase 1: Shared Navigation
+- [x] Create `js/nav.js` — mobile menu, search overlay, smooth scroll, auth-aware links
+- [ ] Update `index.html` — add `nav.js`, ensure auth-aware links work
+- [ ] Update `about.html` — full header + mobile menu + search overlay + `nav.js`
+- [ ] Update `services.html` — full header + mobile menu + search overlay + `nav.js`
+- [ ] Update `request-access.html` — full header + mobile menu + search overlay + `nav.js`
+- [ ] Update `forgot-password.html` — full header + mobile menu + search overlay + `nav.js`
+- [ ] Update `search.html` — full header + mobile menu + search overlay + `nav.js`
+- [ ] Update `login.html` — add mobile menu + search overlay + `nav.js`
+- [ ] Update `signup.html` — add mobile menu + search overlay + `nav.js`
+- [ ] Update `client-portal.html` — add mobile menu + search overlay + `nav.js`
+- [ ] Update `admin-dashboard.html` — add mobile menu + search overlay + `nav.js`
 
-## Result
-- Phil Alan (client-006) now has:
-  - clientImage: images/id 006.jpeg
-  - nextOfKinImage: images/new.jpeg
-  - assetDetails with Gold 250 KG, $23M consignment, security code OBS102-US-GA
-  - logistics with Armored Transport, 2 Security Trucks, High security
-- Client portal renders all structured fields in dedicated panels
-- APIs fully support CRUD for all new fields
+## Phase 2: Client Portal Fix & Premium Display
+- [ ] Fix broken JavaScript in `client-portal.html` (undefined variables, missing `formatDate`)
+- [ ] Remove blur overlays for logged-in user's own data
+- [ ] Show Phil Alan's images and details prominently (premium client)
+- [ ] Ensure delivery tracker renders correctly
+
+## Phase 3: Polish
+- [ ] Add CSS scroll-offset utility for fixed header
+- [ ] Test mobile menu on all pages
+- [ ] Test search overlay on all pages
+- [ ] Test smooth scroll for anchor links
 
