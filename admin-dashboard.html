@@ -10,6 +10,102 @@
     <link rel="stylesheet" href="css/__colors_dark.css">
     <link rel="stylesheet" href="css/__custom.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .client-record-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .client-record-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .client-record-header img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--color-accent-gold);
+        }
+        .client-record-header .nok-img {
+            width: 48px;
+            height: 48px;
+        }
+        .client-record-title {
+            flex: 1;
+        }
+        .client-record-title h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+        }
+        .client-record-title span {
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+        }
+        .record-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .badge-active { background: rgba(46, 204, 113, 0.15); color: #2ecc71; }
+        .badge-deceased { background: rgba(231, 76, 60, 0.15); color: #e74c3c; }
+        .badge-pending { background: rgba(241, 196, 15, 0.15); color: #f1c40f; }
+        .record-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.75rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .record-item .record-label {
+            font-size: 0.7rem;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.15rem;
+        }
+        .record-item .record-value {
+            font-weight: 600;
+            color: var(--color-text-primary);
+            font-size: 0.9rem;
+        }
+        .record-null {
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+        .record-section-title {
+            font-size: 0.85rem;
+            color: var(--color-accent-gold);
+            margin: 1rem 0 0.5rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .record-images {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .record-image-box {
+            text-align: center;
+        }
+        .record-image-box img {
+            display: block;
+            margin: 0 auto 0.25rem;
+        }
+        .record-image-box span {
+            font-size: 0.7rem;
+            color: var(--color-text-secondary);
+        }
+    </style>
 </head>
 <body class="scheme_default">
     <header class="site-header">
@@ -20,9 +116,8 @@
                     <a href="index.html" class="btn-request-access">Home</a>
                     <a href="#" id="adminLogout" class="btn-secure-vault">Logout</a>
                 </div>
-            </div>
         </div>
-        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div></div>
+        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div>
     </header>
     <section class="inner-page-hero">
         <div class="container">
@@ -31,8 +126,8 @@
             <div class="page-actions">
                 <a href="#inventory" class="btn">Inventory</a>
                 <a href="#adminTools" class="btn btn-simple">Admin Tools</a>
+                <a href="#clientRecords" class="btn btn-simple">Client Records</a>
             </div>
-        </div>
     </section>
     <section class="page-section page-section-alt" id="inventory">
         <div class="container">
@@ -43,7 +138,6 @@
                     <tbody id="adminAssetRows"><tr><td colspan="7" class="empty-copy">Loading asset data...</td></tr></tbody>
                 </table>
             </div>
-        </div>
     </section>
     <section class="page-section" id="adminTools">
         <div class="container">
@@ -73,8 +167,8 @@
                     <form id="adminUserForm" class="dashboard-form dashboard-form-grid">
                         <div class="form-field"><input type="text" name="id" placeholder="User ID" required aria-label="User ID"></div>
                         <div class="form-field"><input type="text" name="fullName" placeholder="Full Name" required aria-label="Full Name"></div>
-                        <div class="form-field"><input type="email" name="email" placeholder="Email Address" required aria-label="Email Address"></div>
-                        <div class="form-field"><input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number"></div>
+                        <div class="form-field"><input type="email" name="email" placeholder="Email Address" aria-label="Email Address"></div>
+                        <div class="form-field"><input type="tel" name="phone" placeholder="Phone Number" aria-label="Phone Number"></div>
                         <div class="form-field"><input type="text" name="company" placeholder="Company" aria-label="Company"></div>
                         <div class="form-field"><input type="text" name="country" placeholder="Country" required aria-label="Country"></div>
                         <div class="form-field"><input type="text" name="city" placeholder="City" required aria-label="City"></div>
@@ -85,9 +179,7 @@
                         <button type="submit" class="btn btn-submit">Save User Record</button>
                     </form>
                 </div>
-            </div>
             <div id="adminMessage" class="dashboard-message" aria-live="polite"></div>
-        </div>
     </section>
     <section class="page-section" id="logs">
         <div class="container">
@@ -98,8 +190,18 @@
                     <tbody id="adminQueueRows"><tr><td colspan="4" class="empty-copy">Loading request queue...</td></tr></tbody>
                 </table>
             </div>
+    </section>
+
+    <!-- Full Client Records Viewer — Admin Only -->
+    <section class="page-section page-section-alt" id="clientRecords">
+        <div class="container">
+            <div class="table-panel">
+                <h3>Full Client Records (Admin View)</h3>
+                <p style="color:var(--color-text-secondary);margin-bottom:1rem;">All sensitive client details, images, asset details, and logistics visible here. Blurred on client portal.</p>
+                <div id="adminClientRecords"><p class="empty-copy">Loading client records...</p></div>
         </div>
     </section>
+
     <script>
     (async function () {
       const currentUserRaw = localStorage.getItem('ivsCurrentUser');
@@ -150,6 +252,97 @@
         }
       }
 
+      function formatDate(isoString) {
+        if (!isoString) return '-';
+        try {
+          var d = new Date(isoString);
+          return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+        } catch (e) {
+          return isoString;
+        }
+      }
+
+      function statusBadgeClass(status) {
+        var s = String(status || '').toLowerCase();
+        if (s === 'deceased') return 'badge-deceased';
+        if (s === 'active') return 'badge-active';
+        return 'badge-pending';
+      }
+
+      function renderClientRecord(user) {
+        var imagesHtml = '';
+        if (user.clientImage) {
+          imagesHtml += '<div class="record-image-box"><img src="' + user.clientImage + '" alt="Client" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--color-accent-gold);"><span>Client</span></div>';
+        }
+        if (user.nextOfKinImage) {
+          imagesHtml += '<div class="record-image-box"><img src="' + user.nextOfKinImage + '" alt="Next of Kin" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--color-accent-gold);"><span>Next of Kin</span></div>';
+        }
+
+        var basicHtml = '';
+        basicHtml += '<div class="record-item"><div class="record-label">User ID</div><div class="record-value">' + (user.id || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Full Name</div><div class="record-value">' + (user.fullName || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Email</div><div class="record-value ' + (user.email ? '' : 'record-null') + '">' + (user.email || 'Not set') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Phone</div><div class="record-value ' + (user.phone ? '' : 'record-null') + '">' + (user.phone || 'Not set') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Company</div><div class="record-value">' + (user.company || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Country</div><div class="record-value">' + (user.country || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">City</div><div class="record-value">' + (user.city || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Address</div><div class="record-value">' + (user.address || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Preferred Service</div><div class="record-value">' + (user.preferredService || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Primary Asset Type</div><div class="record-value">' + (user.assetType || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Occupation</div><div class="record-value">' + (user.occupation || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Province</div><div class="record-value">' + (user.province || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Client Status</div><div class="record-value"><span class="record-badge ' + statusBadgeClass(user.clientStatus) + '">' + (user.clientStatus || 'Unknown') + '</span></div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Account Status</div><div class="record-value"><span class="record-badge ' + statusBadgeClass(user.status) + '">' + (user.status || 'Unknown') + '</span></div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Role</div><div class="record-value">' + (user.role || '-') + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Member Since</div><div class="record-value">' + formatDate(user.createdAt) + '</div>';
+        basicHtml += '<div class="record-item"><div class="record-label">Last Updated</div><div class="record-value">' + formatDate(user.updatedAt) + '</div>';
+
+        var nokHtml = '';
+        nokHtml += '<div class="record-item"><div class="record-label">Next of Kin Name</div><div class="record-value">' + (user.nextOfKinName || '-') + '</div>';
+        nokHtml += '<div class="record-item"><div class="record-label">NOK Phone</div><div class="record-value ' + (user.nextOfKinPhone ? '' : 'record-null') + '">' + (user.nextOfKinPhone || 'Not set') + '</div>';
+        nokHtml += '<div class="record-item"><div class="record-label">NOK Email</div><div class="record-value ' + (user.nextOfKinEmail ? '' : 'record-null') + '">' + (user.nextOfKinEmail || 'Not set') + '</div>';
+        nokHtml += '<div class="record-item"><div class="record-label">NOK Relationship</div><div class="record-value">' + (user.nextOfKinRelationship || '-') + '</div>';
+
+        var assetHtml = '';
+        if (user.assetDetails) {
+          var ad = user.assetDetails;
+          assetHtml += '<div class="record-item"><div class="record-label">Asset Type</div><div class="record-value">' + (ad.assetType || '-') + '</div>';
+          assetHtml += '<div class="record-item"><div class="record-label">Quantity</div><div class="record-value">' + (ad.quantity || '-') + '</div>';
+          assetHtml += '<div class="record-item"><div class="record-label">Consignment Value</div><div class="record-value">' + (ad.consignmentValue ? ad.currency + ' ' + ad.consignmentValue.toLocaleString() : '-') + '</div>';
+          assetHtml += '<div class="record-item"><div class="record-label">Monthly Charges</div><div class="record-value">' + (ad.monthlyCharges ? ad.currency + ' ' + ad.monthlyCharges.toLocaleString() : '-') + '</div>';
+          assetHtml += '<div class="record-item"><div class="record-label">Date Issued</div><div class="record-value">' + (ad.dateIssued || '-') + '</div>';
+          assetHtml += '<div class="record-item"><div class="record-label">Security Code</div><div class="record-value">' + (ad.securityCode || '-') + '</div>';
+          assetHtml += '<div class="record-item"><div class="record-label">Storage Location</div><div class="record-value">' + (ad.storageLocation || '-') + '</div>';
+        }
+
+        var logisticsHtml = '';
+        if (user.logistics) {
+          var lg = user.logistics;
+          logisticsHtml += '<div class="record-item"><div class="record-label">Transport Method</div><div class="record-value">' + (lg.transportMethod || '-') + '</div>';
+          logisticsHtml += '<div class="record-item"><div class="record-label">Vehicle Type</div><div class="record-value">' + (lg.vehicleType || '-') + '</div>';
+          logisticsHtml += '<div class="record-item"><div class="record-label">Number of Vehicles</div><div class="record-value">' + (lg.numberOfVehicles || '-') + '</div>';
+          logisticsHtml += '<div class="record-item"><div class="record-label">Security Level</div><div class="record-value">' + (lg.securityLevel || '-') + '</div>';
+          logisticsHtml += '<div class="record-item"><div class="record-label">Logistics Status</div><div class="record-value">' + (lg.status || '-') + '</div>';
+        }
+
+        return '<div class="client-record-card">' +
+          '<div class="client-record-header">' +
+            '<div class="record-images">' + imagesHtml + '</div>' +
+            '<div class="client-record-title">' +
+              '<h4>' + (user.fullName || 'Unnamed Client') + '</h4>' +
+              '<span>' + (user.id || '') + ' · ' + (user.company || '') + '</span>' +
+            '</div>' +
+            '<span class="record-badge ' + statusBadgeClass(user.clientStatus) + '">' + (user.clientStatus || 'Unknown') + '</span>' +
+          '</div>' +
+          '<div class="record-section-title">Contact Information</div>' +
+          '<div class="record-grid">' + basicHtml + '</div>' +
+          '<div class="record-section-title">Next of Kin</div>' +
+          '<div class="record-grid">' + nokHtml + '</div>' +
+          (user.assetDetails ? '<div class="record-section-title">Asset Details</div><div class="record-grid">' + assetHtml + '</div>' : '') +
+          (user.logistics ? '<div class="record-section-title">Logistics & Transport</div><div class="record-grid">' + logisticsHtml + '</div>' : '') +
+        '</div>';
+      }
+
       async function loadAdminData() {
         try {
           const [dashboardResponse, authResponse] = await Promise.all([
@@ -177,9 +370,15 @@
           document.getElementById('adminQueueRows').innerHTML = queue.map(function (entry) {
             return '<tr><td>' + entry.name + '</td><td>' + entry.email + '</td><td>' + entry.meta + '</td><td>' + entry.createdAt + '</td></tr>';
           }).join('') || '<tr><td colspan="4" class="empty-copy">No signup or contact requests available.</td></tr>';
+
+          // Render full client records for admin view
+          var clientUsers = (authData.users || []).filter(function (u) { return u.role === 'client'; });
+          document.getElementById('adminClientRecords').innerHTML = clientUsers.map(renderClientRecord).join('') || '<p class="empty-copy">No client records available.</p>';
+
         } catch (error) {
           document.getElementById('adminAssetRows').innerHTML = '<tr><td colspan="7" class="empty-copy">API unavailable.</td></tr>';
           document.getElementById('adminQueueRows').innerHTML = '<tr><td colspan="4" class="empty-copy">API unavailable.</td></tr>';
+          document.getElementById('adminClientRecords').innerHTML = '<p class="empty-copy">API unavailable.</p>';
           showMessage(error.message || 'Could not load admin data.', 'error');
         }
       }
