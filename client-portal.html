@@ -26,6 +26,50 @@
         .profile-image-box { text-align:center; }
         .profile-image-box img { display:block;margin:0 auto 0.25rem; }
         .profile-image-box span { font-size:0.7rem;color:var(--color-text-secondary); }
+
+        /* Blur sensitive data for client view */
+        .blur-sensitive { filter: blur(6px); user-select: none; pointer-events: none; opacity: 0.6; }
+        .blur-panel { position: relative; }
+        .blur-panel::after {
+            content: 'Restricted — Contact Admin';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.75);
+            color: var(--color-accent-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            z-index: 2;
+        }
+        .blur-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+        .blur-overlay .blur-content {
+            filter: blur(8px);
+            user-select: none;
+            opacity: 0.4;
+        }
+        .blur-overlay::after {
+            content: '🔒 Admin Only';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: var(--color-accent-gold);
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            z-index: 2;
+            border: 1px solid rgba(212,175,55,0.3);
+        }
     </style>
 </head>
 <body class="scheme_default">
@@ -37,8 +81,9 @@
                     <a href="index.html" class="btn-request-access">Home</a>
                     <a href="#" id="clientLogout" class="btn-logout">Logout</a>
                 </div>
+            </div>
         </div>
-        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div>
+        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div></div>
     </header>
     <section class="inner-page-hero">
         <div class="container">
@@ -48,6 +93,7 @@
                 <a href="#inventory" class="btn">Asset Inventory</a>
                 <a href="#tracking" class="btn btn-simple">Track Deliveries</a>
             </div>
+        </div>
     </section>
 
     <!-- Stats Overview -->
@@ -74,6 +120,7 @@
                     <strong id="statAccountStatus">Active</strong>
                     <span class="portal-stat-label">Account Status</span>
                 </div>
+            </div>
         </div>
     </section>
 
@@ -89,41 +136,50 @@
                         </table>
                     </div>
 
-                    <!-- Asset Details Panel -->
-                    <div id="assetDetailsPanel" class="detail-panel" style="display:none;">
-                        <h4>Asset Details</h4>
-                        <div class="detail-grid" id="assetDetailsGrid"></div>
+                    <!-- Asset Details Panel — BLURRED for client view -->
+                    <div id="assetDetailsPanel" class="detail-panel blur-overlay" style="display:none;">
+                        <div class="blur-content">
+                            <h4>Asset Details</h4>
+                            <div class="detail-grid" id="assetDetailsGrid"></div>
+                        </div>
+                    </div>
 
-                    <!-- Logistics Panel -->
-                    <div id="logisticsPanel" class="detail-panel" style="display:none;">
-                        <h4>Logistics & Transport</h4>
-                        <div class="detail-grid" id="logisticsGrid"></div>
+                    <!-- Logistics Panel — BLURRED for client view -->
+                    <div id="logisticsPanel" class="detail-panel blur-overlay" style="display:none;">
+                        <div class="blur-content">
+                            <h4>Logistics & Transport</h4>
+                            <div class="detail-grid" id="logisticsGrid"></div>
+                        </div>
+                    </div>
                 </div>
                 <aside class="portal-sidebar">
                     <div class="profile-card">
                         <div class="profile-header">
-                            <div class="profile-images" id="profileImages"></div>
+                            <!-- Images blurred for client view -->
+                            <div class="profile-images blur-overlay" id="profileImages" style="min-height:90px;"></div>
                             <h4 id="profileName">Client</h4>
                             <span id="profileRole" class="profile-role">Client</span>
                         </div>
                         <div class="profile-details">
                             <div class="profile-item"><span class="profile-label">Email</span><span id="profileEmail">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Phone</span><span id="profilePhone">-</span></div>
                             <div class="profile-item"><span class="profile-label">Company</span><span id="profileCompany">-</span></div>
                             <div class="profile-item"><span class="profile-label">Country</span><span id="profileCountry">-</span></div>
-                            <div class="profile-item"><span class="profile-label">City</span><span id="profileCity">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Address</span><span id="profileAddress">-</span></div>
                             <div class="profile-item"><span class="profile-label">Service</span><span id="profileService">-</span></div>
                             <div class="profile-item"><span class="profile-label">Asset Type</span><span id="profileAssetType">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Occupation</span><span id="profileOccupation">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Province</span><span id="profileProvince">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Client Status</span><span id="profileClientStatus">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Next of Kin</span><span id="profileNextOfKin">-</span></div>
-                            <div class="profile-item"><span class="profile-label">NOK Relationship</span><span id="profileNOKRelationship">-</span></div>
-                            <div class="profile-item"><span class="profile-label">NOK Phone</span><span id="profileNOKPhone">-</span></div>
-                            <div class="profile-item"><span class="profile-label">NOK Email</span><span id="profileNOKEmail">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Member Since</span><span id="profileCreatedAt">-</span></div>
-                            <div class="profile-item"><span class="profile-label">Last Updated</span><span id="profileUpdatedAt">-</span></div>
+                            <!-- Sensitive fields hidden from client view -->
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Phone</span><span id="profilePhone">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">City</span><span id="profileCity">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Address</span><span id="profileAddress">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Occupation</span><span id="profileOccupation">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Province</span><span id="profileProvince">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Client Status</span><span id="profileClientStatus">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Next of Kin</span><span id="profileNextOfKin">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">NOK Relationship</span><span id="profileNOKRelationship">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">NOK Phone</span><span id="profileNOKPhone">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">NOK Email</span><span id="profileNOKEmail">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Member Since</span><span id="profileCreatedAt">-</span></div>
+                            <div class="profile-item blur-sensitive"><span class="profile-label">Last Updated</span><span id="profileUpdatedAt">-</span></div>
+                        </div>
                     </div>
                     <div class="recent-activity">
                         <h4>Recent Activity</h4>
@@ -133,6 +189,7 @@
                     </div>
                 </aside>
             </div>
+        </div>
     </section>
     <section class="page-section" id="tracking">
         <div class="container">
@@ -144,6 +201,7 @@
                     <tbody id="clientShipmentRows"><tr><td colspan="5" class="empty-copy">Loading shipment data...</td></tr></tbody>
                 </table>
             </div>
+        </div>
     </section>
 
     <!-- Map Section -->
@@ -186,6 +244,7 @@
                     <strong id="opsSignupCount">0</strong>
                     <p>New account requests captured for follow-up.</p>
                 </div>
+            </div>
             <div class="portal-layout" style="margin-top:2rem;">
                 <div class="portal-main">
                     <div class="table-panel">
@@ -193,6 +252,7 @@
                         <div id="shipmentRoutesList">
                             <p class="empty-copy">No active shipments to display.</p>
                         </div>
+                    </div>
                 </div>
                 <aside class="portal-sidebar">
                     <div class="profile-card">
@@ -204,9 +264,11 @@
                             <div class="profile-item"><span class="profile-label">Country</span><span id="mapCountry">-</span></div>
                             <div class="profile-item"><span class="profile-label">Address</span><span id="mapAddress">-</span></div>
                             <div class="profile-item"><span class="profile-label">Vault Region</span><span id="mapVaultRegion">-</span></div>
+                        </div>
                     </div>
                 </aside>
             </div>
+        </div>
     </section>
     <script>
     (async function () {
@@ -230,7 +292,7 @@
         return;
       }
 
-      document.getElementById('clientWelcome').textContent = 'Signed in as ' + (currentUser.fullName || 'Client');
+      document.getElementById('clientWelcome').textContent = 'Signed in as ' + (currentUser.fullName || currentUser.email);
       document.getElementById('clientHeroCopy').textContent = (currentUser.fullName || 'Client') + ' can review stored assets, monitor active shipments, and move between tracking and account actions from one page.';
       document.getElementById('clientLogout').addEventListener('click', function (event) {
         event.preventDefault();
@@ -238,7 +300,7 @@
         window.location.href = 'login.html';
       });
 
-      // Populate profile images
+      // Populate profile images (blurred via CSS overlay)
       var profileImages = document.getElementById('profileImages');
       var imagesHtml = '';
       if (currentUser.clientImage) {
@@ -251,27 +313,25 @@
       }
       profileImages.innerHTML = imagesHtml;
 
-      // Populate profile card
+      // Populate profile card — only basic fields visible, sensitive ones blurred via CSS
       document.getElementById('profileName').textContent = currentUser.fullName || 'Client';
       document.getElementById('profileRole').textContent = currentUser.role === 'admin' ? 'Administrator' : 'Client';
       document.getElementById('profileEmail').textContent = currentUser.email || '-';
       document.getElementById('profileEmail').className = currentUser.email ? '' : 'detail-value-null';
-      document.getElementById('profilePhone').textContent = currentUser.phone || '-';
       document.getElementById('profileCompany').textContent = currentUser.company || '-';
       document.getElementById('profileCountry').textContent = currentUser.country || '-';
-      document.getElementById('profileCity').textContent = currentUser.city || '-';
-      document.getElementById('profileAddress').textContent = currentUser.address || '-';
       document.getElementById('profileService').textContent = currentUser.preferredService || '-';
       document.getElementById('profileAssetType').textContent = currentUser.assetType || '-';
+      document.getElementById('profilePhone').textContent = currentUser.phone || '-';
+      document.getElementById('profileCity').textContent = currentUser.city || '-';
+      document.getElementById('profileAddress').textContent = currentUser.address || '-';
       document.getElementById('profileOccupation').textContent = currentUser.occupation || '-';
       document.getElementById('profileProvince').textContent = currentUser.province || '-';
       document.getElementById('profileClientStatus').textContent = currentUser.clientStatus || '-';
       document.getElementById('profileNextOfKin').textContent = currentUser.nextOfKinName || '-';
       document.getElementById('profileNOKRelationship').textContent = currentUser.nextOfKinRelationship || '-';
       document.getElementById('profileNOKPhone').textContent = currentUser.nextOfKinPhone || '-';
-      document.getElementById('profileNOKPhone').className = currentUser.nextOfKinPhone ? '' : 'detail-value-null';
       document.getElementById('profileNOKEmail').textContent = currentUser.nextOfKinEmail || '-';
-      document.getElementById('profileNOKEmail').className = currentUser.nextOfKinEmail ? '' : 'detail-value-null';
       document.getElementById('profileCreatedAt').textContent = formatDate(currentUser.createdAt);
       document.getElementById('profileUpdatedAt').textContent = formatDate(currentUser.updatedAt);
 
@@ -285,30 +345,30 @@
       document.getElementById('mapAddress').textContent = currentUser.address || '-';
       document.getElementById('mapVaultRegion').textContent = currentUser.city || currentUser.country || '-';
 
-      // Render asset details if available
+      // Render asset details if available (will be blurred by CSS overlay)
       if (currentUser.assetDetails) {
         var ad = currentUser.assetDetails;
         var adHtml = '';
-        adHtml += '<div><span class="image-label">Asset Type</span><div class="detail-value">' + (ad.assetType || '-') + '</div>';
-        adHtml += '<div><span class="image-label">Quantity</span><div class="detail-value">' + (ad.quantity || '-') + '</div>';
-        adHtml += '<div><span class="image-label">Consignment Value</span><div class="detail-value">' + (ad.consignmentValue ? ad.currency + ' ' + ad.consignmentValue.toLocaleString() : '-') + '</div>';
-        adHtml += '<div><span class="image-label">Monthly Charges</span><div class="detail-value">' + (ad.monthlyCharges ? ad.currency + ' ' + ad.monthlyCharges.toLocaleString() : '-') + '</div>';
-        adHtml += '<div><span class="image-label">Date Issued</span><div class="detail-value">' + (ad.dateIssued || '-') + '</div>';
-        adHtml += '<div><span class="image-label">Security Code</span><div class="detail-value">' + (ad.securityCode || '-') + '</div>';
-        adHtml += '<div class="detail-item-full"><span class="image-label">Storage Location</span><div class="detail-value">' + (ad.storageLocation || '-') + '</div>';
+        adHtml += '<div><span class="image-label">Asset Type</span><div class="detail-value">' + (ad.assetType || '-') + '</div></div>';
+        adHtml += '<div><span class="image-label">Quantity</span><div class="detail-value">' + (ad.quantity || '-') + '</div></div>';
+        adHtml += '<div><span class="image-label">Consignment Value</span><div class="detail-value">' + (ad.consignmentValue ? ad.currency + ' ' + ad.consignmentValue.toLocaleString() : '-') + '</div></div>';
+        adHtml += '<div><span class="image-label">Monthly Charges</span><div class="detail-value">' + (ad.monthlyCharges ? ad.currency + ' ' + ad.monthlyCharges.toLocaleString() : '-') + '</div></div>';
+        adHtml += '<div><span class="image-label">Date Issued</span><div class="detail-value">' + (ad.dateIssued || '-') + '</div></div>';
+        adHtml += '<div><span class="image-label">Security Code</span><div class="detail-value">' + (ad.securityCode || '-') + '</div></div>';
+        adHtml += '<div class="detail-item-full"><span class="image-label">Storage Location</span><div class="detail-value">' + (ad.storageLocation || '-') + '</div></div>';
         document.getElementById('assetDetailsGrid').innerHTML = adHtml;
         document.getElementById('assetDetailsPanel').style.display = 'block';
       }
 
-      // Render logistics if available
+      // Render logistics if available (will be blurred by CSS overlay)
       if (currentUser.logistics) {
         var lg = currentUser.logistics;
         var lgHtml = '';
-        lgHtml += '<div><span class="image-label">Transport Method</span><div class="detail-value">' + (lg.transportMethod || '-') + '</div>';
-        lgHtml += '<div><span class="image-label">Vehicle Type</span><div class="detail-value">' + (lg.vehicleType || '-') + '</div>';
-        lgHtml += '<div><span class="image-label">Number of Vehicles</span><div class="detail-value">' + (lg.numberOfVehicles || '-') + '</div>';
-        lgHtml += '<div><span class="image-label">Security Level</span><div class="detail-value">' + (lg.securityLevel || '-') + '</div>';
-        lgHtml += '<div class="detail-item-full"><span class="image-label">Status</span><div class="logistics-badge">' + (lg.status || '-') + '</div>';
+        lgHtml += '<div><span class="image-label">Transport Method</span><div class="detail-value">' + (lg.transportMethod || '-') + '</div></div>';
+        lgHtml += '<div><span class="image-label">Vehicle Type</span><div class="detail-value">' + (lg.vehicleType || '-') + '</div></div>';
+        lgHtml += '<div><span class="image-label">Number of Vehicles</span><div class="detail-value">' + (lg.numberOfVehicles || '-') + '</div></div>';
+        lgHtml += '<div><span class="image-label">Security Level</span><div class="detail-value">' + (lg.securityLevel || '-') + '</div></div>';
+        lgHtml += '<div class="detail-item-full"><span class="image-label">Status</span><div class="logistics-badge">' + (lg.status || '-') + '</div></div>';
         document.getElementById('logisticsGrid').innerHTML = lgHtml;
         document.getElementById('logisticsPanel').style.display = 'block';
       }
@@ -369,66 +429,6 @@
           } else {
             iconSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>';
           }
-          return '<li class="activity-item"><span class="activity-icon">' + iconSvg + '</span><div class="activity-body">' + act.text + '<span class="activity-meta">' + act.meta + (act.time ? ' · ' + act.time : '') + '</span></div></li>';
-        }).join('') || '<li class="activity-empty">No recent activity</li>';
-
-        // Populate operations overlay stats
-        document.getElementById('opsAssetsCount').textContent = assetRows.length;
-        document.getElementById('opsActiveDeliveries').textContent = userShipments.filter(function (s) { return s.status !== 'Delivered'; }).length;
-        document.getElementById('opsDeliveredCount').textContent = userShipments.filter(function (s) { return s.status === 'Delivered'; }).length;
-        document.getElementById('opsSignupCount').textContent = (data.signups || []).length;
-
-        // Populate active shipment routes
-        var activeRoutes = userShipments.filter(function (s) { return s.status !== 'Delivered'; });
-        document.getElementById('shipmentRoutesList').innerHTML = activeRoutes.map(function (shipment) {
-          return '<div style="padding:1rem;border:1px solid rgba(255,255,255,0.1);border-radius:6px;margin-bottom:0.75rem;">' +
-            '<div style="font-weight:700;margin-bottom:0.25rem;">' + shipment.trackingId + ' — ' + shipment.status + '</div>' +
-            '<div style="font-size:0.85rem;color:var(--color-text-secondary);">' + shipment.origin + ' → ' + (shipment.current || shipment.origin) + ' → ' + shipment.destination + '</div>' +
-            '<div style="font-size:0.8rem;color:var(--color-text-secondary);margin-top:0.25rem;">Contents: ' + shipment.contents + ' · ETA: ' + shipment.eta + '</div>' +
-          '</div>';
-        }).join('') || '<p class="empty-copy">No active shipments to display.</p>';
-
-        renderDeliveryTracker(userShipments);
-      } catch (error) {
-        document.getElementById('clientAssetRows').innerHTML = '<tr><td colspan="6" class="empty-copy">API unavailable.</td></tr>';
-        document.getElementById('clientShipmentRows').innerHTML = '<tr><td colspan="5" class="empty-copy">API unavailable.</td></tr>';
-        document.getElementById('statTotalAssets').textContent = '0';
-        document.getElementById('statActiveShipments').textContent = '0';
-        document.getElementById('statDelivered').textContent = '0';
-        document.getElementById('activityList').innerHTML = '<li class="activity-empty">No activity available</li>';
-      }
-    })();
-
-    function formatDate(isoString) {
-      if (!isoString) return '-';
-      try {
-        var d = new Date(isoString);
-        return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
-      } catch (e) {
-        return isoString;
-      }
-    }
-
-    function renderDeliveryTracker(shipments) {
-      var trackerContainer = document.getElementById('deliveryTracker');
-      if (!trackerContainer) return;
-      var activeShipments = shipments.filter(function (s) { return ['Delivery Started', 'In Transit', 'Out for Delivery'].indexOf(s.status) >= 0; });
-      if (activeShipments.length === 0) {
-        trackerContainer.innerHTML = '';
-        trackerContainer.style.display = 'none';
-        return;
-      }
-      trackerContainer.style.display = 'block';
-      trackerContainer.innerHTML = activeShipments.map(function (shipment) {
-        var steps = ['Pickup', 'In Transit', 'Out for Delivery', 'Delivered'];
-        var currentStep = 0;
-        if (shipment.status === 'In Transit') currentStep = 1;
-        if (shipment.status === 'Out for Delivery') currentStep = 2;
-        if (shipment.status === 'Delivered') currentStep = 3;
-        if (shipment.status === 'Delivery Started') currentStep = 0;
-
-        var timelineHtml = steps.map(function (step, idx) {
-          var activeClass = idx <= currentStep ? 'active' : '';
           var completedClass = idx < currentStep ? 'completed' : '';
           return '<div class="tracker-step ' + activeClass + ' ' + completedClass + '"><span class="step-dot"></span><span class="step-label">' + step + '</span></div>';
         }).join('');
