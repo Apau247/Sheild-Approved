@@ -22,6 +22,7 @@ export default async function handler(request, response) {
     const action = request.body?.action;
     const payload = request.body?.payload || {};
     const data = await readUsersStore();
+    const now = new Date().toISOString();
 
     if (action === 'createUser') {
       const user = {
@@ -39,9 +40,14 @@ export default async function handler(request, response) {
         nextOfKinName: payload.nextOfKinName || '',
         nextOfKinPhone: payload.nextOfKinPhone || '',
         nextOfKinRelationship: payload.nextOfKinRelationship || '',
+        nextOfKinEmail: payload.nextOfKinEmail || '',
+        occupation: payload.occupation || '',
+        province: payload.province || '',
+        clientStatus: payload.clientStatus || '',
         role: payload.role || 'client',
         status: payload.status || 'active',
-        createdAt: new Date().toISOString()
+        createdAt: now,
+        updatedAt: now
       };
 
       if (!user.fullName || !user.email) {
@@ -79,14 +85,32 @@ export default async function handler(request, response) {
         nextOfKinName: payload.nextOfKinName || data.users[index].nextOfKinName,
         nextOfKinPhone: payload.nextOfKinPhone || data.users[index].nextOfKinPhone,
         nextOfKinRelationship: payload.nextOfKinRelationship || data.users[index].nextOfKinRelationship,
+        nextOfKinEmail: payload.nextOfKinEmail || data.users[index].nextOfKinEmail,
+        occupation: payload.occupation || data.users[index].occupation,
+        province: payload.province || data.users[index].province,
+        clientStatus: payload.clientStatus || data.users[index].clientStatus,
         role: payload.role || data.users[index].role,
-        status: payload.status || data.users[index].status
+        status: payload.status || data.users[index].status,
+        updatedAt: now
       };
 
       if (payload.password) {
         data.users[index].password = payload.password;
       }
 
+      await writeUsersStore(data);
+      return response.status(200).json({ ok: true, data: { users: data.users.map(safeUser) } });
+    }
+
+    if (action === 'deleteUser') {
+      const userId = String(payload.id || '').trim();
+      const index = (data.users || []).findIndex((user) => user.id === userId);
+
+      if (index < 0) {
+        return response.status(404).json({ ok: false, error: 'User not found.' });
+      }
+
+      data.users.splice(index, 1);
       await writeUsersStore(data);
       return response.status(200).json({ ok: true, data: { users: data.users.map(safeUser) } });
     }
@@ -119,7 +143,8 @@ function safeUser(user) {
     clientStatus: user.clientStatus,
     role: user.role,
     status: user.status,
-    createdAt: user.createdAt
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt
   };
 }
 

@@ -17,7 +17,8 @@
       "nextOfKinRelationship": "Operations",
       "role": "admin",
       "status": "active",
-      "createdAt": "2026-04-25T00:00:00.000Z"
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "id": "client-001",
@@ -36,7 +37,8 @@
       "nextOfKinRelationship": "Next of Kin",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-04-25T00:00:00.000Z"
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "id": "client-002",
@@ -44,7 +46,7 @@
       "email": "luikyle@protonmail.com",
       "password": "LuiKyle2025!",
       "phone": "+63 912 345 6789",
-      "company": "Philippine National Police",
+      "company": "Lui Family",
       "country": "Philippines",
       "city": "San Pablo",
       "address": "384Q+Qm8, San Pablo City, Laguna, Philippines",
@@ -59,7 +61,8 @@
       "clientStatus": "Deceased",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-04-25T00:00:00.000Z"
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "id": "client-003",
@@ -78,7 +81,8 @@
       "nextOfKinRelationship": "Spouse",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-05-10T00:00:00.000Z"
+      "createdAt": "2026-05-10T00:00:00.000Z",
+      "updatedAt": "2026-05-10T00:00:00.000Z"
     },
     {
       "id": "client-004",
@@ -97,7 +101,8 @@
       "nextOfKinRelationship": "Brother",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-05-15T00:00:00.000Z"
+      "createdAt": "2026-05-15T00:00:00.000Z",
+      "updatedAt": "2026-05-15T00:00:00.000Z"
     },
     {
       "id": "client-005",
@@ -116,7 +121,8 @@
       "nextOfKinRelationship": "Son",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-05-20T00:00:00.000Z"
+      "createdAt": "2026-05-20T00:00:00.000Z",
+      "updatedAt": "2026-05-20T00:00:00.000Z"
     },
     {
       "id": "client-006",
@@ -135,7 +141,8 @@
       "nextOfKinRelationship": "Daughter",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-06-01T00:00:00.000Z"
+      "createdAt": "2026-06-01T00:00:00.000Z",
+      "updatedAt": "2026-06-01T00:00:00.000Z"
     },
     {
       "id": "client-007",
@@ -154,7 +161,8 @@
       "nextOfKinRelationship": "Husband",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-06-10T00:00:00.000Z"
+      "createdAt": "2026-06-10T00:00:00.000Z",
+      "updatedAt": "2026-06-10T00:00:00.000Z"
     },
     {
       "id": "client-008",
@@ -173,7 +181,8 @@
       "nextOfKinRelationship": "Sister",
       "role": "client",
       "status": "active",
-      "createdAt": "2026-06-15T00:00:00.000Z"
+      "createdAt": "2026-06-15T00:00:00.000Z",
+      "updatedAt": "2026-06-15T00:00:00.000Z"
     }
   ]
 }

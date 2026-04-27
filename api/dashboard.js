@@ -23,7 +23,9 @@ const defaultState = {
       quantity: '12 kg',
       vault: 'Vault A-12',
       storagePrice: '2500',
-      status: 'Stored'
+      status: 'Stored',
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       assetId: 'asset-seed-2',
@@ -33,7 +35,9 @@ const defaultState = {
       quantity: '45 pcs',
       vault: 'Vault D-04',
       storagePrice: '4200',
-      status: 'Verified'
+      status: 'Verified',
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       assetId: 'asset-seed-3',
@@ -43,7 +47,9 @@ const defaultState = {
       quantity: '8 pcs',
       vault: 'Vault J-18',
       storagePrice: '1800',
-      status: 'Awaiting Intake'
+      status: 'Awaiting Intake',
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       assetId: 'asset-lkt-001',
@@ -53,7 +59,9 @@ const defaultState = {
       quantity: '8 kg',
       vault: 'Vault P-01',
       storagePrice: '3200',
-      status: 'Stored'
+      status: 'Stored',
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       assetId: 'asset-lkt-002',
@@ -63,7 +71,9 @@ const defaultState = {
       quantity: '150 pcs',
       vault: 'Vault P-02',
       storagePrice: '2100',
-      status: 'Verified'
+      status: 'Verified',
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       assetId: 'asset-lkt-003',
@@ -73,7 +83,9 @@ const defaultState = {
       quantity: '5 kg',
       vault: 'Vault P-03',
       storagePrice: '1950',
-      status: 'Stored'
+      status: 'Stored',
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     }
   ],
   signups: [],
@@ -156,6 +168,7 @@ async function readLocalState() {
 
 function applyAction(state, action, payload) {
   const next = normalizeState(state);
+  const now = new Date().toISOString();
 
   if (action === 'addAsset') {
     next.assets.unshift({
@@ -166,7 +179,9 @@ function applyAction(state, action, payload) {
       quantity: payload.quantity || '1',
       vault: payload.vault || 'Pending Vault',
       storagePrice: payload.storagePrice || '0',
-      status: payload.status || 'Stored'
+      status: payload.status || 'Stored',
+      createdAt: now,
+      updatedAt: now
     });
     next.stats.assetsSecured += 1;
     return next;
@@ -185,10 +200,21 @@ function applyAction(state, action, payload) {
         quantity: payload.quantity || next.assets[index].quantity,
         vault: payload.vault || next.assets[index].vault,
         storagePrice: payload.storagePrice || next.assets[index].storagePrice || '0',
-        status: payload.status || next.assets[index].status
+        status: payload.status || next.assets[index].status,
+        updatedAt: now
       };
     }
 
+    return next;
+  }
+
+  if (action === 'deleteAsset') {
+    const assetId = String(payload.assetId || '').trim();
+    const index = next.assets.findIndex((asset) => asset.assetId === assetId);
+    if (index >= 0) {
+      next.assets.splice(index, 1);
+      next.stats.assetsSecured = Math.max(0, next.stats.assetsSecured - 1);
+    }
     return next;
   }
 
@@ -199,7 +225,17 @@ function applyAction(state, action, payload) {
       phone: payload.phone || '',
       company: payload.company || '',
       needs: payload.needs || '',
-      createdAt: new Date().toISOString()
+      createdAt: now
+    });
+    return next;
+  }
+
+  if (action === 'deleteSignup') {
+    const email = String(payload.email || '').trim().toLowerCase();
+    const createdAt = String(payload.createdAt || '').trim();
+    next.signups = next.signups.filter((s) => {
+      if (createdAt) return !(s.email.toLowerCase() === email && s.createdAt === createdAt);
+      return s.email.toLowerCase() !== email;
     });
     return next;
   }
@@ -209,7 +245,17 @@ function applyAction(state, action, payload) {
       name: payload.name || '',
       email: payload.email || '',
       message: payload.message || '',
-      createdAt: new Date().toISOString()
+      createdAt: now
+    });
+    return next;
+  }
+
+  if (action === 'deleteContact') {
+    const email = String(payload.email || '').trim().toLowerCase();
+    const createdAt = String(payload.createdAt || '').trim();
+    next.contacts = next.contacts.filter((c) => {
+      if (createdAt) return !(c.email.toLowerCase() === email && c.createdAt === createdAt);
+      return c.email.toLowerCase() !== email;
     });
     return next;
   }
@@ -226,7 +272,8 @@ function applyAction(state, action, payload) {
       progress: clampNumber(payload.progress, 0, 100),
       contents: payload.contents || 'High-value cargo',
       current: payload.current || payload.origin || 'London, UK',
-      courier: payload.courier || 'Iron Vault Secure Transport'
+      courier: payload.courier || 'Iron Vault Secure Transport',
+      updatedAt: now
     };
 
     const index = next.shipments.findIndex((shipment) => shipment.trackingId === trackingId);
@@ -237,7 +284,7 @@ function applyAction(state, action, payload) {
         ...record
       };
     } else {
-      next.shipments.unshift(record);
+      next.shipments.unshift({ ...record, createdAt: now });
     }
 
     if (
@@ -247,6 +294,32 @@ function applyAction(state, action, payload) {
       next.stats.deliveriesCompleted += 1;
     }
 
+    return next;
+  }
+
+  if (action === 'deleteShipment') {
+    const trackingId = String(payload.trackingId || '').trim().toUpperCase();
+    const index = next.shipments.findIndex((s) => s.trackingId === trackingId);
+    if (index >= 0) {
+      const wasDelivered = String(next.shipments[index].status || '').toLowerCase().includes('deliver');
+      next.shipments.splice(index, 1);
+      if (wasDelivered) {
+        next.stats.deliveriesCompleted = Math.max(0, next.stats.deliveriesCompleted - 1);
+      }
+    }
+    return next;
+  }
+
+  if (action === 'updateStats') {
+    if (payload.assetsSecured !== undefined) {
+      next.stats.assetsSecured = Math.max(0, Number(payload.assetsSecured) || 0);
+    }
+    if (payload.vaultsInOperation !== undefined) {
+      next.stats.vaultsInOperation = Math.max(0, Number(payload.vaultsInOperation) || 0);
+    }
+    if (payload.deliveriesCompleted !== undefined) {
+      next.stats.deliveriesCompleted = Math.max(0, Number(payload.deliveriesCompleted) || 0);
+    }
     return next;
   }
 
@@ -269,7 +342,9 @@ function normalizeState(data) {
       quantity: asset.quantity || '1',
       vault: asset.vault || 'Pending Vault',
       storagePrice: asset.storagePrice || '0',
-      status: asset.status || 'Stored'
+      status: asset.status || 'Stored',
+      createdAt: asset.createdAt || defaultState.assets[index]?.createdAt || new Date().toISOString(),
+      updatedAt: asset.updatedAt || asset.createdAt || defaultState.assets[index]?.updatedAt || new Date().toISOString()
     })) : [],
     signups: Array.isArray(data?.signups) ? data.signups : [],
     contacts: Array.isArray(data?.contacts) ? data.contacts : []

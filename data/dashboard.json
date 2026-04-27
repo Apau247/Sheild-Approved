@@ -14,7 +14,9 @@
       "progress": 65,
       "contents": "Gold bullion - 12 kg",
       "current": "Paris, France",
-      "courier": "Iron Vault Secure Transport"
+      "courier": "Iron Vault Secure Transport",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "trackingId": "IVS-99102",
@@ -25,7 +27,9 @@
       "progress": 100,
       "contents": "Diamond collection - 45 pcs",
       "current": "Aarhus, Denmark",
-      "courier": "Iron Vault Secure Transport"
+      "courier": "Iron Vault Secure Transport",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "trackingId": "IVS-22011",
@@ -36,7 +40,9 @@
       "progress": 15,
       "contents": "Fine jewelry - 8 pcs",
       "current": "New York, USA",
-      "courier": "Iron Vault Secure Transport"
+      "courier": "Iron Vault Secure Transport",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "trackingId": "IVS-55678",
@@ -47,7 +53,9 @@
       "progress": 40,
       "contents": "Precious metals - 25 kg",
       "current": "Dubai, UAE",
-      "courier": "Iron Vault Secure Transport"
+      "courier": "Iron Vault Secure Transport",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "trackingId": "IVS-11223",
@@ -58,7 +66,9 @@
       "progress": 55,
       "contents": "Rare gemstones - 3 pcs",
       "current": "Frankfurt, Germany",
-      "courier": "Iron Vault Secure Transport"
+      "courier": "Iron Vault Secure Transport",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "trackingId": "IVS-33001",
@@ -73,7 +83,9 @@
       "driverName": "Agent Reyes",
       "driverVehicle": "Armored Transport Unit 7",
       "driverPhone": "+44 20 7000 9999",
-      "owner": "Lui Kyle Tan"
+      "owner": "Lui Kyle Tan",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     }
   ],
   "assets": [
@@ -85,7 +97,9 @@
       "quantity": "12 kg",
       "vault": "Vault A-12",
       "storagePrice": "2500",
-      "status": "Stored"
+      "status": "Stored",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "assetId": "asset-seed-2",
@@ -95,7 +109,9 @@
       "quantity": "45 pcs",
       "vault": "Vault D-04",
       "storagePrice": "4200",
-      "status": "Verified"
+      "status": "Verified",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "assetId": "asset-seed-3",
@@ -105,7 +121,9 @@
       "quantity": "8 pcs",
       "vault": "Vault J-18",
       "storagePrice": "1800",
-      "status": "Awaiting Intake"
+      "status": "Awaiting Intake",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "assetId": "asset-lkt-001",
@@ -115,7 +133,9 @@
       "quantity": "8 kg",
       "vault": "Vault P-01",
       "storagePrice": "3200",
-      "status": "Stored"
+      "status": "Stored",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "assetId": "asset-lkt-002",
@@ -125,7 +145,9 @@
       "quantity": "150 pcs",
       "vault": "Vault P-02",
       "storagePrice": "2100",
-      "status": "Verified"
+      "status": "Verified",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     },
     {
       "assetId": "asset-lkt-003",
@@ -135,7 +157,9 @@
       "quantity": "5 kg",
       "vault": "Vault P-03",
       "storagePrice": "1950",
-      "status": "Stored"
+      "status": "Stored",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     }
   ],
   "signups": [],
