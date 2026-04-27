@@ -1,6 +1,6 @@
 {
   "stats": {
-    "assetsSecured": 2500,
+    "assetsSecured": 2501,
     "vaultsInOperation": 1200,
     "deliveriesCompleted": 300
   },
@@ -160,6 +160,22 @@
       "status": "Stored",
       "createdAt": "2026-04-25T00:00:00.000Z",
       "updatedAt": "2026-04-25T00:00:00.000Z"
+    },
+    {
+      "assetId": "asset-pa-001",
+      "owner": "Phil Alan",
+      "assetName": "Phil Alan Oil Industry Gold Reserve",
+      "assetType": "Gold",
+      "quantity": "250 KG",
+      "vault": "Vault L-01",
+      "storagePrice": "2200",
+      "status": "Stored",
+      "createdAt": "2019-08-20T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z",
+      "consignmentValue": 23000000,
+      "currency": "USD",
+      "securityCode": "OBS102-US-GA",
+      "storageLocation": "London"
     }
   ],
   "signups": [],

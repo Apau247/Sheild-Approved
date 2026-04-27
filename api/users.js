@@ -28,7 +28,7 @@ export default async function handler(request, response) {
       const user = {
         id: payload.id || `client-${Date.now()}`,
         fullName: payload.fullName || '',
-        email: String(payload.email || '').trim().toLowerCase(),
+        email: payload.email ? String(payload.email).trim().toLowerCase() : null,
         password: payload.password || 'TempPass123!',
         phone: payload.phone || '',
         company: payload.company || '',
@@ -50,11 +50,11 @@ export default async function handler(request, response) {
         updatedAt: now
       };
 
-      if (!user.fullName || !user.email) {
-        return response.status(400).json({ ok: false, error: 'Full name and email are required.' });
+      if (!user.fullName) {
+        return response.status(400).json({ ok: false, error: 'Full name is required.' });
       }
 
-      if ((data.users || []).some((entry) => entry.email.toLowerCase() === user.email)) {
+      if (user.email && (data.users || []).some((entry) => entry.email && entry.email.toLowerCase() === user.email)) {
         return response.status(409).json({ ok: false, error: 'A user with this email already exists.' });
       }
 
@@ -74,7 +74,7 @@ export default async function handler(request, response) {
       data.users[index] = {
         ...data.users[index],
         fullName: payload.fullName || data.users[index].fullName,
-        email: String(payload.email || data.users[index].email).trim().toLowerCase(),
+        email: payload.email !== undefined ? (payload.email ? String(payload.email).trim().toLowerCase() : null) : data.users[index].email,
         phone: payload.phone || data.users[index].phone,
         company: payload.company || data.users[index].company,
         country: payload.country || data.users[index].country,
@@ -83,14 +83,18 @@ export default async function handler(request, response) {
         preferredService: payload.preferredService || data.users[index].preferredService,
         assetType: payload.assetType || data.users[index].assetType,
         nextOfKinName: payload.nextOfKinName || data.users[index].nextOfKinName,
-        nextOfKinPhone: payload.nextOfKinPhone || data.users[index].nextOfKinPhone,
+        nextOfKinPhone: payload.nextOfKinPhone !== undefined ? payload.nextOfKinPhone : data.users[index].nextOfKinPhone,
         nextOfKinRelationship: payload.nextOfKinRelationship || data.users[index].nextOfKinRelationship,
-        nextOfKinEmail: payload.nextOfKinEmail || data.users[index].nextOfKinEmail,
+        nextOfKinEmail: payload.nextOfKinEmail !== undefined ? payload.nextOfKinEmail : data.users[index].nextOfKinEmail,
         occupation: payload.occupation || data.users[index].occupation,
         province: payload.province || data.users[index].province,
         clientStatus: payload.clientStatus || data.users[index].clientStatus,
         role: payload.role || data.users[index].role,
         status: payload.status || data.users[index].status,
+        clientImage: payload.clientImage !== undefined ? payload.clientImage : data.users[index].clientImage,
+        nextOfKinImage: payload.nextOfKinImage !== undefined ? payload.nextOfKinImage : data.users[index].nextOfKinImage,
+        assetDetails: payload.assetDetails !== undefined ? payload.assetDetails : data.users[index].assetDetails,
+        logistics: payload.logistics !== undefined ? payload.logistics : data.users[index].logistics,
         updatedAt: now
       };
 
@@ -144,7 +148,11 @@ function safeUser(user) {
     role: user.role,
     status: user.status,
     createdAt: user.createdAt,
-    updatedAt: user.updatedAt
+    updatedAt: user.updatedAt,
+    clientImage: user.clientImage,
+    nextOfKinImage: user.nextOfKinImage,
+    assetDetails: user.assetDetails,
+    logistics: user.logistics
   };
 }
 

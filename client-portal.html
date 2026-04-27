@@ -10,6 +10,23 @@
     <link rel="stylesheet" href="css/__colors_dark.css">
     <link rel="stylesheet" href="css/__custom.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .client-image { width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--color-accent-gold); }
+        .next-of-kin-image { width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--color-accent-gold); }
+        .image-row { display:flex;align-items:center;gap:1rem;margin-bottom:1rem; }
+        .image-label { font-size:0.75rem;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.05em; }
+        .detail-panel { background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:1.25rem;margin-bottom:1.5rem; }
+        .detail-panel h4 { margin:0 0 0.75rem 0;font-size:1rem;color:var(--color-accent-gold); }
+        .detail-grid { display:grid;grid-template-columns:1fr 1fr;gap:0.75rem 1.5rem; }
+        .detail-item-full { grid-column:1 / -1; }
+        .detail-value { font-weight:600;color:var(--color-text-primary); }
+        .detail-value-null { color:var(--color-text-secondary);font-style:italic; }
+        .logistics-badge { display:inline-block;padding:0.25rem 0.75rem;border-radius:4px;background:rgba(212,175,55,0.15);color:var(--color-accent-gold);font-size:0.8rem;font-weight:600;margin-top:0.5rem; }
+        .profile-images { display:flex;gap:1.5rem;margin-bottom:1rem; }
+        .profile-image-box { text-align:center; }
+        .profile-image-box img { display:block;margin:0 auto 0.25rem; }
+        .profile-image-box span { font-size:0.7rem;color:var(--color-text-secondary); }
+    </style>
 </head>
 <body class="scheme_default">
     <header class="site-header">
@@ -20,9 +37,8 @@
                     <a href="index.html" class="btn-request-access">Home</a>
                     <a href="#" id="clientLogout" class="btn-logout">Logout</a>
                 </div>
-            </div>
         </div>
-        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div></div>
+        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div>
     </header>
     <section class="inner-page-hero">
         <div class="container">
@@ -32,7 +48,6 @@
                 <a href="#inventory" class="btn">Asset Inventory</a>
                 <a href="#tracking" class="btn btn-simple">Track Deliveries</a>
             </div>
-        </div>
     </section>
 
     <!-- Stats Overview -->
@@ -59,7 +74,6 @@
                     <strong id="statAccountStatus">Active</strong>
                     <span class="portal-stat-label">Account Status</span>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -74,23 +88,42 @@
                             <tbody id="clientAssetRows"><tr><td colspan="6" class="empty-copy">Loading asset data...</td></tr></tbody>
                         </table>
                     </div>
+
+                    <!-- Asset Details Panel -->
+                    <div id="assetDetailsPanel" class="detail-panel" style="display:none;">
+                        <h4>Asset Details</h4>
+                        <div class="detail-grid" id="assetDetailsGrid"></div>
+
+                    <!-- Logistics Panel -->
+                    <div id="logisticsPanel" class="detail-panel" style="display:none;">
+                        <h4>Logistics & Transport</h4>
+                        <div class="detail-grid" id="logisticsGrid"></div>
                 </div>
                 <aside class="portal-sidebar">
                     <div class="profile-card">
                         <div class="profile-header">
-                            <div class="profile-avatar">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            </div>
+                            <div class="profile-images" id="profileImages"></div>
                             <h4 id="profileName">Client</h4>
                             <span id="profileRole" class="profile-role">Client</span>
                         </div>
                         <div class="profile-details">
                             <div class="profile-item"><span class="profile-label">Email</span><span id="profileEmail">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Phone</span><span id="profilePhone">-</span></div>
                             <div class="profile-item"><span class="profile-label">Company</span><span id="profileCompany">-</span></div>
                             <div class="profile-item"><span class="profile-label">Country</span><span id="profileCountry">-</span></div>
+                            <div class="profile-item"><span class="profile-label">City</span><span id="profileCity">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Address</span><span id="profileAddress">-</span></div>
                             <div class="profile-item"><span class="profile-label">Service</span><span id="profileService">-</span></div>
                             <div class="profile-item"><span class="profile-label">Asset Type</span><span id="profileAssetType">-</span></div>
-                        </div>
+                            <div class="profile-item"><span class="profile-label">Occupation</span><span id="profileOccupation">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Province</span><span id="profileProvince">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Client Status</span><span id="profileClientStatus">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Next of Kin</span><span id="profileNextOfKin">-</span></div>
+                            <div class="profile-item"><span class="profile-label">NOK Relationship</span><span id="profileNOKRelationship">-</span></div>
+                            <div class="profile-item"><span class="profile-label">NOK Phone</span><span id="profileNOKPhone">-</span></div>
+                            <div class="profile-item"><span class="profile-label">NOK Email</span><span id="profileNOKEmail">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Member Since</span><span id="profileCreatedAt">-</span></div>
+                            <div class="profile-item"><span class="profile-label">Last Updated</span><span id="profileUpdatedAt">-</span></div>
                     </div>
                     <div class="recent-activity">
                         <h4>Recent Activity</h4>
@@ -100,7 +133,6 @@
                     </div>
                 </aside>
             </div>
-        </div>
     </section>
     <section class="page-section" id="tracking">
         <div class="container">
@@ -112,7 +144,6 @@
                     <tbody id="clientShipmentRows"><tr><td colspan="5" class="empty-copy">Loading shipment data...</td></tr></tbody>
                 </table>
             </div>
-        </div>
     </section>
 
     <!-- Map Section -->
@@ -155,7 +186,6 @@
                     <strong id="opsSignupCount">0</strong>
                     <p>New account requests captured for follow-up.</p>
                 </div>
-            </div>
             <div class="portal-layout" style="margin-top:2rem;">
                 <div class="portal-main">
                     <div class="table-panel">
@@ -163,7 +193,6 @@
                         <div id="shipmentRoutesList">
                             <p class="empty-copy">No active shipments to display.</p>
                         </div>
-                    </div>
                 </div>
                 <aside class="portal-sidebar">
                     <div class="profile-card">
@@ -175,11 +204,9 @@
                             <div class="profile-item"><span class="profile-label">Country</span><span id="mapCountry">-</span></div>
                             <div class="profile-item"><span class="profile-label">Address</span><span id="mapAddress">-</span></div>
                             <div class="profile-item"><span class="profile-label">Vault Region</span><span id="mapVaultRegion">-</span></div>
-                        </div>
                     </div>
                 </aside>
             </div>
-        </div>
     </section>
     <script>
     (async function () {
@@ -203,7 +230,7 @@
         return;
       }
 
-      document.getElementById('clientWelcome').textContent = 'Signed in as ' + (currentUser.fullName || currentUser.email);
+      document.getElementById('clientWelcome').textContent = 'Signed in as ' + (currentUser.fullName || 'Client');
       document.getElementById('clientHeroCopy').textContent = (currentUser.fullName || 'Client') + ' can review stored assets, monitor active shipments, and move between tracking and account actions from one page.';
       document.getElementById('clientLogout').addEventListener('click', function (event) {
         event.preventDefault();
@@ -211,14 +238,42 @@
         window.location.href = 'login.html';
       });
 
+      // Populate profile images
+      var profileImages = document.getElementById('profileImages');
+      var imagesHtml = '';
+      if (currentUser.clientImage) {
+        imagesHtml += '<div class="profile-image-box"><img src="' + currentUser.clientImage + '" alt="Client" class="client-image"><span>Client</span></div>';
+      } else {
+        imagesHtml += '<div class="profile-image-box"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span>Client</span></div>';
+      }
+      if (currentUser.nextOfKinImage) {
+        imagesHtml += '<div class="profile-image-box"><img src="' + currentUser.nextOfKinImage + '" alt="Next of Kin" class="next-of-kin-image"><span>Next of Kin</span></div>';
+      }
+      profileImages.innerHTML = imagesHtml;
+
       // Populate profile card
       document.getElementById('profileName').textContent = currentUser.fullName || 'Client';
       document.getElementById('profileRole').textContent = currentUser.role === 'admin' ? 'Administrator' : 'Client';
       document.getElementById('profileEmail').textContent = currentUser.email || '-';
+      document.getElementById('profileEmail').className = currentUser.email ? '' : 'detail-value-null';
+      document.getElementById('profilePhone').textContent = currentUser.phone || '-';
       document.getElementById('profileCompany').textContent = currentUser.company || '-';
       document.getElementById('profileCountry').textContent = currentUser.country || '-';
+      document.getElementById('profileCity').textContent = currentUser.city || '-';
+      document.getElementById('profileAddress').textContent = currentUser.address || '-';
       document.getElementById('profileService').textContent = currentUser.preferredService || '-';
       document.getElementById('profileAssetType').textContent = currentUser.assetType || '-';
+      document.getElementById('profileOccupation').textContent = currentUser.occupation || '-';
+      document.getElementById('profileProvince').textContent = currentUser.province || '-';
+      document.getElementById('profileClientStatus').textContent = currentUser.clientStatus || '-';
+      document.getElementById('profileNextOfKin').textContent = currentUser.nextOfKinName || '-';
+      document.getElementById('profileNOKRelationship').textContent = currentUser.nextOfKinRelationship || '-';
+      document.getElementById('profileNOKPhone').textContent = currentUser.nextOfKinPhone || '-';
+      document.getElementById('profileNOKPhone').className = currentUser.nextOfKinPhone ? '' : 'detail-value-null';
+      document.getElementById('profileNOKEmail').textContent = currentUser.nextOfKinEmail || '-';
+      document.getElementById('profileNOKEmail').className = currentUser.nextOfKinEmail ? '' : 'detail-value-null';
+      document.getElementById('profileCreatedAt').textContent = formatDate(currentUser.createdAt);
+      document.getElementById('profileUpdatedAt').textContent = formatDate(currentUser.updatedAt);
 
       // Update satellite map to user location
       var mapQuery = encodeURIComponent(currentUser.address || (currentUser.city + ', ' + currentUser.country) || 'London, UK');
@@ -229,6 +284,34 @@
       document.getElementById('mapCountry').textContent = currentUser.country || '-';
       document.getElementById('mapAddress').textContent = currentUser.address || '-';
       document.getElementById('mapVaultRegion').textContent = currentUser.city || currentUser.country || '-';
+
+      // Render asset details if available
+      if (currentUser.assetDetails) {
+        var ad = currentUser.assetDetails;
+        var adHtml = '';
+        adHtml += '<div><span class="image-label">Asset Type</span><div class="detail-value">' + (ad.assetType || '-') + '</div>';
+        adHtml += '<div><span class="image-label">Quantity</span><div class="detail-value">' + (ad.quantity || '-') + '</div>';
+        adHtml += '<div><span class="image-label">Consignment Value</span><div class="detail-value">' + (ad.consignmentValue ? ad.currency + ' ' + ad.consignmentValue.toLocaleString() : '-') + '</div>';
+        adHtml += '<div><span class="image-label">Monthly Charges</span><div class="detail-value">' + (ad.monthlyCharges ? ad.currency + ' ' + ad.monthlyCharges.toLocaleString() : '-') + '</div>';
+        adHtml += '<div><span class="image-label">Date Issued</span><div class="detail-value">' + (ad.dateIssued || '-') + '</div>';
+        adHtml += '<div><span class="image-label">Security Code</span><div class="detail-value">' + (ad.securityCode || '-') + '</div>';
+        adHtml += '<div class="detail-item-full"><span class="image-label">Storage Location</span><div class="detail-value">' + (ad.storageLocation || '-') + '</div>';
+        document.getElementById('assetDetailsGrid').innerHTML = adHtml;
+        document.getElementById('assetDetailsPanel').style.display = 'block';
+      }
+
+      // Render logistics if available
+      if (currentUser.logistics) {
+        var lg = currentUser.logistics;
+        var lgHtml = '';
+        lgHtml += '<div><span class="image-label">Transport Method</span><div class="detail-value">' + (lg.transportMethod || '-') + '</div>';
+        lgHtml += '<div><span class="image-label">Vehicle Type</span><div class="detail-value">' + (lg.vehicleType || '-') + '</div>';
+        lgHtml += '<div><span class="image-label">Number of Vehicles</span><div class="detail-value">' + (lg.numberOfVehicles || '-') + '</div>';
+        lgHtml += '<div><span class="image-label">Security Level</span><div class="detail-value">' + (lg.securityLevel || '-') + '</div>';
+        lgHtml += '<div class="detail-item-full"><span class="image-label">Status</span><div class="logistics-badge">' + (lg.status || '-') + '</div>';
+        document.getElementById('logisticsGrid').innerHTML = lgHtml;
+        document.getElementById('logisticsPanel').style.display = 'block';
+      }
 
       try {
         const response = await fetch('/api/dashboard');
@@ -315,6 +398,16 @@
         document.getElementById('activityList').innerHTML = '<li class="activity-empty">No activity available</li>';
       }
     })();
+
+    function formatDate(isoString) {
+      if (!isoString) return '-';
+      try {
+        var d = new Date(isoString);
+        return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      } catch (e) {
+        return isoString;
+      }
+    }
 
     function renderDeliveryTracker(shipments) {
       var trackerContainer = document.getElementById('deliveryTracker');

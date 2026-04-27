@@ -26,7 +26,8 @@ const defaultUsers = {
       nextOfKinRelationship: 'Operations',
       role: 'admin',
       status: 'active',
-      createdAt: '2026-04-25T00:00:00.000Z'
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       id: 'client-001',
@@ -45,7 +46,8 @@ const defaultUsers = {
       nextOfKinRelationship: 'Next of Kin',
       role: 'client',
       status: 'active',
-      createdAt: '2026-04-25T00:00:00.000Z'
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       id: 'client-002',
@@ -53,7 +55,7 @@ const defaultUsers = {
       email: 'luikyle@protonmail.com',
       password: 'LuiKyle2025!',
       phone: '+63 912 345 6789',
-      company: 'Philippine National Police',
+      company: 'Lui Family',
       country: 'Philippines',
       city: 'San Pablo',
       address: '384Q+Qm8, San Pablo City, Laguna, Philippines',
@@ -68,7 +70,8 @@ const defaultUsers = {
       clientStatus: 'Deceased',
       role: 'client',
       status: 'active',
-      createdAt: '2026-04-25T00:00:00.000Z'
+      createdAt: '2026-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z'
     },
     {
       id: 'client-003',
@@ -87,7 +90,8 @@ const defaultUsers = {
       nextOfKinRelationship: 'Spouse',
       role: 'client',
       status: 'active',
-      createdAt: '2026-05-10T00:00:00.000Z'
+      createdAt: '2026-05-10T00:00:00.000Z',
+      updatedAt: '2026-05-10T00:00:00.000Z'
     },
     {
       id: 'client-004',
@@ -106,7 +110,8 @@ const defaultUsers = {
       nextOfKinRelationship: 'Brother',
       role: 'client',
       status: 'active',
-      createdAt: '2026-05-15T00:00:00.000Z'
+      createdAt: '2026-05-15T00:00:00.000Z',
+      updatedAt: '2026-05-15T00:00:00.000Z'
     },
     {
       id: 'client-005',
@@ -125,26 +130,51 @@ const defaultUsers = {
       nextOfKinRelationship: 'Son',
       role: 'client',
       status: 'active',
-      createdAt: '2026-05-20T00:00:00.000Z'
+      createdAt: '2026-05-20T00:00:00.000Z',
+      updatedAt: '2026-05-20T00:00:00.000Z'
     },
     {
       id: 'client-006',
-      fullName: "James O'Brien",
-      email: 'j.obrien@celticestate.ie',
-      password: 'CelticVault99!',
-      phone: '+353 1 678 9012',
-      company: 'Celtic Estate Holdings',
-      country: 'Ireland',
-      city: 'Dublin',
-      address: 'Merrion Square, Dublin 2, Ireland',
-      preferredService: 'Secure Cargo Delivery',
-      assetType: 'Fine Art & Antiques',
-      nextOfKinName: "Siobhan O'Brien",
-      nextOfKinPhone: '+353 1 678 9013',
+      fullName: 'Phil Alan',
+      email: null,
+      password: 'PhilAlan2025',
+      phone: '+63 972 004 6789',
+      company: 'Phil Alan Oil Industry',
+      country: 'Philippines',
+      city: 'Manila',
+      address: '1070 Marne Blvd, Hinesville, GA, United States',
+      preferredService: 'Private Vault',
+      assetType: 'Gold',
+      nextOfKinName: 'Kendra Endra Mendes Scott',
+      nextOfKinPhone: null,
       nextOfKinRelationship: 'Daughter',
+      nextOfKinEmail: 'kendraloney664@gmail.com',
+      occupation: 'Oil Industry Director',
+      province: 'Manila',
+      clientStatus: 'Deceased',
       role: 'client',
       status: 'active',
-      createdAt: '2026-06-01T00:00:00.000Z'
+      createdAt: '2015-04-25T00:00:00.000Z',
+      updatedAt: '2026-04-25T00:00:00.000Z',
+      clientImage: 'images/id 006.jpeg',
+      nextOfKinImage: 'images/new.jpeg',
+      assetDetails: {
+        assetType: 'Gold',
+        quantity: '250 KG',
+        consignmentValue: 23000000,
+        currency: 'USD',
+        monthlyCharges: 2200,
+        dateIssued: '2019-08-20',
+        securityCode: 'OBS102-US-GA',
+        storageLocation: 'London'
+      },
+      logistics: {
+        transportMethod: 'Armored Transport',
+        vehicleType: 'Security Trucks',
+        numberOfVehicles: 2,
+        securityLevel: 'High',
+        status: 'Secured and Monitored'
+      }
     },
     {
       id: 'client-007',
@@ -163,7 +193,8 @@ const defaultUsers = {
       nextOfKinRelationship: 'Husband',
       role: 'client',
       status: 'active',
-      createdAt: '2026-06-10T00:00:00.000Z'
+      createdAt: '2026-06-10T00:00:00.000Z',
+      updatedAt: '2026-06-10T00:00:00.000Z'
     },
     {
       id: 'client-008',
@@ -182,7 +213,8 @@ const defaultUsers = {
       nextOfKinRelationship: 'Sister',
       role: 'client',
       status: 'active',
-      createdAt: '2026-06-15T00:00:00.000Z'
+      createdAt: '2026-06-15T00:00:00.000Z',
+      updatedAt: '2026-06-15T00:00:00.000Z'
     }
   ]
 };
@@ -205,7 +237,7 @@ export default async function handler(request, response) {
   if (action === 'login') {
     const email = String(payload.email || '').trim().toLowerCase();
     const password = String(payload.password || '');
-    const user = store.users.find((entry) => entry.email.toLowerCase() === email);
+    const user = store.users.find((entry) => entry.email && entry.email.toLowerCase() === email);
 
     if (!user || user.password !== password) {
       return response.status(401).json({ ok: false, error: 'Invalid email or password.' });
@@ -238,7 +270,7 @@ export default async function handler(request, response) {
       return response.status(400).json({ ok: false, error: 'Please complete all required signup details.' });
     }
 
-    if (store.users.some((entry) => entry.email.toLowerCase() === email)) {
+    if (store.users.some((entry) => entry.email && entry.email.toLowerCase() === email)) {
       return response.status(409).json({ ok: false, error: 'An account with this email already exists.' });
     }
 
@@ -260,7 +292,8 @@ export default async function handler(request, response) {
       needs,
       role: 'client',
       status: 'active',
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
     };
 
     store.users.unshift(user);
@@ -297,7 +330,12 @@ function safeUser(user) {
     clientStatus: user.clientStatus,
     role: user.role,
     status: user.status,
-    createdAt: user.createdAt
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt,
+    clientImage: user.clientImage,
+    nextOfKinImage: user.nextOfKinImage,
+    assetDetails: user.assetDetails,
+    logistics: user.logistics
   };
 }
 
