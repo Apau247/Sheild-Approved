@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="css/__custom.css">
     <link rel="stylesheet" href="css/responsive.css">
     <style>
-        .client-image{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--color-accent-gold)}
-        .next-of-kin-image{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--color-accent-gold)}
-        .profile-images{display:flex;gap:1.5rem;margin-bottom:1rem}
+        .client-image{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid var(--color-accent-gold);box-shadow:0 8px 24px rgba(212,175,55,.3)}
+        .next-of-kin-image{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--color-accent-steel);box-shadow:0 6px 18px rgba(74,144,164,.3)}
+        .profile-images{display:flex;gap:2rem;margin-bottom:1.25rem;justify-content:center;align-items:flex-end}
         .profile-image-box{text-align:center}
+        .profile-image-box span{display:block;margin-top:.5rem;font-size:.85rem;font-weight:700;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.05em}
         .image-label{font-size:.75rem;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em}
         .detail-panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:1.25rem;margin-bottom:1.5rem}
         .detail-panel h4{margin:0 0 .75rem;font-size:1rem;color:var(--color-accent-gold)}
@@ -26,10 +27,41 @@
         .premium-profile{border:2px solid var(--color-accent-gold);box-shadow:0 0 20px rgba(212,175,55,.2)}
         .premium-image{box-shadow:0 0 15px rgba(212,175,55,.4)}
         .blur-overlay{position:relative;overflow:hidden}
-        .blur-overlay .blur-content{filter:blur(8px);user-select:none;opacity:.4}
-        .blur-overlay::after{content:'🔒 Admin Only';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.8);color:var(--color-accent-gold);padding:.5rem 1.25rem;border-radius:6px;font-size:.85rem;font-weight:700;letter-spacing:.05em;z-index:2;border:1px solid rgba(212,175,55,.3)}
+        .blur-overlay .blur-content{filter:none;user-select:auto;opacity:1}
+        .blur-overlay::after{display:none}
         .premium-unblur{filter:none!important;opacity:1!important;user-select:auto!important;pointer-events:auto!important}
         .premium-unblur.blur-overlay::after{display:none!important}
+        /* Prominent Portal Nav */
+        .portal-top-actions{display:flex;gap:12px;align-items:center}
+        .portal-top-actions .btn-logout{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:#c83232;color:#fff;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;border-radius:4px;border:none;transition:background .2s}
+        .portal-top-actions .btn-logout:hover{background:#a02020}
+        .portal-top-actions .btn-home{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:var(--color-accent-gold);color:var(--color-primary-dark);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;border-radius:4px;border:none;transition:background .2s}
+        .portal-top-actions .btn-home:hover{background:#b8962f}
+        .portal-top-actions .btn-pdf{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:var(--color-primary-dark);color:#fff;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;border-radius:4px;border:none;transition:background .2s}
+        .portal-top-actions .btn-pdf:hover{background:var(--color-accent-gold);color:var(--color-primary-dark)}
+        /* Print Report Styles */
+        @media print {
+            body{background:#fff;color:#000}
+            .site-header,.mobile-menu-overlay,.search-overlay,.session-timeout-overlay,.offline-indicator,.toast-container{display:none!important}
+            .inner-page-hero{background:#fff!important;color:#000!important;padding:20px 0}
+            .inner-page-hero h1{color:#000}
+            .page-section{background:#fff!important;padding:10px 0}
+            .profile-card{box-shadow:none;border:1px solid #ccc}
+            .detail-panel{background:#fff;border:1px solid #ccc;color:#000}
+            .detail-panel h4{color:#000}
+            .detail-value{color:#000}
+            .cargo-table thead th{background:#f0f0f0;color:#000}
+            .cargo-table tbody td{color:#000;border-color:#ccc}
+            .live-tracker-card{background:#fff!important;color:#000!important;border:1px solid #ccc}
+            .tracker-status-badge{background:#f0f0f0!important;color:#000!important;animation:none}
+            .route-city{color:#000!important}
+            .ops-card{background:#fff;border:1px solid #ccc}
+            .ops-label{color:#666}
+            .ops-card strong{color:#000}
+            .ops-card p{color:#333}
+            a{color:#000!important;text-decoration:none}
+            .map-section{display:none}
+        }
     </style>
 </head>
 <body class="scheme_default">
@@ -37,9 +69,19 @@
         <div class="top-bar">
             <div class="container">
                 <div class="top-bar-left"><span id="clientWelcome">Client portal access</span></div>
-                <div class="top-bar-right">
-                    <a href="index.html" class="btn-request-access">Home</a>
-                    <a href="#" id="clientLogout" class="btn-logout">Logout</a>
+                <div class="top-bar-right portal-top-actions">
+                    <a href="index.html" class="btn-home">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        Home
+                    </a>
+                    <a href="services.html" class="btn-home" style="background:#4a90a4;color:#fff">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                        Services
+                    </a>
+                    <a href="#" id="clientLogout" class="btn-logout">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        Logout
+                    </a>
                 </div>
             </div>
         </div>
@@ -93,6 +135,10 @@
             <div class="page-actions">
                 <a href="#inventory" class="btn">Asset Inventory</a>
                 <a href="#tracking" class="btn btn-simple">Track Deliveries</a>
+                <button type="button" class="btn btn-pdf" id="downloadPdfBtn" style="background:var(--color-primary-dark);color:#fff;border:none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download Client Report (PDF)
+                </button>
             </div>
         </div>
     </section>
@@ -239,7 +285,10 @@
       document.getElementById('profileEmail').textContent=currentUser.email||'-';document.getElementById('profileEmail').className=currentUser.email?'':'detail-value-null';
       document.getElementById('profileCompany').textContent=currentUser.company||'-';document.getElementById('profileCountry').textContent=currentUser.country||'-';document.getElementById('profileService').textContent=currentUser.preferredService||'-';document.getElementById('profileAssetType').textContent=currentUser.assetType||'-';document.getElementById('profilePhone').textContent=currentUser.phone||'-';document.getElementById('profileCity').textContent=currentUser.city||'-';document.getElementById('profileAddress').textContent=currentUser.address||'-';document.getElementById('profileOccupation').textContent=currentUser.occupation||'-';document.getElementById('profileProvince').textContent=currentUser.province||'-';document.getElementById('profileClientStatus').textContent=currentUser.clientStatus||'-';document.getElementById('profileNextOfKin').textContent=currentUser.nextOfKinName||'-';document.getElementById('profileNOKRelationship').textContent=currentUser.nextOfKinRelationship||'-';document.getElementById('profileNOKPhone').textContent=currentUser.nextOfKinPhone||'-';document.getElementById('profileNOKEmail').textContent=currentUser.nextOfKinEmail||'-';document.getElementById('profileCreatedAt').textContent=formatDate(currentUser.createdAt);document.getElementById('profileUpdatedAt').textContent=formatDate(currentUser.updatedAt);
 
-      if(isPremium){document.getElementById('profileCard').classList.add('premium-profile');document.getElementById('premiumBadgeWrap').innerHTML='<div class="premium-badge">Premium Client</div>';document.querySelectorAll('.blur-overlay').forEach(function(el){el.classList.add('premium-unblur');});}
+      // Unblur all data panels for every client
+      document.querySelectorAll('.blur-overlay').forEach(function(el){el.classList.add('premium-unblur');});
+
+      if(isPremium){document.getElementById('profileCard').classList.add('premium-profile');document.getElementById('premiumBadgeWrap').innerHTML='<div class="premium-badge">Premium Client</div>';}
 
       var mapQuery=encodeURIComponent(currentUser.address||(currentUser.city+', '+currentUser.country)||'London, UK');
       document.getElementById('clientMapFrame').src='https://maps.google.com/maps?q='+mapQuery+'&t=k&z=14&ie=UTF8&iwloc=&output=embed';
