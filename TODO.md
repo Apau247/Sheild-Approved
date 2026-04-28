@@ -1,19 +1,28 @@
-# TODO: Realistic Premium Asset Protection Pricing
+# FixSs dv cesoged Abouges
 
-## Step 1: Update services.html
-- [ ] Rename tiers: Standard → Essential (£395), Premium → Advanced (£895), Gold Service → Elite Asset Protection (£2,200)
-- [ ] Rewrite Elite tier features to include RFID tracking, home/office/vehicle security, panic alerts, 24/7 SOC, dedicated response team, insurance coordination, personal security advisor, installation/maintenance included
-- [ ] Update comparison table with new tier names and features
-- [ ] Update physical security specs section
-- [ ] Update insurance & audit details section
-- [ ] Update enquiry form dropdown options
+## Issusseoound
 
-## Step 2: Update client-portal.html
-- [ ] Update tier insurance details copy to match new tier names and bundled services
+###d1. serces.hml—rkeHTML ruur
+May nloe<div>` ag sngpagces.  LgStruftil
+- Uni>`sscieadsni :ohfadei(p-a a,dnrv-a tipva), mibio.amehu, hmla,tt/imo smm yonadingurityspe, ceavny ecategaliss, enqurry oecm onofooter
+- No stats or service info displayed
+#2.bout#—aSti/MimlCntn  
+- Veymlbugodynamidaaldg
+##Missinghc:mpa ixdstiicsefr.m site-se tings.jsMnStructure
+- No otatsaurnlosvd>e`indislyd
+- [x] Ensure proper nesting of all sections
+- [Pean
 
-## Step 3: Update data/users.json
-- [ ] Update client-006: preferredService → "Elite Asset Protection", add serviceTier field, ensure monthlyCharges consistent
+###tPha om1:nFsxtvicehtmlHTML Strucue
+Closlunosd`<dv>`
+### Pha2sure prcpe  neuti.ghmftDll tacion
+- [x] Vtoidate comp etefdoetm at atruct riettings.json data
+- [x] Load dashboard stats dynamically
+#- [Phas d2 cEnhnnc iabiun(addrewish,Dynamia Dacves overview)
+- [x] Add JS td f tch aedrdicelay attg-reiins.jsn a
+### PhLeidystsymiclly
+- [ ] Add company info spen bot (gddbwto,ocr,evcsvervw)
+- [ ] A orsrvccego girddwimhiddtaa coredacha
 
-## Step 4: Verify
-- [ ] Open services.html in browser to confirm rendering
-
+###Phs3:Vrfy
+ Opbopsirwonfir rrngCcosefJSerrrdyamica lodscrectly

@@ -153,6 +153,27 @@
         .lbma-note svg { color: var(--color-accent-gold); flex-shrink: 0; margin-top: 2px; }
         .lbma-note p { margin: 0; font-size: 0.9375rem; color: var(--color-text); line-height: 1.6; }
         .lbma-note strong { color: var(--color-primary-dark); }
+        .dynamic-stats-bar {
+            background: var(--color-bg-light);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .dynamic-stat-item { text-align: center; }
+        .dynamic-stat-item strong {
+            display: block;
+            font-family: var(--font-headline);
+            font-size: 2rem;
+            color: var(--color-primary-dark);
+        }
+        .dynamic-stat-item span {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
         @media (max-width: 1024px) {
             .service-tier-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto 60px; }
             .specs-grid { grid-template-columns: 1fr; }
@@ -171,6 +192,7 @@
                     <a href="signup.html" class="btn-request-access">Sign Up</a>
                     <a href="login.html" class="btn-secure-vault">Login</a>
                 </div>
+            </div>
         </div>
         <div class="main-nav" id="mainNav">
             <div class="container">
@@ -190,6 +212,7 @@
                         <span></span>
                     </button>
                 </div>
+            </div>
         </div>
     </header>
 
@@ -219,6 +242,7 @@
                 <button type="submit">Search</button>
             </form>
         </div>
+    </div>
 
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
@@ -233,6 +257,7 @@
         </form>
     </div>
 
+    <!-- Hero Section -->
     <section class="inner-page-hero">
         <div class="container">
             <h1>Premium Asset Protection Services</h1>
@@ -243,6 +268,27 @@
                 <a href="#security" class="btn btn-simple">Security Specs</a>
                 <a href="#enquiry" class="btn btn-simple">Enquire</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Live Stats Bar -->
+    <section class="page-section">
+        <div class="container">
+            <div class="dynamic-stats-bar" id="serviceStats">
+                <div class="dynamic-stat-item">
+                    <strong id="statAssetsSecured">0</strong>
+                    <span>Assets Secured</span>
+                </div>
+                <div class="dynamic-stat-item">
+                    <strong id="statVaults">0</strong>
+                    <span>Vaults in Operation</span>
+                </div>
+                <div class="dynamic-stat-item">
+                    <strong id="statDeliveries">0</strong>
+                    <span>Tracked Deliveries</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Protection Tiers -->
@@ -305,6 +351,7 @@
                     </ul>
                     <a href="request-access.html?tier=elite" class="btn" style="width:100%;justify-content:center;">Request Elite Protection</a>
                 </div>
+            </div>
         </div>
     </section>
 
@@ -341,6 +388,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
     </section>
 
     <!-- Physical Security Specs per Tier -->
@@ -391,12 +439,13 @@
                         <li>Audit: weekly verification + quarterly independent</li>
                     </ul>
                 </div>
-
+            </div>
             <div class="lbma-note">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
                 <div>
                     <p><strong>LBMA Compliant — "Loco London" Standards:</strong> All precious metals stored at Iron Vault Security meet London Bullion Market Association best practices for vault construction, bar quality, chain of custody, and weight verification. Our facility is audited against LBMA guidelines annually.</p>
                 </div>
+            </div>
         </div>
     </section>
 
@@ -407,147 +456,4 @@
             <div class="info-grid">
                 <div class="info-card">
                     <h3>Insurance by Tier</h3>
-                    <p><strong>Essential:</strong> Basic all-risk coverage up to £250,000 per compartment. Covers theft, fire, and accidental damage.</p>
-                    <p><strong>Advanced:</strong> Enhanced coverage up to £2,000,000 per room. Includes transit, mysterious disappearance, and terrorism.</p>
-                    <p><strong>Elite:</strong> Comprehensive Lloyd's of London all-risk with no sub-limits, plus dedicated insurance coordination. Market-value replacement, worldwide transit, political violence, and personal asset loss protection included as standard.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Audit Frequency</h3>
-                    <p><strong>Essential:</strong> Quarterly visual verification by internal vault officers. Serial numbers checked against ledger.</p>
-                    <p><strong>Advanced:</strong> Monthly physical count + weight verification. Photographic documentation updated.</p>
-                    <p><strong>Elite:</strong> Weekly internal verification plus <strong>quarterly independent audits by Bureau Veritas</strong> — physical count, weight check, serial reconciliation, and RFID tag validation against client records.</p>
-                </div>
-                <div class="info-card">
-                    <h3>Environmental Controls</h3>
-                    <p>All tiers include climate-controlled storage at 18–22°C and 35–45% relative humidity to prevent tarnishing, oxidation, and gemological certificate degradation.</p>
-                    <p>Elite adds EMP shielding, blast-resistant outer shell, biological containment, Faraday cage RF shielding, and redundant power with 72-hour diesel generator autonomy.</p>
-                </div>
-        </div>
-    </section>
-
-    <!-- Service Categories -->
-    <section class="page-section" id="categories">
-        <div class="container">
-            <h2 style="text-align:center;margin-bottom:40px;">Specialised Services</h2>
-            <div class="info-grid">
-                <div class="info-card" id="vaulting-facilities">
-                    <h3>Vaulting Facilities</h3>
-                    <p>Private vault rooms, monitored compartments, controlled intake, and confidential storage records. Suitable for all asset classes.</p>
-                    <div class="page-actions"><a href="request-access.html?service=vaulting" class="btn">Request Vaulting</a></div>
-                <div class="info-card" id="diamond-jewellery">
-                    <h3>Diamond &amp; Jewellery</h3>
-                    <p>Secure intake for diamonds, fine jewelry, watches, and heirloom sets with optional transport coordination and gemological verification.</p>
-                    <div class="page-actions"><a href="request-access.html?service=jewellery" class="btn">Request Jewellery Storage</a></div>
-                <div class="info-card" id="precious-metals">
-                    <h3>Precious Metals</h3>
-                    <p>Gold, silver, platinum, and bullion protection with asset registration, weight verification, and monitored cargo movement.</p>
-                    <div class="page-actions"><a href="request-access.html?service=metals" class="btn">Request Metals Storage</a></div>
-            </div>
-    </section>
-
-    <!-- Enquiry Section -->
-    <section class="page-section page-section-alt" id="enquiry">
-        <div class="container">
-            <div class="enquiry-section">
-                <h3>Request a Service Consultation</h3>
-                <p>Tell us about your assets and we will recommend the right tier and service package.</p>
-                <form id="serviceEnquiryForm" class="dashboard-form dashboard-form-grid">
-                    <div class="form-field"><input type="text" name="fullName" placeholder="Full Name" required aria-label="Full Name"></div>
-                    <div class="form-field"><input type="email" name="email" placeholder="Email Address" required aria-label="Email Address"></div>
-                    <div class="form-field"><input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number"></div>
-                    <div class="form-field">
-                        <select name="tier" required aria-label="Interested Tier">
-                            <option value="">Interested Tier</option>
-                            <option value="Essential">Essential</option>
-                            <option value="Advanced">Advanced</option>
-                            <option value="Elite">Elite Asset Protection</option>
-                            <option value="Unsure">Not Sure — Recommend</option>
-                        </select>
-                    </div>
-                    <div class="form-field">
-                        <select name="serviceType" required aria-label="Service Type">
-                            <option value="">Service Type</option>
-                            <option value="Vaulting">Vaulting Facilities</option>
-                            <option value="Jewellery">Diamond &amp; Jewellery</option>
-                            <option value="Metals">Precious Metals</option>
-                            <option value="Mixed">Mixed Assets</option>
-                        </select>
-                    </div>
-                    <div class="form-field"><input type="text" name="estimatedValue" placeholder="Estimated Holdings Value" aria-label="Estimated Value"></div>
-                    <div class="form-field form-field-full"><textarea name="message" rows="4" placeholder="Describe your storage or transport requirements..." required aria-label="Message"></textarea></div>
-                    <button type="submit" class="btn btn-submit">Submit Enquiry</button>
-                </form>
-                <div id="enquiryMessage" class="dashboard-message" aria-live="polite"></div>
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col footer-logo">
-                    <img src="images/logo.png" alt="Iron Vault Security" width="230" height="51">
-                </div>
-                <div class="footer-col">
-                    <h4>Company info</h4>
-                    <nav>
-                        <a href="about.html">About page</a>
-                        <a href="security-compliance.html">Security &amp; Compliance</a>
-                    </nav>
-                </div>
-                <div class="footer-col">
-                    <h4>Our services</h4>
-                    <nav>
-                        <a href="services.html">Services page</a>
-                    </nav>
-                </div>
-                <div class="footer-col footer-cta">
-                    <a href="client-portal.html" class="btn btn-simple">Client Portal</a>
-                    <div class="social-icons">
-                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=Facebook%20Inquiry" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=X%20Inquiry" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=LinkedIn%20Inquiry" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-                    </div>
-            </div>
-            <div class="copyright-bar">
-                <p>Iron Vault Security © 2025. All Rights Reserved.</p>
-            </div>
-    </footer>
-
-    <script src="js/nav.js"></script>
-    <script>
-    (function() {
-        var form = document.getElementById('serviceEnquiryForm');
-        var message = document.getElementById('enquiryMessage');
-        if (!form) return;
-
-        async function safeJson(response) {
-            var text = await response.text();
-            if (!text) return {};
-            try { return JSON.parse(text); } catch (e) { throw new Error('Invalid server response.'); }
-        }
-
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault();
-            var formData = new FormData(form);
-            var payload = Object.fromEntries(formData.entries());
-
-            try {
-                var response = await fetch('/api/dashboard', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ action: 'contactRequest', payload: payload })
-                });
-                var result = await safeJson(response);
-                if (!response.ok) throw new Error(result.error || 'Submission failed.');
-                message.textContent = 'Enquiry submitted successfully. Our team will contact you within 24 hours.';
-                message.className = 'dashboard-message active success';
-                form.reset();
-            } catch (error) {
-                message.textContent = error.message || 'Could not submit enquiry.';
-                message.className = 'dashboard-message active error';
-            }
-        });
-    })();
-    </script>
-</body>
-</html>
+                  

@@ -370,10 +370,10 @@
       if(tierInsurance && currentUser.preferredService){
         var svc = String(currentUser.preferredService).toLowerCase();
         var tierText = '';
-        if(svc.indexOf('gold')>=0 || svc.indexOf('premium')>=0){
-          tierText = 'Your account is covered by <strong>Lloyd\'s of London comprehensive all-risk insurance</strong> with market-value replacement. Coverage includes worldwide transit, terrorism, and political violence with no sub-limits. A+ rated syndicate.';
+        if(svc.indexOf('elite')>=0 || svc.indexOf('advanced')>=0){
+          tierText = 'Your account is covered by <strong>Lloyd\'s of London comprehensive all-risk insurance</strong> with market-value replacement. Elite clients receive dedicated insurance coordination, RFID asset tracking with real-time alerts, integrated home/office/vehicle security coverage, and a personal security advisor. A+ rated syndicate.';
         } else {
-          tierText = 'Your account includes <strong>basic all-risk insurance coverage</strong> for theft, fire, and accidental damage. Upgrade to Premium or Gold Service for enhanced Lloyd\'s-backed coverage.';
+          tierText = 'Your account includes <strong>basic all-risk insurance coverage</strong> for theft, fire, and accidental damage. Upgrade to Advanced or Elite Asset Protection for enhanced Lloyd\'s-backed coverage with concierge-grade services.';
         }
         tierInsurance.innerHTML = tierText;
       }
