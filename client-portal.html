@@ -115,6 +115,7 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
+                <a href="security-compliance.html">Security &amp; Compliance</a>
                 <a href="client-portal.html#tracking">Tracking</a>
                 <a href="request-access.html">Contact Us</a>
             </nav>
@@ -158,6 +159,35 @@
                 <div class="portal-stat-card"><strong id="statAccountStatus">Active</strong><span class="portal-stat-label">Account Status</span></div>
             </div>
         </div>
+    </section>
+
+    <section class="page-section page-section-alt" id="compliance">
+        <div class="container">
+            <div class="portal-layout">
+                <div class="portal-main">
+                    <div class="table-panel">
+                        <h3>Security &amp; Compliance Summary</h3>
+                        <div class="ops-overview" style="margin-bottom:1.5rem;">
+                            <div class="ops-card"><span class="ops-label">Vault Certification</span><strong>UL TL-30X6</strong><p>Certified attack resistance on all six faces.</p></div>
+                            <div class="ops-card"><span class="ops-label">Audit Status</span><strong id="auditStatusIndicator">Current</strong><p>Next audit due within 90 days.</p></div>
+                            <div class="ops-card"><span class="ops-label">Insurance Underwriter</span><strong>Lloyd's of London</strong><p>Comprehensive all-risk, market-value coverage.</p></div>
+                            <div class="ops-card"><span class="ops-label">Accreditation</span><strong>LBMA Compliant</strong><p>Full loco London best practices compliance.</p></div>
+                        <div id="clientTierInsurance" style="background:#f8f5eb;border-radius:12px;padding:24px;border:1px solid rgba(212,175,55,0.2);">
+                            <h4 style="margin:0 0 12px;color:var(--color-primary-dark);">Your Insurance Coverage</h4>
+                            <p id="tierInsuranceDetails" style="margin:0;color:var(--color-text);font-size:0.9375rem;line-height:1.6;">Loading tier details...</p>
+                        </div>
+                </div>
+                <aside class="portal-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-header"><h4>Compliance Quick Links</h4></div>
+                        <div class="profile-details">
+                            <div class="profile-item"><span class="profile-label">Full Compliance Page</span><a href="security-compliance.html">View Details</a></div>
+                            <div class="profile-item"><span class="profile-label">Audit Reports</span><span>Available on request</span></div>
+                            <div class="profile-item"><span class="profile-label">Certificate Verification</span><span>Bureau Veritas / UL</span></div>
+                            <div class="profile-item"><span class="profile-label">Insurance Policy</span><span>Lloyd's A+ Rated</span></div>
+                    </div>
+                </aside>
+            </div>
     </section>
 
     <section class="page-section page-section-alt" id="inventory">
@@ -334,7 +364,21 @@
         document.getElementById('opsAssetsCount').textContent=assetRows.length;document.getElementById('opsActiveDeliveries').textContent=userShipments.filter(function(s){return s.status!=='Delivered';}).length;document.getElementById('opsDeliveredCount').textContent=userShipments.filter(function(s){return s.status==='Delivered';}).length;document.getElementById('opsSignupCount').textContent=(data.signups||[]).length;
       }).catch(function(err){console.error('Dashboard load failed',err);document.getElementById('clientAssetRows').innerHTML='<tr><td colspan="6" class="empty-copy">Could not load asset data.</td></tr>';document.getElementById('clientShipmentRows').innerHTML='<tr><td colspan="5" class="empty-copy">Could not load shipment data.</td></tr>';});
     })();
-    </script>
+    
+      // Set tier-based insurance details
+      var tierInsurance = document.getElementById('tierInsuranceDetails');
+      if(tierInsurance && currentUser.preferredService){
+        var svc = String(currentUser.preferredService).toLowerCase();
+        var tierText = '';
+        if(svc.indexOf('gold')>=0 || svc.indexOf('premium')>=0){
+          tierText = 'Your account is covered by <strong>Lloyd\'s of London comprehensive all-risk insurance</strong> with market-value replacement. Coverage includes worldwide transit, terrorism, and political violence with no sub-limits. A+ rated syndicate.';
+        } else {
+          tierText = 'Your account includes <strong>basic all-risk insurance coverage</strong> for theft, fire, and accidental damage. Upgrade to Premium or Gold Service for enhanced Lloyd\'s-backed coverage.';
+        }
+        tierInsurance.innerHTML = tierText;
+      }
+
+</script>
 </body>
 </html>
 

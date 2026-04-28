@@ -141,8 +141,21 @@
             color: var(--color-text-muted);
             margin-bottom: 24px;
         }
+        .security-specs-section { background: var(--color-white); padding: 60px 0; }
+        .security-specs-section h2 { text-align: center; margin-bottom: 40px; }
+        .specs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+        .spec-card { background: #f8f5eb; border-radius: 16px; padding: 32px 24px; border: 1px solid rgba(0,0,0,0.06); }
+        .spec-card h4 { font-size: 1.05rem; margin-bottom: 16px; color: var(--color-primary-dark); }
+        .spec-card ul { list-style: none; padding: 0; margin: 0; }
+        .spec-card ul li { padding: 8px 0 8px 22px; position: relative; font-size: 0.875rem; color: var(--color-text); line-height: 1.55; border-bottom: 1px solid rgba(0,0,0,0.04); }
+        .spec-card ul li::before { content: '›'; position: absolute; left: 0; color: var(--color-accent-gold); font-weight: 700; font-size: 1.1rem; }
+        .lbma-note { background: linear-gradient(135deg, #f8f5eb 0%, #ffffff 100%); border: 1px solid rgba(212,175,55,0.2); border-radius: 14px; padding: 28px 32px; margin: 40px 0; display: flex; align-items: flex-start; gap: 18px; }
+        .lbma-note svg { color: var(--color-accent-gold); flex-shrink: 0; margin-top: 2px; }
+        .lbma-note p { margin: 0; font-size: 0.9375rem; color: var(--color-text); line-height: 1.6; }
+        .lbma-note strong { color: var(--color-primary-dark); }
         @media (max-width: 1024px) {
             .service-tier-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto 60px; }
+            .specs-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -197,6 +210,7 @@
                 <a href="login.html">Login</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
+                <a href="security-compliance.html">Security &amp; Compliance</a>
                 <a href="client-portal.html#tracking">Tracking</a>
                 <a href="request-access.html">Contact Us</a>
             </nav>
@@ -226,6 +240,7 @@
             <div class="page-actions">
                 <a href="#tiers" class="btn">Service Tiers</a>
                 <a href="#comparison" class="btn btn-simple">Compare</a>
+                <a href="#security" class="btn btn-simple">Security Specs</a>
                 <a href="#enquiry" class="btn btn-simple">Enquire</a>
             </div>
     </section>
@@ -263,7 +278,7 @@
                         <li>24/7 armed response team</li>
                         <li>Enhanced insurance coverage</li>
                         <li>Monthly asset verification</li>
-                        <li>Phone & email support (extended hours)</li>
+                        <li>Phone &amp; email support (extended hours)</li>
                         <li>Dedicated account manager</li>
                         <li>Priority transport coordination</li>
                         <li class="missing">Quarterly audit reports</li>
@@ -281,7 +296,7 @@
                         <li>24/7 on-site armed response</li>
                         <li>Comprehensive insurance (Lloyd's backed)</li>
                         <li>Weekly asset verification</li>
-                        <li>24/7 priority phone & email support</li>
+                        <li>24/7 priority phone &amp; email support</li>
                         <li>Dedicated senior account manager</li>
                         <li>Priority insured transport worldwide</li>
                         <li>Quarterly independent audit reports</li>
@@ -311,7 +326,7 @@
                         <tr><td class="feature-name">Security Response</td><td>24/7 CCTV</td><td>24/7 armed response</td><td>24/7 on-site armed response</td></tr>
                         <tr><td class="feature-name">Insurance</td><td>Basic coverage</td><td>Enhanced coverage</td><td>Lloyd's backed comprehensive</td></tr>
                         <tr><td class="feature-name">Asset Verification</td><td>Quarterly</td><td>Monthly</td><td>Weekly</td></tr>
-                        <tr><td class="feature-name">Support</td><td>Email (business hours)</td><td>Phone & email (extended)</td><td>24/7 priority support</td></tr>
+                        <tr><td class="feature-name">Support</td><td>Email (business hours)</td><td>Phone &amp; email (extended)</td><td>24/7 priority support</td></tr>
                         <tr><td class="feature-name">Account Manager</td><td class="check-no">—</td><td class="check-yes">✓ Dedicated</td><td class="check-yes">✓ Senior Dedicated</td></tr>
                         <tr><td class="feature-name">Transport Coordination</td><td class="check-no">—</td><td class="check-yes">✓ Priority</td><td class="check-yes">✓ Priority Insured Worldwide</td></tr>
                         <tr><td class="feature-name">Audit Reports</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓ Quarterly Independent</td></tr>
@@ -319,6 +334,85 @@
                     </tbody>
                 </table>
             </div>
+    </section>
+
+    <!-- Physical Security Specs per Tier -->
+    <section class="security-specs-section" id="security">
+        <div class="container">
+            <h2>Physical Security Specifications by Tier</h2>
+            <p style="text-align:center;max-width:700px;margin:0 auto 40px;color:var(--color-text-muted);">Every tier meets or exceeds LBMA compliance standards. Upgrades are additive — Gold Service includes everything in Premium plus additional layers.</p>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>Standard — Essential Protection</h4>
+                    <ul>
+                        <li>Steel-reinforced vault compartment</li>
+                        <li>Biometric fingerprint access</li>
+                        <li>24/7 CCTV with 30-day retention</li>
+                        <li>Motion detection on corridors</li>
+                        <li>Basic fire suppression</li>
+                        <li>Climate control 18–22°C</li>
+                        <li>Insurance: basic all-risk up to £250K</li>
+                        <li>Audit: quarterly visual verification</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h4>Premium — Enhanced Protection</h4>
+                    <ul>
+                        <li>Private vault room with dual-key entry</li>
+                        <li>Biometric + PIN authentication</li>
+                        <li>24/7 armed response on-site</li>
+                        <li>Seismic and tamper sensors</li>
+                        <li>FM-200 clean-agent fire suppression</li>
+                        <li>Humidity control 35–45% RH</li>
+                        <li>Insurance: enhanced up to £2M</li>
+                        <li>Audit: monthly physical count</li>
+                    </ul>
+                </div>
+                <div class="spec-card">
+                    <h4>Gold Service — Maximum Protection</h4>
+                    <ul>
+                        <li>Custom vault suite, multi-factor access</li>
+                        <li>Fingerprint + iris + facial recognition</li>
+                        <li>24/7 on-site armed response + rapid dispatch</li>
+                        <li>Sound, thermal, and vibration analysis</li>
+                        <li>Redundant power + blast-resistant shell</li>
+                        <li>Faraday cage RF shielding</li>
+                        <li>Insurance: Lloyd's comprehensive, unlimited</li>
+                        <li>Audit: weekly verification + quarterly independent</li>
+                    </ul>
+                </div>
+
+            <div class="lbma-note">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                <div>
+                    <p><strong>LBMA Compliant — "Loco London" Standards:</strong> All precious metals stored at Iron Vault Security meet London Bullion Market Association best practices for vault construction, bar quality, chain of custody, and weight verification. Our facility is audited against LBMA guidelines annually.</p>
+                </div>
+        </div>
+    </section>
+
+    <!-- Insurance & Audit Details -->
+    <section class="page-section page-section-alt" id="insurance">
+        <div class="container">
+            <h2 style="text-align:center;margin-bottom:40px;">Insurance Coverage &amp; Audit Frequency</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Insurance by Tier</h3>
+                    <p><strong>Standard:</strong> Basic all-risk coverage up to £250,000 per compartment. Covers theft, fire, and accidental damage.</p>
+                    <p><strong>Premium:</strong> Enhanced coverage up to £2,000,000 per room. Includes transit, mysterious disappearance, and terrorism.</p>
+                    <p><strong>Gold:</strong> Comprehensive Lloyd's of London all-risk with no sub-limits. Market-value replacement, worldwide transit, and political violence included as standard.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Audit Frequency</h3>
+                    <p><strong>Standard:</strong> Quarterly visual verification by internal vault officers. Serial numbers checked against ledger.</p>
+                    <p><strong>Premium:</strong> Monthly physical count + weight verification. Photographic documentation updated.</p>
+                    <p><strong>Gold:</strong> Weekly internal verification plus <strong>quarterly independent audits by Bureau Veritas</strong> — physical count, weight check, and serial reconciliation against client records.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Environmental Controls</h3>
+                    <p>All tiers include climate-controlled storage at 18–22°C and 35–45% relative humidity to prevent tarnishing, oxidation, and gemological certificate degradation.</p>
+                    <p>Gold Service adds EMP shielding, blast-resistant outer shell, biological containment, and redundant power with 72-hour diesel generator autonomy.</p>
+                </div>
+        </div>
     </section>
 
     <!-- Service Categories -->
@@ -331,7 +425,7 @@
                     <p>Private vault rooms, monitored compartments, controlled intake, and confidential storage records. Suitable for all asset classes.</p>
                     <div class="page-actions"><a href="request-access.html?service=vaulting" class="btn">Request Vaulting</a></div>
                 <div class="info-card" id="diamond-jewellery">
-                    <h3>Diamond & Jewellery</h3>
+                    <h3>Diamond &amp; Jewellery</h3>
                     <p>Secure intake for diamonds, fine jewelry, watches, and heirloom sets with optional transport coordination and gemological verification.</p>
                     <div class="page-actions"><a href="request-access.html?service=jewellery" class="btn">Request Jewellery Storage</a></div>
                 <div class="info-card" id="precious-metals">
@@ -364,7 +458,7 @@
                         <select name="serviceType" required aria-label="Service Type">
                             <option value="">Service Type</option>
                             <option value="Vaulting">Vaulting Facilities</option>
-                            <option value="Jewellery">Diamond & Jewellery</option>
+                            <option value="Jewellery">Diamond &amp; Jewellery</option>
                             <option value="Metals">Precious Metals</option>
                             <option value="Mixed">Mixed Assets</option>
                         </select>
@@ -385,11 +479,16 @@
                 </div>
                 <div class="footer-col">
                     <h4>Company info</h4>
-                    <nav><a href="about.html">About page</a></nav>
+                    <nav>
+                        <a href="about.html">About page</a>
+                        <a href="security-compliance.html">Security &amp; Compliance</a>
+                    </nav>
                 </div>
                 <div class="footer-col">
                     <h4>Our services</h4>
-                    <nav><a href="services.html">Services page</a></nav>
+                    <nav>
+                        <a href="services.html">Services page</a>
+                    </nav>
                 </div>
                 <div class="footer-col footer-cta">
                     <a href="client-portal.html" class="btn btn-simple">Client Portal</a>

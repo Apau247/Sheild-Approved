@@ -8,18 +8,18 @@ Add robust legitimacy signals to Iron Vault Security to demonstrate transparency
 ## Steps
 
 ### Step 1: Create `security-compliance.html`
-- [ ] New dedicated page covering all legitimacy signals
-- [ ] Physical Security: UL TL-30X6, EN 1143-1 Grade 10+, 90-ton steel doors, time locks, airtight seals, reinforced concrete
-- [ ] Access Controls: Biometric (fingerprint, iris, facial), MFA, dual-control, mantraps, visitor protocols
-- [ ] Surveillance: 24/7 CCTV, motion detectors, seismic/tamper sensors, sound/thermal detection, off-site monitoring, armed response
-- [ ] Environmental: Climate control, fire suppression, flood protection, redundant power, disaster resistance
-- [ ] Location & Perimeter: Secure low-profile site, fencing, metal detectors, law enforcement integration
-- [ ] Allocated/Segregated Storage: Serial numbers, weights, assay certificates, proof of ownership
-- [ ] Insurance: Comprehensive "all-risk", Lloyd's of London, market-value coverage
-- [ ] Independent Audits: Bureau Veritas/EY, physical count/weight/serial verification, quarterly/annual reports
-- [ ] Accreditations: LBMA compliance, "loco London", IRS approval for precious metals IRAs
-- [ ] Transparency: Clear contracts, no high-pressure sales, controlled withdrawals
-- [ ] Employee Screening: Background checks, bonding, internal risk policies
+- [x] New dedicated page covering all legitimacy signals
+- [x] Physical Security: UL TL-30X6, EN 1143-1 Grade 10+, 90-ton steel doors, time locks, airtight seals, reinforced concrete
+- [x] Access Controls: Biometric (fingerprint, iris, facial), MFA, dual-control, mantraps, visitor protocols
+- [x] Surveillance: 24/7 CCTV, motion detectors, seismic/tamper sensors, sound/thermal detection, off-site monitoring, armed response
+- [x] Environmental: Climate control, fire suppression, flood protection, redundant power, disaster resistance
+- [x] Location & Perimeter: Secure low-profile site, fencing, metal detectors, law enforcement integration
+- [x] Allocated/Segregated Storage: Serial numbers, weights, assay certificates, proof of ownership
+- [x] Insurance: Comprehensive "all-risk", Lloyd's of London, market-value coverage
+- [x] Independent Audits: Bureau Veritas/EY, physical count/weight/serial verification, quarterly/annual reports
+- [x] Accreditations: LBMA compliance, "loco London", IRS approval for precious metals IRAs
+- [x] Transparency: Clear contracts, no high-pressure sales, controlled withdrawals
+- [x] Employee Screening: Background checks, bonding, internal risk policies
 
 ### Step 2: Enhance `about.html`
 - [ ] Add company history and founding principles
@@ -28,11 +28,11 @@ Add robust legitimacy signals to Iron Vault Security to demonstrate transparency
 - [ ] Add trust signals and anti-scam transparency statements
 
 ### Step 3: Enhance `services.html`
-- [ ] Add physical security specs per tier
-- [ ] Add insurance coverage details per tier
-- [ ] Add audit frequency per tier
-- [ ] Add LBMA compliance note
-- [ ] Add environmental controls per service category
+- [x] Add physical security specs per tier
+- [x] Add insurance coverage details per tier
+- [x] Add audit frequency per tier
+- [x] Add LBMA compliance note
+- [x] Add environmental controls per service category
 
 ### Step 4: Enhance `index.html`
 - [ ] Add accreditation/trust badge section (LBMA, Lloyd's, ISO)
@@ -41,10 +41,10 @@ Add robust legitimacy signals to Iron Vault Security to demonstrate transparency
 - [ ] Strengthen Schema.org structured data with security features
 
 ### Step 5: Update Navigation Across All Pages
-- [ ] Add "Security & Compliance" link to header nav on all HTML pages
-- [ ] Add "Security & Compliance" link to mobile menu on all HTML pages
-- [ ] Update footer links on all pages to include new page
-- [ ] Pages to update: index.html, about.html, services.html, login.html, signup.html, client-portal.html, admin-dashboard.html, request-access.html, search.html, forgot-password.html
+- [x] Add "Security & Compliance" link to header nav on all HTML pages
+- [x] Add "Security & Compliance" link to mobile menu on all HTML pages
+- [x] Update footer links on all pages to include new page
+- [x] Pages to update: index.html, about.html, services.html, login.html, signup.html, client-portal.html, admin-dashboard.html, request-access.html, search.html, forgot-password.html
 
 ### Step 6: Create `data/compliance.json`
 - [ ] Store audit report metadata
@@ -62,3 +62,11 @@ Add robust legitimacy signals to Iron Vault Security to demonstrate transparency
 - [ ] Test responsive layout on mobile
 - [ ] Ensure Schema.org markup validates
 
+---
+
+## Bug Fixes Completed
+- [x] Fix `services.html`: unclosed `<div>` tags, missing closing tags for sections
+- [x] Fix `admin-dashboard.html`: unclosed `<div>` tags, missing `</div>` for top-bar, mobile-menu-overlay, sections
+- [x] Fix `security-compliance.html`: remove duplicated content sections, fix unclosed tags
+- [x] Extract `admin-dashboard.html` inline JS to `js/admin.js` to prevent truncation
+- [x] Add missing `</section>` and `</div>` closings across pages
