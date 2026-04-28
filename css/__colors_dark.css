@@ -3,14 +3,12 @@
    ============================================ */
 
 .scheme_dark {
-  --color-primary-dark: #0d0d0d;
-  --color-accent-gold: #e6c250;
-  --color-accent-steel: #5ba3b8;
-  --color-success-green: #3aa86a;
-  --color-bg-light: #1e1e1e;
-  --color-white: #f0f0f0;
-  --color-text: #e0e0e0;
-  --color-text-muted: #999999;
+  --color-primary-dark: #1a1a1a;
+  --color-accent-gold: #d4af37;
+  --color-bg-light: #1a1a1a;
+  --color-white: #ffffff;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255,255,255,0.55);
 }
 
 .scheme_dark body {

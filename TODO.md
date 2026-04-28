@@ -1,49 +1,32 @@
-# Iron Vault Security — Enhancement Plan
+# Color Standardization TODO — Gold / Black / White Only
 
-## Completed
-- [x] Gathered and analyzed all relevant files
-- [x] Confirmed plan with user (+ client-portal upgrade requirement)
+## Goal
+Remove all non-palette colors (steel blue, green, red, yellow, gray) and standardize to only:
+- **Gold**: `#d4af37` (`var(--color-accent-gold)`)
+- **Black**: `#1a1a1a` (`var(--color-primary-dark)`)
+- **White**: `#ffffff` (`var(--color-white)`)
 
-## In Progress / To Do
+## Steps
 
-### 1. Navigation & Button Styling Fixes
-- [ ] Fix `.btn-request-access` and `.btn-secure-vault` with fixed colors + blended hover
-- [ ] Add smooth transitions to nav actions (search-toggle, menu-toggle)
-- [ ] Standardize nav markup across all HTML pages
+### Phase 1: CSS Variable Files
+- [ ] `css/__colors_default.css` — Remove steel/green vars, update text/bg colors
+- [ ] `css/__colors_dark.css` — Remove steel/green vars, update dark scheme colors
 
-### 2. Currency Conversion (£ → $)
-- [ ] services.html: Replace all £ with $, adjust prices
+### Phase 2: Main Stylesheet
+- [ ] `css/style.css` — Replace all steel blue, green, red, gray, cream colors
 
-### 3. Secure Homepage (index.html)
-- [ ] Remove public tracking section with asset/signup forms
-- [ ] Replace with clean "Secure Client Portal" CTA
-- [ ] Keep general contact form only
+### Phase 3: HTML Files (Inline Styles)
+- [ ] `admin-dashboard.html` — Fix badge colors, modal styles
+- [ ] `client-portal.html` — Fix button colors, borders, backgrounds
+- [ ] `services.html` — Fix tier badges, checkmarks, backgrounds
+- [ ] `about.html` — Fix any inline colors
+- [ ] `security-compliance.html` — Fix any inline colors
 
-### 4. Enrich Data (users.json + dashboard.json)
-- [ ] Add 4–5 new unreal clients with full assetDetails & logistics
-- [ ] Expand dashboard.json shipments/assets to 12+ records
-- [ ] Ensure all currency = USD
+### Phase 4: JavaScript Files
+- [ ] `js/app.js` — Fix validation border color
+- [ ] `js/admin.js` — Verify generated HTML uses CSS vars only
 
-### 5. Services Page Enhancements
-- [ ] Add "Services at a Glance" tabs
-- [ ] Expand tier descriptions with more detail
-- [ ] Add realistic asset examples per tier
-
-### 6. FULL client-portal.html Upgrade (NEW REQUIREMENT)
-- [ ] Modern responsive HTML5 structure
-- [ ] Professional dashboard layout with sidebar/navbar
-- [ ] Embedded Google Maps with safe iframe attributes
-- [ ] Security best practices (safe iframes, front-end protections)
-- [ ] Performance optimization (lazy loading, minimal deps)
-- [ ] Mobile responsiveness
-- [ ] Clean, commented code
-- [ ] Sections: dashboard, user info, activity/logs, contact/map
-- [ ] Gold/black premium color scheme
-- [ ] Subtle animations/hover effects
-
-### 7. Validation
-- [ ] Check all pages for broken nav links
-- [ ] Confirm no £ symbols remain
-- [ ] Verify homepage has no user-data forms
-- [ ] Test client portal loads correctly
+### Phase 5: Verification
+- [ ] Search for remaining non-palette hex codes across project
+- [ ] Spot-check key pages for visual consistency
 

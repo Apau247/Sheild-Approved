@@ -5,11 +5,9 @@
 .scheme_default {
   --color-primary-dark: #1a1a1a;
   --color-accent-gold: #d4af37;
-  --color-accent-steel: #4a90a4;
-  --color-success-green: #2e8b57;
-  --color-bg-light: #f4f4f2;
+  --color-bg-light: #ffffff;
   --color-white: #ffffff;
-  --color-text: #333333;
-  --color-text-muted: #666666;
+  --color-text: #1a1a1a;
+  --color-text-muted: rgba(26,26,26,0.55);
 }
 
