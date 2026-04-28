@@ -117,8 +117,62 @@
                     <a href="#" id="adminLogout" class="btn-secure-vault">Logout</a>
                 </div>
         </div>
-        <div class="main-nav"><div class="container"><a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a></div>
+        <div class="main-nav" id="mainNav">
+            <div class="container">
+                <a href="index.html" class="logo"><img src="images/logo.png" alt="Iron Vault Security" width="258" height="57"></a>
+                <div class="nav-actions">
+                    <button class="search-toggle" aria-label="Open search">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <button class="menu-toggle" aria-label="Open menu" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+        </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="menu-close" aria-label="Close menu" id="menuClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <a href="index.html" class="mobile-logo"><img src="images/logo.png" alt="Iron Vault Security" width="230" height="51"></a>
+            <nav class="mobile-nav">
+                <a href="admin-dashboard.html">Admin Dashboard</a>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="client-portal.html#tracking">Tracking</a>
+                <a href="request-access.html">Contact Us</a>
+            </nav>
+            <form class="mobile-search" action="search.html" method="get">
+                <input type="text" name="s" placeholder="Search..." aria-label="Search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-close" aria-label="Close search" id="searchClose">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <form class="search-form" action="search.html" method="get">
+            <input type="text" name="s" placeholder="Type to search..." aria-label="Search">
+        </form>
+    </div>
+
     <section class="inner-page-hero">
         <div class="container">
             <h1>Admin Operations Center</h1>
@@ -129,6 +183,7 @@
                 <a href="#clientRecords" class="btn btn-simple">Client Records</a>
             </div>
     </section>
+
     <section class="page-section page-section-alt" id="inventory">
         <div class="container">
             <div class="table-panel">
@@ -139,6 +194,7 @@
                 </table>
             </div>
     </section>
+
     <section class="page-section" id="adminTools">
         <div class="container">
             <div class="asset-management">
@@ -181,6 +237,7 @@
                 </div>
             <div id="adminMessage" class="dashboard-message" aria-live="polite"></div>
     </section>
+
     <section class="page-section" id="logs">
         <div class="container">
             <div class="table-panel">
@@ -192,7 +249,6 @@
             </div>
     </section>
 
-    <!-- Full Client Records Viewer — Admin Only -->
     <section class="page-section page-section-alt" id="clientRecords">
         <div class="container">
             <div class="table-panel">
@@ -202,6 +258,7 @@
         </div>
     </section>
 
+    <script src="js/nav.js"></script>
     <script>
     (async function () {
       const currentUserRaw = localStorage.getItem('ivsCurrentUser');
@@ -371,7 +428,6 @@
             return '<tr><td>' + entry.name + '</td><td>' + entry.email + '</td><td>' + entry.meta + '</td><td>' + entry.createdAt + '</td></tr>';
           }).join('') || '<tr><td colspan="4" class="empty-copy">No signup or contact requests available.</td></tr>';
 
-          // Render full client records for admin view
           var clientUsers = (authData.users || []).filter(function (u) { return u.role === 'client'; });
           document.getElementById('adminClientRecords').innerHTML = clientUsers.map(renderClientRecord).join('') || '<p class="empty-copy">No client records available.</p>';
 
@@ -425,9 +481,8 @@
         }
       });
 
-loadAdminData();
+      loadAdminData();
     })();
     </script>
-    <script src="js/nav.js"></script>
 </body>
 </html>
