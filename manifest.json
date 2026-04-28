@@ -23,6 +23,44 @@
     }
   ],
   "categories": ["business", "finance"],
-  "lang": "en-GB"
+  "lang": "en-GB",
+  "shortcuts": [
+    {
+      "name": "Client Portal",
+      "short_name": "Portal",
+      "description": "Access your vault and track shipments",
+      "url": "/client-portal.html",
+      "icons": [{ "src": "images/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Track Shipment",
+      "short_name": "Track",
+      "description": "Track your secure cargo",
+      "url": "/client-portal.html#tracking",
+      "icons": [{ "src": "images/logo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "description": "View our vault and asset services",
+      "url": "/services.html",
+      "icons": [{ "src": "images/logo.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/hero5.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/hero2.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
-

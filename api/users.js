@@ -7,6 +7,31 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const localUsersPath = path.join(__dirname, '..', 'data', 'users.json');
 const blobPrefix = 'auth-users/';
 
+function sanitizeString(value) {
+  if (value === null || value === undefined) return '';
+  return String(value).trim();
+}
+
+function sanitizeEmail(value) {
+  if (!value) return null;
+  return String(value).trim().toLowerCase();
+}
+
+async function logAudit(payload) {
+  try {
+    await fetch(
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000') + '/api/audit',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ payload })
+      }
+    );
+  } catch (e) {
+    // Audit logging is best-effort
+  }
+}
+
 export default async function handler(request, response) {
   if (request.method === 'GET') {
     const data = await readUsersStore();
@@ -27,23 +52,23 @@ export default async function handler(request, response) {
     if (action === 'createUser') {
       const user = {
         id: payload.id || `client-${Date.now()}`,
-        fullName: payload.fullName || '',
-        email: payload.email ? String(payload.email).trim().toLowerCase() : null,
+        fullName: sanitizeString(payload.fullName),
+        email: sanitizeEmail(payload.email),
         password: payload.password || 'TempPass123!',
-        phone: payload.phone || '',
-        company: payload.company || '',
-        country: payload.country || '',
-        city: payload.city || '',
-        address: payload.address || '',
-        preferredService: payload.preferredService || '',
-        assetType: payload.assetType || '',
-        nextOfKinName: payload.nextOfKinName || '',
-        nextOfKinPhone: payload.nextOfKinPhone || '',
-        nextOfKinRelationship: payload.nextOfKinRelationship || '',
-        nextOfKinEmail: payload.nextOfKinEmail || '',
-        occupation: payload.occupation || '',
-        province: payload.province || '',
-        clientStatus: payload.clientStatus || '',
+        phone: sanitizeString(payload.phone),
+        company: sanitizeString(payload.company),
+        country: sanitizeString(payload.country),
+        city: sanitizeString(payload.city),
+        address: sanitizeString(payload.address),
+        preferredService: sanitizeString(payload.preferredService),
+        assetType: sanitizeString(payload.assetType),
+        nextOfKinName: sanitizeString(payload.nextOfKinName),
+        nextOfKinPhone: sanitizeString(payload.nextOfKinPhone),
+        nextOfKinRelationship: sanitizeString(payload.nextOfKinRelationship),
+        nextOfKinEmail: sanitizeEmail(payload.nextOfKinEmail),
+        occupation: sanitizeString(payload.occupation),
+        province: sanitizeString(payload.province),
+        clientStatus: sanitizeString(payload.clientStatus),
         role: payload.role || 'client',
         status: payload.status || 'active',
         createdAt: now,
@@ -60,35 +85,44 @@ export default async function handler(request, response) {
 
       data.users.unshift(user);
       await writeUsersStore(data);
+      await logAudit({
+        actor: payload.actor || 'admin',
+        action: 'users:createUser',
+        target: user.id,
+        oldValue: null,
+        newValue: safeUser(user)
+      });
       return response.status(201).json({ ok: true, data: { users: data.users.map(safeUser) } });
     }
 
     if (action === 'updateUser') {
-      const userId = String(payload.id || '').trim();
+      const userId = sanitizeString(payload.id);
       const index = (data.users || []).findIndex((user) => user.id === userId);
 
       if (index < 0) {
         return response.status(404).json({ ok: false, error: 'User not found.' });
       }
 
+      const oldUser = safeUser(data.users[index]);
+
       data.users[index] = {
         ...data.users[index],
-        fullName: payload.fullName || data.users[index].fullName,
-        email: payload.email !== undefined ? (payload.email ? String(payload.email).trim().toLowerCase() : null) : data.users[index].email,
-        phone: payload.phone || data.users[index].phone,
-        company: payload.company || data.users[index].company,
-        country: payload.country || data.users[index].country,
-        city: payload.city || data.users[index].city,
-        address: payload.address || data.users[index].address,
-        preferredService: payload.preferredService || data.users[index].preferredService,
-        assetType: payload.assetType || data.users[index].assetType,
-        nextOfKinName: payload.nextOfKinName || data.users[index].nextOfKinName,
-        nextOfKinPhone: payload.nextOfKinPhone !== undefined ? payload.nextOfKinPhone : data.users[index].nextOfKinPhone,
-        nextOfKinRelationship: payload.nextOfKinRelationship || data.users[index].nextOfKinRelationship,
-        nextOfKinEmail: payload.nextOfKinEmail !== undefined ? payload.nextOfKinEmail : data.users[index].nextOfKinEmail,
-        occupation: payload.occupation || data.users[index].occupation,
-        province: payload.province || data.users[index].province,
-        clientStatus: payload.clientStatus || data.users[index].clientStatus,
+        fullName: sanitizeString(payload.fullName) || data.users[index].fullName,
+        email: payload.email !== undefined ? sanitizeEmail(payload.email) : data.users[index].email,
+        phone: sanitizeString(payload.phone) || data.users[index].phone,
+        company: sanitizeString(payload.company) || data.users[index].company,
+        country: sanitizeString(payload.country) || data.users[index].country,
+        city: sanitizeString(payload.city) || data.users[index].city,
+        address: sanitizeString(payload.address) || data.users[index].address,
+        preferredService: sanitizeString(payload.preferredService) || data.users[index].preferredService,
+        assetType: sanitizeString(payload.assetType) || data.users[index].assetType,
+        nextOfKinName: sanitizeString(payload.nextOfKinName) || data.users[index].nextOfKinName,
+        nextOfKinPhone: payload.nextOfKinPhone !== undefined ? sanitizeString(payload.nextOfKinPhone) : data.users[index].nextOfKinPhone,
+        nextOfKinRelationship: sanitizeString(payload.nextOfKinRelationship) || data.users[index].nextOfKinRelationship,
+        nextOfKinEmail: payload.nextOfKinEmail !== undefined ? sanitizeEmail(payload.nextOfKinEmail) : data.users[index].nextOfKinEmail,
+        occupation: sanitizeString(payload.occupation) || data.users[index].occupation,
+        province: sanitizeString(payload.province) || data.users[index].province,
+        clientStatus: sanitizeString(payload.clientStatus) || data.users[index].clientStatus,
         role: payload.role || data.users[index].role,
         status: payload.status || data.users[index].status,
         clientImage: payload.clientImage !== undefined ? payload.clientImage : data.users[index].clientImage,
@@ -103,19 +137,34 @@ export default async function handler(request, response) {
       }
 
       await writeUsersStore(data);
+      await logAudit({
+        actor: payload.actor || 'admin',
+        action: 'users:updateUser',
+        target: userId,
+        oldValue: oldUser,
+        newValue: safeUser(data.users[index])
+      });
       return response.status(200).json({ ok: true, data: { users: data.users.map(safeUser) } });
     }
 
     if (action === 'deleteUser') {
-      const userId = String(payload.id || '').trim();
+      const userId = sanitizeString(payload.id);
       const index = (data.users || []).findIndex((user) => user.id === userId);
 
       if (index < 0) {
         return response.status(404).json({ ok: false, error: 'User not found.' });
       }
 
+      const deletedUser = safeUser(data.users[index]);
       data.users.splice(index, 1);
       await writeUsersStore(data);
+      await logAudit({
+        actor: payload.actor || 'admin',
+        action: 'users:deleteUser',
+        target: userId,
+        oldValue: deletedUser,
+        newValue: null
+      });
       return response.status(200).json({ ok: true, data: { users: data.users.map(safeUser) } });
     }
 

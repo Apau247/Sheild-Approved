@@ -10,6 +10,141 @@
     <link rel="stylesheet" href="css/__colors_dark.css">
     <link rel="stylesheet" href="css/__custom.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .service-tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
+        }
+        .service-tier-card {
+            background: var(--color-white);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 18px;
+            padding: 36px 28px;
+            box-shadow: 0 16px 40px rgba(26,26,26,0.07);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-tier-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(26,26,26,0.12);
+        }
+        .service-tier-card.gold {
+            border: 2px solid var(--color-accent-gold);
+            box-shadow: 0 16px 40px rgba(212,175,55,0.15);
+        }
+        .service-tier-card.gold:hover {
+            box-shadow: 0 24px 60px rgba(212,175,55,0.25);
+        }
+        .tier-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .tier-badge-standard { background: rgba(74,144,164,0.12); color: var(--color-accent-steel); }
+        .tier-badge-premium { background: rgba(46,139,87,0.12); color: var(--color-success-green); }
+        .tier-badge-gold { background: linear-gradient(135deg, var(--color-accent-gold), #b8962f); color: var(--color-primary-dark); }
+        .tier-price {
+            font-family: var(--font-headline);
+            font-size: 2.5rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 8px;
+        }
+        .tier-price span {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            font-weight: 400;
+        }
+        .tier-features {
+            list-style: none;
+            margin: 24px 0;
+            padding: 0;
+        }
+        .tier-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .tier-features li::before {
+            content: '✓';
+            color: var(--color-success-green);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .tier-features li.missing::before {
+            content: '—';
+            color: var(--color-text-muted);
+        }
+        .tier-features li.missing {
+            color: var(--color-text-muted);
+            text-decoration: line-through;
+        }
+        .comparison-table-wrap {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 16px 40px rgba(26,26,26,0.07);
+            margin-bottom: 60px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--color-white);
+            font-size: 0.9375rem;
+        }
+        .comparison-table thead th {
+            padding: 18px 20px;
+            text-align: left;
+            background: var(--color-bg-light);
+            font-size: 0.8125rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+            font-weight: 700;
+            border-bottom: 2px solid rgba(0,0,0,0.08);
+        }
+        .comparison-table tbody td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .comparison-table tbody tr:hover {
+            background: rgba(212,175,55,0.03);
+        }
+        .comparison-table .feature-name {
+            font-weight: 700;
+            color: var(--color-primary-dark);
+        }
+        .check-yes { color: var(--color-success-green); font-weight: 700; }
+        .check-no { color: var(--color-text-muted); }
+        .enquiry-section {
+            background: linear-gradient(135deg, #f8f5eb 0%, #ffffff 100%);
+            border-radius: 18px;
+            padding: 40px;
+            border: 1px solid rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+        .enquiry-section h3 {
+            margin-bottom: 8px;
+        }
+        .enquiry-section p {
+            color: var(--color-text-muted);
+            margin-bottom: 24px;
+        }
+        @media (max-width: 1024px) {
+            .service-tier-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto 60px; }
+        }
+    </style>
 </head>
 <body class="scheme_default">
     <!-- Header -->
@@ -23,7 +158,6 @@
                     <a href="signup.html" class="btn-request-access">Sign Up</a>
                     <a href="login.html" class="btn-secure-vault">Login</a>
                 </div>
-            </div>
         </div>
         <div class="main-nav" id="mainNav">
             <div class="container">
@@ -43,7 +177,6 @@
                         <span></span>
                     </button>
                 </div>
-            </div>
         </div>
     </header>
 
@@ -72,7 +205,6 @@
                 <button type="submit">Search</button>
             </form>
         </div>
-    </div>
 
     <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
@@ -90,20 +222,223 @@
     <section class="inner-page-hero">
         <div class="container">
             <h1>Vault, Cargo, and Asset Services</h1>
-            <p>Each service card on the homepage now points here with its own section and its own enquiry route.</p>
-        </div>
-    </section>
-    <section class="page-section">
-        <div class="container">
-            <div class="info-grid">
-                <div class="info-card" id="vaulting-facilities"><h3>Vaulting Facilities</h3><p>Private vault rooms, monitored compartments, controlled intake, and confidential storage records.</p><div class="page-actions"><a href="request-access.html?service=vaulting" class="btn">Request Vaulting</a></div></div>
-                <div class="info-card" id="diamond-jewellery"><h3>Diamond & Jewellery</h3><p>Secure intake for diamonds, fine jewelry, watches, and heirloom sets with optional transport coordination.</p><div class="page-actions"><a href="request-access.html?service=jewellery" class="btn">Request Jewellery Storage</a></div></div>
-                <div class="info-card" id="precious-metals"><h3>Precious Metals</h3><p>Gold, silver, platinum, and bullion protection with asset registration and monitored cargo movement.</p><div class="page-actions"><a href="request-access.html?service=metals" class="btn">Request Metals Storage</a></div></div>
+            <p>Choose the protection level that matches your holdings. All tiers include insured storage, biometric access, and 24/7 monitoring.</p>
+            <div class="page-actions">
+                <a href="#tiers" class="btn">Service Tiers</a>
+                <a href="#comparison" class="btn btn-simple">Compare</a>
+                <a href="#enquiry" class="btn btn-simple">Enquire</a>
             </div>
+    </section>
+
+    <!-- Service Tiers -->
+    <section class="page-section" id="tiers">
+        <div class="container">
+            <h2 style="text-align:center;margin-bottom:40px;">Service Tiers</h2>
+            <div class="service-tier-grid">
+                <div class="service-tier-card">
+                    <span class="tier-badge tier-badge-standard">Standard</span>
+                    <div class="tier-price">£250<span>/month</span></div>
+                    <p style="color:var(--color-text-muted);font-size:0.9375rem;">Ideal for individual collectors and small holdings.</p>
+                    <ul class="tier-features">
+                        <li>Private vault compartment (1m²)</li>
+                        <li>Biometric entry access</li>
+                        <li>24/7 CCTV monitoring</li>
+                        <li>Basic insurance coverage</li>
+                        <li>Quarterly asset verification</li>
+                        <li>Email support (business hours)</li>
+                        <li class="missing">Dedicated account manager</li>
+                        <li class="missing">Priority transport coordination</li>
+                        <li class="missing">Quarterly audit reports</li>
+                    </ul>
+                    <a href="request-access.html?tier=standard" class="btn btn-simple" style="width:100%;justify-content:center;">Request Standard</a>
+                </div>
+
+                <div class="service-tier-card">
+                    <span class="tier-badge tier-badge-premium">Premium</span>
+                    <div class="tier-price">£750<span>/month</span></div>
+                    <p style="color:var(--color-text-muted);font-size:0.9375rem;">For family offices and medium-scale holdings.</p>
+                    <ul class="tier-features">
+                        <li>Private vault room (5–10m²)</li>
+                        <li>Biometric + dual-key entry</li>
+                        <li>24/7 armed response team</li>
+                        <li>Enhanced insurance coverage</li>
+                        <li>Monthly asset verification</li>
+                        <li>Phone & email support (extended hours)</li>
+                        <li>Dedicated account manager</li>
+                        <li>Priority transport coordination</li>
+                        <li class="missing">Quarterly audit reports</li>
+                    </ul>
+                    <a href="request-access.html?tier=premium" class="btn btn-simple" style="width:100%;justify-content:center;">Request Premium</a>
+                </div>
+
+                <div class="service-tier-card gold">
+                    <span class="tier-badge tier-badge-gold">Gold Service</span>
+                    <div class="tier-price">£2,200<span>/month</span></div>
+                    <p style="color:var(--color-text-muted);font-size:0.9375rem;">Our highest tier for institutional and ultra-high-net-worth clients.</p>
+                    <ul class="tier-features">
+                        <li>Custom vault suite (up to 30m²)</li>
+                        <li>Biometric + multi-factor access</li>
+                        <li>24/7 on-site armed response</li>
+                        <li>Comprehensive insurance (Lloyd's backed)</li>
+                        <li>Weekly asset verification</li>
+                        <li>24/7 priority phone & email support</li>
+                        <li>Dedicated senior account manager</li>
+                        <li>Priority insured transport worldwide</li>
+                        <li>Quarterly independent audit reports</li>
+                    </ul>
+                    <a href="request-access.html?tier=gold" class="btn" style="width:100%;justify-content:center;">Request Gold Service</a>
+                </div>
         </div>
     </section>
+
+    <!-- Comparison Table -->
+    <section class="page-section page-section-alt" id="comparison">
+        <div class="container">
+            <h2 style="text-align:center;margin-bottom:40px;">Service Comparison</h2>
+            <div class="comparison-table-wrap">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Standard</th>
+                            <th>Premium</th>
+                            <th>Gold Service</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="feature-name">Vault Space</td><td>1m² compartment</td><td>5–10m² room</td><td>Up to 30m² suite</td></tr>
+                        <tr><td class="feature-name">Access Control</td><td>Biometric</td><td>Biometric + dual-key</td><td>Biometric + multi-factor</td></tr>
+                        <tr><td class="feature-name">Security Response</td><td>24/7 CCTV</td><td>24/7 armed response</td><td>24/7 on-site armed response</td></tr>
+                        <tr><td class="feature-name">Insurance</td><td>Basic coverage</td><td>Enhanced coverage</td><td>Lloyd's backed comprehensive</td></tr>
+                        <tr><td class="feature-name">Asset Verification</td><td>Quarterly</td><td>Monthly</td><td>Weekly</td></tr>
+                        <tr><td class="feature-name">Support</td><td>Email (business hours)</td><td>Phone & email (extended)</td><td>24/7 priority support</td></tr>
+                        <tr><td class="feature-name">Account Manager</td><td class="check-no">—</td><td class="check-yes">✓ Dedicated</td><td class="check-yes">✓ Senior Dedicated</td></tr>
+                        <tr><td class="feature-name">Transport Coordination</td><td class="check-no">—</td><td class="check-yes">✓ Priority</td><td class="check-yes">✓ Priority Insured Worldwide</td></tr>
+                        <tr><td class="feature-name">Audit Reports</td><td class="check-no">—</td><td class="check-no">—</td><td class="check-yes">✓ Quarterly Independent</td></tr>
+                        <tr><td class="feature-name">Monthly Fee</td><td>£250</td><td>£750</td><td>£2,200</td></tr>
+                    </tbody>
+                </table>
+            </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="page-section" id="categories">
+        <div class="container">
+            <h2 style="text-align:center;margin-bottom:40px;">Specialised Services</h2>
+            <div class="info-grid">
+                <div class="info-card" id="vaulting-facilities">
+                    <h3>Vaulting Facilities</h3>
+                    <p>Private vault rooms, monitored compartments, controlled intake, and confidential storage records. Suitable for all asset classes.</p>
+                    <div class="page-actions"><a href="request-access.html?service=vaulting" class="btn">Request Vaulting</a></div>
+                <div class="info-card" id="diamond-jewellery">
+                    <h3>Diamond & Jewellery</h3>
+                    <p>Secure intake for diamonds, fine jewelry, watches, and heirloom sets with optional transport coordination and gemological verification.</p>
+                    <div class="page-actions"><a href="request-access.html?service=jewellery" class="btn">Request Jewellery Storage</a></div>
+                <div class="info-card" id="precious-metals">
+                    <h3>Precious Metals</h3>
+                    <p>Gold, silver, platinum, and bullion protection with asset registration, weight verification, and monitored cargo movement.</p>
+                    <div class="page-actions"><a href="request-access.html?service=metals" class="btn">Request Metals Storage</a></div>
+            </div>
+    </section>
+
+    <!-- Enquiry Section -->
+    <section class="page-section page-section-alt" id="enquiry">
+        <div class="container">
+            <div class="enquiry-section">
+                <h3>Request a Service Consultation</h3>
+                <p>Tell us about your assets and we will recommend the right tier and service package.</p>
+                <form id="serviceEnquiryForm" class="dashboard-form dashboard-form-grid">
+                    <div class="form-field"><input type="text" name="fullName" placeholder="Full Name" required aria-label="Full Name"></div>
+                    <div class="form-field"><input type="email" name="email" placeholder="Email Address" required aria-label="Email Address"></div>
+                    <div class="form-field"><input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number"></div>
+                    <div class="form-field">
+                        <select name="tier" required aria-label="Interested Tier">
+                            <option value="">Interested Tier</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Premium">Premium</option>
+                            <option value="Gold">Gold Service</option>
+                            <option value="Unsure">Not Sure — Recommend</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <select name="serviceType" required aria-label="Service Type">
+                            <option value="">Service Type</option>
+                            <option value="Vaulting">Vaulting Facilities</option>
+                            <option value="Jewellery">Diamond & Jewellery</option>
+                            <option value="Metals">Precious Metals</option>
+                            <option value="Mixed">Mixed Assets</option>
+                        </select>
+                    </div>
+                    <div class="form-field"><input type="text" name="estimatedValue" placeholder="Estimated Holdings Value" aria-label="Estimated Value"></div>
+                    <div class="form-field form-field-full"><textarea name="message" rows="4" placeholder="Describe your storage or transport requirements..." required aria-label="Message"></textarea></div>
+                    <button type="submit" class="btn btn-submit">Submit Enquiry</button>
+                </form>
+                <div id="enquiryMessage" class="dashboard-message" aria-live="polite"></div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-logo">
+                    <img src="images/logo.png" alt="Iron Vault Security" width="230" height="51">
+                </div>
+                <div class="footer-col">
+                    <h4>Company info</h4>
+                    <nav><a href="about.html">About page</a></nav>
+                </div>
+                <div class="footer-col">
+                    <h4>Our services</h4>
+                    <nav><a href="services.html">Services page</a></nav>
+                </div>
+                <div class="footer-col footer-cta">
+                    <a href="client-portal.html" class="btn btn-simple">Client Portal</a>
+                    <div class="social-icons">
+                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=Facebook%20Inquiry" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=X%20Inquiry" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=LinkedIn%20Inquiry" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    </div>
+            </div>
+            <div class="copyright-bar">
+                <p>Iron Vault Security © 2025. All Rights Reserved.</p>
+            </div>
+    </footer>
 
     <script src="js/nav.js"></script>
+    <script>
+    (function() {
+        var form = document.getElementById('serviceEnquiryForm');
+        var message = document.getElementById('enquiryMessage');
+        if (!form) return;
+
+        async function safeJson(response) {
+            var text = await response.text();
+            if (!text) return {};
+            try { return JSON.parse(text); } catch (e) { throw new Error('Invalid server response.'); }
+        }
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            var formData = new FormData(form);
+            var payload = Object.fromEntries(formData.entries());
+
+            try {
+                var response = await fetch('/api/dashboard', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'contactRequest', payload: payload })
+                });
+                var result = await safeJson(response);
+                if (!response.ok) throw new Error(result.error || 'Submission failed.');
+                message.textContent = 'Enquiry submitted successfully. Our team will contact you within 24 hours.';
+                message.className = 'dashboard-message active success';
+                form.reset();
+            } catch (error) {
+                message.textContent = error.message || 'Could not submit enquiry.';
+                message.className = 'dashboard-message active error';
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
-

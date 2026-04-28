@@ -92,6 +92,31 @@ const defaultState = {
   contacts: []
 };
 
+function sanitizeString(value) {
+  if (value === null || value === undefined) return '';
+  return String(value).trim();
+}
+
+function sanitizeNumber(value, fallback = 0) {
+  const num = Number(value);
+  return Number.isFinite(num) ? num : fallback;
+}
+
+async function logAudit(payload) {
+  try {
+    await fetch(
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000') + '/api/audit',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ payload })
+      }
+    );
+  } catch (e) {
+    // Audit logging is best-effort
+  }
+}
+
 export default async function handler(request, response) {
   if (request.method === 'GET') {
     const data = await readState();
@@ -109,6 +134,14 @@ export default async function handler(request, response) {
     const currentState = await readState();
     const nextState = applyAction(currentState, action, payload);
     await writeState(nextState);
+
+    await logAudit({
+      actor: payload.actor || 'system',
+      action: `dashboard:${action}`,
+      target: payload.assetId || payload.trackingId || payload.email || 'dashboard',
+      oldValue: null,
+      newValue: payload
+    });
 
     return response.status(200).json({ ok: true, data: nextState, storage: storageMode() });
   }

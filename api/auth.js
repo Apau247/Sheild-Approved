@@ -160,8 +160,8 @@ const defaultUsers = {
       nextOfKinImage: 'images/new.jpeg',
       assetDetails: {
         assetType: 'Gold',
-        quantity: '250 KG',
-        consignmentValue: 23000000,
+        quantity: '98 KG',
+        consignmentValue: 7500000,
         currency: 'USD',
         monthlyCharges: 2200,
         dateIssued: '2019-08-20',

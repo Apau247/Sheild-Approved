@@ -105,6 +105,51 @@
             font-size: 0.7rem;
             color: var(--color-text-secondary);
         }
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: var(--color-white);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+        }
+        .modal-content h3 {
+            margin-bottom: 20px;
+            font-size: 1.35rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-text-muted);
+            cursor: pointer;
+        }
+        .modal-close:hover {
+            color: var(--color-primary-dark);
+        }
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 24px 16px;
+                border-radius: 12px;
+            }
+        }
     </style>
 </head>
 <body class="scheme_default">
@@ -116,6 +161,7 @@
                     <a href="index.html" class="btn-request-access">Home</a>
                     <a href="#" id="adminLogout" class="btn-secure-vault">Logout</a>
                 </div>
+            </div>
         </div>
         <div class="main-nav" id="mainNav">
             <div class="container">
@@ -133,6 +179,7 @@
                         <span></span>
                     </button>
                 </div>
+            </div>
         </div>
     </header>
 
@@ -179,9 +226,11 @@
             <p>Use the admin login to manage client records, add assets, and set vault storage prices properly from the site.</p>
             <div class="page-actions">
                 <a href="#inventory" class="btn">Inventory</a>
+                <a href="#consignments" class="btn btn-simple">Consignments</a>
                 <a href="#adminTools" class="btn btn-simple">Admin Tools</a>
                 <a href="#clientRecords" class="btn btn-simple">Client Records</a>
             </div>
+        </div>
     </section>
 
     <section class="page-section page-section-alt" id="inventory">
@@ -237,6 +286,114 @@
                 </div>
             <div id="adminMessage" class="dashboard-message" aria-live="polite"></div>
     </section>
+
+    <section class="page-section" id="consignments">
+        <div class="container">
+            <div class="table-panel">
+                <h3>Consignment Records</h3>
+                <p style="color:var(--color-text-secondary);margin-bottom:1rem;">Manage high-value consignment details including quantity, value, and storage assignment.</p>
+                <div class="ops-overview" style="margin-bottom:1.5rem;">
+                    <div class="ops-card"><span class="ops-label">Total Consignments</span><strong id="consignmentCount">0</strong></div>
+                    <div class="ops-card"><span class="ops-label">Total Value (USD)</span><strong id="consignmentValueTotal">$0</strong></div>
+                    <div class="ops-card"><span class="ops-label">Stored</span><strong id="consignmentStoredCount">0</strong></div>
+                    <div class="ops-card"><span class="ops-label">Pending</span><strong id="consignmentPendingCount">0</strong></div>
+                </div>
+                <div class="cargo-table-wrap">
+                    <table class="cargo-table" id="consignmentTable">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Client</th>
+                                <th>Asset Type</th>
+                                <th>Quantity</th>
+                                <th>Consignment Value</th>
+                                <th>Currency</th>
+                                <th>Security Code</th>
+                                <th>Storage Location</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="consignmentRows"><tr><td colspan="10" class="empty-copy">Loading consignment data...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="asset-management" style="margin-top:2rem;">
+                <div class="asset-panel">
+                    <div class="asset-panel-head">
+                        <h3>Add / Update Consignment</h3>
+                        <p>Update consignment records with validated fields. All changes are audit-logged.</p>
+                    </div>
+                    <form id="consignmentForm" class="dashboard-form dashboard-form-grid">
+                        <div class="form-field"><input type="text" name="userId" placeholder="User ID (e.g., client-006)" required aria-label="User ID"></div>
+                        <div class="form-field"><input type="text" name="assetType" placeholder="Asset Type (e.g., Gold)" required aria-label="Asset Type"></div>
+                        <div class="form-field"><input type="text" name="quantity" placeholder="Quantity (e.g., 98 kg)" required aria-label="Quantity"></div>
+                        <div class="form-field"><input type="number" name="consignmentValue" placeholder="Consignment Value (e.g., 7500000)" min="0" step="0.01" required aria-label="Consignment Value"></div>
+                        <div class="form-field">
+                            <select name="currency" required aria-label="Currency">
+                                <option value="USD" selected>USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="CHF">CHF</option>
+                                <option value="AED">AED</option>
+                            </select>
+                        </div>
+                        <div class="form-field"><input type="text" name="securityCode" placeholder="Security Code" required aria-label="Security Code"></div>
+                        <div class="form-field"><input type="text" name="storageLocation" placeholder="Storage Location" required aria-label="Storage Location"></div>
+                        <div class="form-field">
+                            <select name="status" required aria-label="Status">
+                                <option value="Stored">Stored</option>
+                                <option value="Pending">Pending</option>
+                                <option value="In Transit">In Transit</option>
+                                <option value="Verified">Verified</option>
+                                <option value="Withdrawn">Withdrawn</option>
+                            </select>
+                        </div>
+                        <div class="form-field"><input type="date" name="dateIssued" placeholder="Date Issued" aria-label="Date Issued"></div>
+                        <div class="form-field"><input type="number" name="monthlyCharges" placeholder="Monthly Charges" min="0" step="0.01" aria-label="Monthly Charges"></div>
+                        <button type="submit" class="btn btn-submit">Save Consignment Record</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consignment Edit Modal -->
+    <div class="modal-overlay" id="consignmentModal" style="display:none;">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+            <h3>Edit Consignment</h3>
+            <form id="consignmentEditForm" class="dashboard-form dashboard-form-grid">
+                <input type="hidden" name="userId" id="editUserId">
+                <div class="form-field"><input type="text" name="assetType" id="editAssetType" placeholder="Asset Type" required aria-label="Asset Type"></div>
+                <div class="form-field"><input type="text" name="quantity" id="editQuantity" placeholder="Quantity" required aria-label="Quantity"></div>
+                <div class="form-field"><input type="number" name="consignmentValue" id="editConsignmentValue" placeholder="Consignment Value" min="0" step="0.01" required aria-label="Consignment Value"></div>
+                <div class="form-field">
+                    <select name="currency" id="editCurrency" required aria-label="Currency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="CHF">CHF</option>
+                        <option value="AED">AED</option>
+                    </select>
+                </div>
+                <div class="form-field"><input type="text" name="securityCode" id="editSecurityCode" placeholder="Security Code" required aria-label="Security Code"></div>
+                <div class="form-field"><input type="text" name="storageLocation" id="editStorageLocation" placeholder="Storage Location" required aria-label="Storage Location"></div>
+                <div class="form-field">
+                    <select name="status" id="editStatus" required aria-label="Status">
+                        <option value="Stored">Stored</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Transit">In Transit</option>
+                        <option value="Verified">Verified</option>
+                        <option value="Withdrawn">Withdrawn</option>
+                    </select>
+                </div>
+                <div class="form-field"><input type="date" name="dateIssued" id="editDateIssued" aria-label="Date Issued"></div>
+                <div class="form-field"><input type="number" name="monthlyCharges" id="editMonthlyCharges" placeholder="Monthly Charges" min="0" step="0.01" aria-label="Monthly Charges"></div>
+                <button type="submit" class="btn btn-submit">Update Consignment</button>
+            </form>
+        </div>
+    </div>
 
     <section class="page-section" id="logs">
         <div class="container">
@@ -431,13 +588,179 @@
           var clientUsers = (authData.users || []).filter(function (u) { return u.role === 'client'; });
           document.getElementById('adminClientRecords').innerHTML = clientUsers.map(renderClientRecord).join('') || '<p class="empty-copy">No client records available.</p>';
 
+          renderConsignments(clientUsers);
+
         } catch (error) {
           document.getElementById('adminAssetRows').innerHTML = '<tr><td colspan="7" class="empty-copy">API unavailable.</td></tr>';
           document.getElementById('adminQueueRows').innerHTML = '<tr><td colspan="4" class="empty-copy">API unavailable.</td></tr>';
           document.getElementById('adminClientRecords').innerHTML = '<p class="empty-copy">API unavailable.</p>';
+          document.getElementById('consignmentRows').innerHTML = '<tr><td colspan="10" class="empty-copy">API unavailable.</td></tr>';
           showMessage(error.message || 'Could not load admin data.', 'error');
         }
       }
+
+      function renderConsignments(users) {
+        var rows = [];
+        var totalValue = 0;
+        var storedCount = 0;
+        var pendingCount = 0;
+
+        users.forEach(function(user) {
+          if (user.assetDetails) {
+            var ad = user.assetDetails;
+            var value = Number(ad.consignmentValue) || 0;
+            totalValue += value;
+            if (String(ad.status || '').toLowerCase() === 'stored') storedCount++;
+            else if (String(ad.status || '').toLowerCase() === 'pending') pendingCount++;
+
+            rows.push({
+              userId: user.id,
+              clientName: user.fullName,
+              assetType: ad.assetType || '-',
+              quantity: ad.quantity || '-',
+              consignmentValue: value,
+              currency: ad.currency || 'USD',
+              securityCode: ad.securityCode || '-',
+              storageLocation: ad.storageLocation || '-',
+              status: ad.status || 'Stored',
+              dateIssued: ad.dateIssued || '',
+              monthlyCharges: ad.monthlyCharges || ''
+            });
+          }
+        });
+
+        document.getElementById('consignmentCount').textContent = rows.length;
+        document.getElementById('consignmentValueTotal').textContent = '$' + totalValue.toLocaleString();
+        document.getElementById('consignmentStoredCount').textContent = storedCount;
+        document.getElementById('consignmentPendingCount').textContent = pendingCount;
+
+        document.getElementById('consignmentRows').innerHTML = rows.map(function(row) {
+          return '<tr>' +
+            '<td>' + row.userId + '</td>' +
+            '<td>' + row.clientName + '</td>' +
+            '<td>' + row.assetType + '</td>' +
+            '<td>' + row.quantity + '</td>' +
+            '<td>' + row.currency + ' ' + row.consignmentValue.toLocaleString() + '</td>' +
+            '<td>' + row.currency + '</td>' +
+            '<td>' + row.securityCode + '</td>' +
+            '<td>' + row.storageLocation + '</td>' +
+            '<td><span class="record-badge ' + statusBadgeClass(row.status) + '">' + row.status + '</span></td>' +
+            '<td><button type="button" class="btn btn-simple" style="padding:6px 12px;font-size:0.75rem;" onclick="openConsignmentEdit(\'' + row.userId + '\')">Edit</button></td>' +
+          '</tr>';
+        }).join('') || '<tr><td colspan="10" class="empty-copy">No consignment records available.</td></tr>';
+      }
+
+      window.openConsignmentEdit = function(userId) {
+        fetch('/api/users').then(function(r) { return r.json(); }).then(function(payload) {
+          var data = payload.data || payload;
+          var user = (data.users || []).find(function(u) { return u.id === userId; });
+          if (!user || !user.assetDetails) return;
+          var ad = user.assetDetails;
+          document.getElementById('editUserId').value = userId;
+          document.getElementById('editAssetType').value = ad.assetType || '';
+          document.getElementById('editQuantity').value = ad.quantity || '';
+          document.getElementById('editConsignmentValue').value = ad.consignmentValue || '';
+          document.getElementById('editCurrency').value = ad.currency || 'USD';
+          document.getElementById('editSecurityCode').value = ad.securityCode || '';
+          document.getElementById('editStorageLocation').value = ad.storageLocation || '';
+          document.getElementById('editStatus').value = ad.status || 'Stored';
+          document.getElementById('editDateIssued').value = ad.dateIssued || '';
+          document.getElementById('editMonthlyCharges').value = ad.monthlyCharges || '';
+          document.getElementById('consignmentModal').style.display = 'flex';
+        });
+      };
+
+      document.getElementById('modalClose').addEventListener('click', function() {
+        document.getElementById('consignmentModal').style.display = 'none';
+      });
+      document.getElementById('consignmentModal').addEventListener('click', function(e) {
+        if (e.target === this) this.style.display = 'none';
+      });
+
+      var consignmentForm = document.getElementById('consignmentForm');
+      var consignmentEditForm = document.getElementById('consignmentEditForm');
+
+      consignmentForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        var formData = new FormData(consignmentForm);
+        var payload = Object.fromEntries(formData.entries());
+        payload.consignmentValue = Number(payload.consignmentValue) || 0;
+        payload.monthlyCharges = Number(payload.monthlyCharges) || 0;
+        payload.actor = currentUser.fullName || currentUser.email;
+
+        try {
+          var response = await fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'updateUser',
+              payload: {
+                id: payload.userId,
+                assetDetails: {
+                  assetType: payload.assetType,
+                  quantity: payload.quantity,
+                  consignmentValue: payload.consignmentValue,
+                  currency: payload.currency,
+                  securityCode: payload.securityCode,
+                  storageLocation: payload.storageLocation,
+                  status: payload.status,
+                  dateIssued: payload.dateIssued,
+                  monthlyCharges: payload.monthlyCharges
+                },
+                actor: payload.actor
+              }
+            })
+          });
+          var result = await safeJson(response);
+          if (!response.ok) throw new Error(result.error || 'Could not save consignment.');
+          showMessage('Consignment record saved successfully.', 'success');
+          consignmentForm.reset();
+          loadAdminData();
+        } catch (error) {
+          showMessage(error.message || 'Could not save consignment.', 'error');
+        }
+      });
+
+      consignmentEditForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        var formData = new FormData(consignmentEditForm);
+        var payload = Object.fromEntries(formData.entries());
+        payload.consignmentValue = Number(payload.consignmentValue) || 0;
+        payload.monthlyCharges = Number(payload.monthlyCharges) || 0;
+        payload.actor = currentUser.fullName || currentUser.email;
+
+        try {
+          var response = await fetch('/api/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'updateUser',
+              payload: {
+                id: payload.userId,
+                assetDetails: {
+                  assetType: payload.assetType,
+                  quantity: payload.quantity,
+                  consignmentValue: payload.consignmentValue,
+                  currency: payload.currency,
+                  securityCode: payload.securityCode,
+                  storageLocation: payload.storageLocation,
+                  status: payload.status,
+                  dateIssued: payload.dateIssued,
+                  monthlyCharges: payload.monthlyCharges
+                },
+                actor: payload.actor
+              }
+            })
+          });
+          var result = await safeJson(response);
+          if (!response.ok) throw new Error(result.error || 'Could not update consignment.');
+          showMessage('Consignment updated successfully.', 'success');
+          document.getElementById('consignmentModal').style.display = 'none';
+          loadAdminData();
+        } catch (error) {
+          showMessage(error.message || 'Could not update consignment.', 'error');
+        }
+      });
 
       adminAssetForm.addEventListener('submit', async function (event) {
         event.preventDefault();
