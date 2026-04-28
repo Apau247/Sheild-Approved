@@ -86,6 +86,23 @@
       "owner": "Lui Kyle Tan",
       "createdAt": "2026-04-25T00:00:00.000Z",
       "updatedAt": "2026-04-25T00:00:00.000Z"
+    },
+    {
+      "trackingId": "IVS-PA-001",
+      "status": "In Transit",
+      "origin": "London, UK",
+      "destination": "Manila, Philippines",
+      "eta": "15 Jul 2026",
+      "progress": 45,
+      "contents": "Gold Reserve - 98 KG",
+      "current": "Dubai, UAE",
+      "courier": "Iron Vault Secure Transport",
+      "driverName": "Agent Morrison",
+      "driverVehicle": "Armored Transport Unit 3",
+      "driverPhone": "+44 20 7000 8888",
+      "owner": "Phil Alan",
+      "createdAt": "2026-04-25T00:00:00.000Z",
+      "updatedAt": "2026-04-25T00:00:00.000Z"
     }
   ],
   "assets": [
@@ -166,13 +183,13 @@
       "owner": "Phil Alan",
       "assetName": "Phil Alan Oil Industry Gold Reserve",
       "assetType": "Gold",
-      "quantity": "250 KG",
+      "quantity": "98 KG",
       "vault": "Vault L-01",
       "storagePrice": "2200",
       "status": "Stored",
       "createdAt": "2019-08-20T00:00:00.000Z",
       "updatedAt": "2026-04-25T00:00:00.000Z",
-      "consignmentValue": 23000000,
+      "consignmentValue": 7500000,
       "currency": "USD",
       "securityCode": "OBS102-US-GA",
       "storageLocation": "45 Bankside, London SE1, UK"

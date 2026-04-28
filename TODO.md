@@ -1,46 +1,64 @@
-# Iron Vault Security — Platform Upgrade TODO
+# Enhance Gold Vault Security Site Legitimacy — Implementation Plan
 
-## COMPLETED UPGRADES
+## Overview
+Add robust legitimacy signals to Iron Vault Security to demonstrate transparency, third-party verification, and multi-layered defenses that distinguish a legitimate vault operation from scams.
 
-### Phase 1: Bug Fixes & Foundation
-- [x] Fixed missing closing `</div>` tags in `admin-dashboard.html`
-- [x] Fixed missing closing `</div>` tags in `request-access.html`
-- [x] Created `js/app.js` with shared utilities (toast, offline detection, session timeout, PWA install)
+---
 
-### Phase 2: Consignment Management & Audit Logging
-- [x] Added consignment CRUD section to `admin-dashboard.html` with stats cards, table, and modal editing
-- [x] Added modal CSS styles to `admin-dashboard.html`
-- [x] Added `sanitizeString`, `sanitizeEmail`, `sanitizeNumber` helpers to `api/dashboard.js` and `api/users.js`
-- [x] Added `logAudit()` to `api/dashboard.js` and `api/users.js`
-- [x] Wired audit logging into all create/update/delete actions with oldValue/newValue tracking
+## Steps
 
-### Phase 3: Multi-User Support & RBAC
-- [x] Existing auth already supports multiple users (admin vs client roles)
-- [x] `client-portal.html` filters data per logged-in user
-- [x] `admin-dashboard.html` enforces admin-only access
+### Step 1: Create `security-compliance.html`
+- [ ] New dedicated page covering all legitimacy signals
+- [ ] Physical Security: UL TL-30X6, EN 1143-1 Grade 10+, 90-ton steel doors, time locks, airtight seals, reinforced concrete
+- [ ] Access Controls: Biometric (fingerprint, iris, facial), MFA, dual-control, mantraps, visitor protocols
+- [ ] Surveillance: 24/7 CCTV, motion detectors, seismic/tamper sensors, sound/thermal detection, off-site monitoring, armed response
+- [ ] Environmental: Climate control, fire suppression, flood protection, redundant power, disaster resistance
+- [ ] Location & Perimeter: Secure low-profile site, fencing, metal detectors, law enforcement integration
+- [ ] Allocated/Segregated Storage: Serial numbers, weights, assay certificates, proof of ownership
+- [ ] Insurance: Comprehensive "all-risk", Lloyd's of London, market-value coverage
+- [ ] Independent Audits: Bureau Veritas/EY, physical count/weight/serial verification, quarterly/annual reports
+- [ ] Accreditations: LBMA compliance, "loco London", IRS approval for precious metals IRAs
+- [ ] Transparency: Clear contracts, no high-pressure sales, controlled withdrawals
+- [ ] Employee Screening: Background checks, bonding, internal risk policies
 
-### Phase 4: Responsive / Mobile-First Design & PWA
-- [x] Updated `manifest.json` with PWA shortcuts, screenshots, and metadata
-- [x] Rewrote `sw.js` with IndexedDB offline form queue, background sync, push notifications, network-first API strategy
-- [x] Added toast notification, session timeout, offline indicator, and mobile table card CSS to `css/style.css`
-- [x] Mobile-responsive table behavior (card layout below 768px)
+### Step 2: Enhance `about.html`
+- [ ] Add company history and founding principles
+- [ ] Add operational security philosophy
+- [ ] Add employee vetting and bonding section
+- [ ] Add trust signals and anti-scam transparency statements
 
-### Phase 5: Operational Controls
-- [x] Admin dashboard has clear sections for inventory, client records, consignment management, and user queue
-- [x] Modals for inline editing without page reloads
+### Step 3: Enhance `services.html`
+- [ ] Add physical security specs per tier
+- [ ] Add insurance coverage details per tier
+- [ ] Add audit frequency per tier
+- [ ] Add LBMA compliance note
+- [ ] Add environmental controls per service category
 
-### Phase 6: Service Features (Legitimate Use)
-- [x] Rewrote `services.html` with transparent Standard/Premium/Gold tier cards
-- [x] Added feature comparison table, specialized service categories, and enquiry form
+### Step 4: Enhance `index.html`
+- [ ] Add accreditation/trust badge section (LBMA, Lloyd's, ISO)
+- [ ] Add "Why We're Legitimate" trust signals section
+- [ ] Add link to new Security & Compliance page
+- [ ] Strengthen Schema.org structured data with security features
 
-### Phase 7: Security & Trust
-- [x] Input sanitization on all API endpoints
-- [x] Audit logging for all data changes
-- [x] Session timeout with warning overlay
-- [x] Offline form sync via service worker
+### Step 5: Update Navigation Across All Pages
+- [ ] Add "Security & Compliance" link to header nav on all HTML pages
+- [ ] Add "Security & Compliance" link to mobile menu on all HTML pages
+- [ ] Update footer links on all pages to include new page
+- [ ] Pages to update: index.html, about.html, services.html, login.html, signup.html, client-portal.html, admin-dashboard.html, request-access.html, search.html, forgot-password.html
 
-### Phase 8: Design & UI
-- [x] Toast notifications for user feedback
-- [x] Mobile card-style tables
-- [x] Consistent dark/light scheme support
-- [x] Clean modal UI for admin editing
+### Step 6: Create `data/compliance.json`
+- [ ] Store audit report metadata
+- [ ] Store certification details
+- [ ] Store insurance policy references
+- [ ] Store accreditation status
+
+### Step 7: Update `client-portal.html`
+- [ ] Add security compliance summary panel
+- [ ] Add insurance coverage display for client's tier
+- [ ] Add audit status indicator
+
+### Step 8: Verification
+- [ ] Verify all internal links work
+- [ ] Test responsive layout on mobile
+- [ ] Ensure Schema.org markup validates
+
