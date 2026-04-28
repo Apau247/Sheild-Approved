@@ -65,6 +65,12 @@
     </style>
 </head>
 <body class="scheme_default">
+    <!-- Print-only report header -->
+    <div id="printReportHeader" style="display:none;text-align:center;padding:30px 20px;border-bottom:3px solid #d4af37;margin-bottom:20px">
+        <img src="images/logo.png" alt="Iron Vault Security" style="width:220px;height:auto;margin-bottom:16px">
+        <h2 style="margin:0;font-size:1.5rem;color:#1a1a1a">Client Asset &amp; Logistics Report</h2>
+        <p style="margin:8px 0 0;color:#666;font-size:.9rem">Confidential — Generated for authorised client review only.</p>
+    </div>
     <header class="site-header">
         <div class="top-bar">
             <div class="container">
@@ -289,6 +295,14 @@
       document.querySelectorAll('.blur-overlay').forEach(function(el){el.classList.add('premium-unblur');});
 
       if(isPremium){document.getElementById('profileCard').classList.add('premium-profile');document.getElementById('premiumBadgeWrap').innerHTML='<div class="premium-badge">Premium Client</div>';}
+
+      // PDF Download handler
+      document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+        var header = document.getElementById('printReportHeader');
+        if (header) header.style.display = 'block';
+        window.print();
+        setTimeout(function() { if (header) header.style.display = 'none'; }, 500);
+      });
 
       var mapQuery=encodeURIComponent(currentUser.address||(currentUser.city+', '+currentUser.country)||'London, UK');
       document.getElementById('clientMapFrame').src='https://maps.google.com/maps?q='+mapQuery+'&t=k&z=14&ie=UTF8&iwloc=&output=embed';
