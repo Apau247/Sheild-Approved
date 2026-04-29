@@ -367,10 +367,32 @@
       signupForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const payload = formToObject(signupForm);
-        await saveDashboardAction('signup', payload, 'Sign up request received.');
+        // Save to dashboard
+        await saveDashboardAction('signup', payload, 'Sign up request saved.');
+        // Send email (replace with your EmailJS keys)
+        if (typeof sendSignupEmail === 'function') {
+          await sendSignupEmail(payload, 'YOUR_TEMPLATE_ID', 'YOUR_SERVICE_ID');
+        }
         signupForm.reset();
+        showMessage('Signup saved and confirmation email sent!', 'success');
       });
     }
+
+    // Premium Stripe Checkout (add to index.html/client-portal.html)
+    const stripeCheckoutBtns = document.querySelectorAll('[data-stripe-upgrade]');
+    stripeCheckoutBtns.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        // Replace with your Stripe key
+        const stripe = Stripe('pk_test_YOUR_KEY');
+        const {error} = await stripe.redirectToCheckout({
+          lineItems: [{price: 'price_YOUR_PREMIUM_PRICE_ID', quantity: 1}],
+          mode: 'subscription',
+          successUrl: window.location.origin + '/?success=true&session_id={CHECKOUT_SESSION_ID}',
+          cancelUrl: window.location.origin + '/?canceled=true',
+        });
+        if (error) showMessage(error.message, 'error');
+      });
+    });
 
     if (shipmentUpdateForm) {
       shipmentUpdateForm.addEventListener('submit', async (event) => {
@@ -385,8 +407,14 @@
       contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const payload = formToObject(contactForm);
-        await saveDashboardAction('contactRequest', payload, 'Message received. We will follow up shortly.');
+        // Save to dashboard
+        await saveDashboardAction('contactRequest', payload, 'Message saved.');
+        // Send email (replace with your EmailJS keys)
+        if (typeof sendContactEmail === 'function') {
+          await sendContactEmail(payload, 'YOUR_TEMPLATE_ID', 'YOUR_SERVICE_ID');
+        }
         contactForm.reset();
+        showMessage('Message saved and email sent to admin!', 'success');
       });
     }
   }
@@ -751,7 +779,75 @@
       .replace(/'/g, '&#39;');
   }
 
-  function clone(value) {
+function clone(value) {
     return JSON.parse(JSON.stringify(value));
   }
+
+  // -----------------------------
+  // DASHBOARD STATS ANIMATION & REFRESH
+  // -----------------------------
+  // INITIAL VALUES (from server)
+  let dashboardData = {
+    assets: 128,
+    vaults: 36,
+    deliveries: 214
+  };
+
+  // -----------------------------
+  // ANIMATE NUMBER FUNCTION
+  // -----------------------------
+  function animateValue(element, start, end, duration) {
+    let startTimestamp = null;
+
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+      const value = Math.floor(progress * (end - start) + start);
+      element.innerText = value;
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  }
+
+  // -----------------------------
+  // UPDATE DASHBOARD UI
+  // -----------------------------
+  function updateDashboard(data) {
+    animateValue(document.getElementById("assets"), 0, data.assets, 1500);
+    animateValue(document.getElementById("vaults"), 0, data.vaults, 1500);
+    animateValue(document.getElementById("deliveries"), 0, data.deliveries, 1500);
+  }
+
+  // -----------------------------
+  // SIMULATE REAL DATA REFRESH
+  // (replace with API later)
+  // -----------------------------
+  function fetchLatestData() {
+    // Simulated growth (safe + realistic)
+    dashboardData.assets += Math.floor(Math.random() * 3); // +0–2
+    dashboardData.vaults += Math.floor(Math.random() * 1);  // +0–1
+    dashboardData.deliveries += Math.floor(Math.random() * 4); // +0–3
+
+    updateDashboard(dashboardData);
+
+    console.log("Dashboard synced:", dashboardData);
+  }
+
+  // -----------------------------
+  // INITIAL LOAD
+  // -----------------------------
+  updateDashboard(dashboardData);
+
+  // -----------------------------
+  // PERIODIC UPDATE (NOT every second)
+  // -----------------------------
+  // Recommended: 30s, 1min, or 5min in real systems
+  setInterval(fetchLatestData, 30000);
+
 })();

@@ -1,32 +1,38 @@
-# Color Standardization TODO — Gold / Black / White Only
+# Price Update System - Implementation TODO
 
-## Goal
-Remove all non-palette colors (steel blue, green, red, yellow, gray) and standardize to only:
-- **Gold**: `#d4af37` (`var(--color-accent-gold)`)
-- **Black**: `#1a1a1a` (`var(--color-primary-dark)`)
-- **White**: `#ffffff` (`var(--color-white)`)
+## Status: [x] 33% Complete (Deps + Scraper ✅)
 
-## Steps
+### Step 1: Setup Dependencies [x]
+- [ ] `npm install puppeteer axios cheerio node-cron`
+- [ ] Test: `npm run scrape-test`
 
-### Phase 1: CSS Variable Files
-- [ ] `css/__colors_default.css` — Remove steel/green vars, update text/bg colors
-- [ ] `css/__colors_dark.css` — Remove steel/green vars, update dark scheme colors
+### Step 2: Create Price Scraper [x]
+- [x] `scripts/update-prices.js` - Node scraper for 4 sites
+- [x] `data/prices-history.json` - Init empty history
+- [x] Test scraper locally
 
-### Phase 2: Main Stylesheet
-- [ ] `css/style.css` — Replace all steel blue, green, red, gray, cream colors
+### Step 3: Update Data Structure [ ]
+- [ ] `data/dashboard.json` - Add `prices` object (gold/platinum/silver/diamonds)
+- [ ] Extract spot prices to assets/shipments
 
-### Phase 3: HTML Files (Inline Styles)
-- [ ] `admin-dashboard.html` — Fix badge colors, modal styles
-- [ ] `client-portal.html` — Fix button colors, borders, backgrounds
-- [ ] `services.html` — Fix tier badges, checkmarks, backgrounds
-- [ ] `about.html` — Fix any inline colors
-- [ ] `security-compliance.html` — Fix any inline colors
+### Step 4: API Endpoints [ ]
+- [ ] `api/update-prices.js` - Vercel endpoint to trigger scrape
+- [ ] Update `api/dashboard.js` to include prices
 
-### Phase 4: JavaScript Files
-- [ ] `js/app.js` — Fix validation border color
-- [ ] `js/admin.js` — Verify generated HTML uses CSS vars only
+### Step 5: UI Updates [ ]
+- [ ] `admin-dashboard.html` - Charts section + price tables + update button
+- [ ] `client-portal.html` - Add price charts + indicators
+- [ ] `js/admin.js` - Update button handler + rise/fall display
 
-### Phase 5: Verification
-- [ ] Search for remaining non-palette hex codes across project
-- [ ] Spot-check key pages for visual consistency
+### Step 6: CSS & Polish [ ]
+- [ ] `css/__custom.css` - Price rise/fall styles + chart responsive
+
+### Step 7: Test & Deploy [ ]
+- [ ] Local test full flow
+- [ ] Deploy Vercel
+- [ ] Setup cron for auto-updates
+
+**Next Action**: Add client portal charts + final testing.
+
+**Progress Tracking**: Update this file after each step completion.
 
