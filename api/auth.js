@@ -145,7 +145,7 @@ const defaultUsers = {
       address: '2450 Taft Avenue, Malate, Manila, Metro Manila, Philippines 1004',
       preferredService: 'Private Vault',
       assetType: 'Gold',
-      nextOfKinName: 'Kendra Endra Mendes Scott',
+      nextOfKinName: 'Kendra Mendes Scott',
       nextOfKinPhone: null,
       nextOfKinRelationship: 'Daughter',
       nextOfKinEmail: 'kendraloney664@gmail.com',
