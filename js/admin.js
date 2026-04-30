@@ -68,7 +68,8 @@ try{
 var[dR,aR]=await Promise.all([fetch('/api/dashboard'),fetch('/api/users')]);
 var dP=await sj(dR),aP=await sj(aR);
 var dD=dP.data||dP,aD=aP.data||aP;
-document.getElementById('adminAssetRows').innerHTML=(dD.assets||[]).map(function(a){return'<tr><td>'+esc(a.owner)+'</td><td>'+esc(a.assetName)+'<br><small>'+esc(a.assetId)+'</small></td><td>'+esc(a.assetType)+'</td><td>'+esc(a.quantity)+'</td><td>'+esc(a.vault)+'</td><td>'+esc(a.storagePrice)+'</td><td>'+esc(a.status)+'</td></tr>';}).join('')||'<tr><td colspan="7" class="empty-copy">No asset data available.</td></tr>';
+displayPrices(dD.prices);
+document.getElementById('adminAssetRows').innerHTML=(dD.assets||[]).map(function(a){return'<tr><td>'+esc(a.owner)+'</td><td>'+esc(a.assetName)+'<br><small>'+esc(a.assetId)+'</small></td><td>'+esc(a.assetType)+'</td><td>'+esc(a.quantity)+'</td><td>'+esc(a.vault)+'</td><td class="price-rise">'+(a.spotPrice?'$'+a.spotPrice+'/oz':'-')+'</td><td>$'+esc(a.consignmentValue)+'</td><td>$'+esc(a.storagePrice)+'/mo</td><td>'+esc(a.status)+'</td></tr>';}).join('')||'<tr><td colspan="9" class="empty-copy">No asset data available.</td></tr>';
 var q=[].concat((aD.users||[]).filter(function(x){return x.role==='client';}).map(function(i){var det=[i.id,i.phone,i.company,i.country,i.city,i.preferredService,i.assetType].filter(Boolean).join(' | ');return{name:i.fullName,email:i.email,meta:det,createdAt:i.createdAt||'New'};})).concat((dD.contacts||[]).map(function(i){return{name:i.name,email:i.email,meta:i.message||'',createdAt:i.createdAt||'New'};}));
 document.getElementById('adminQueueRows').innerHTML=q.map(function(e){return'<tr><td>'+esc(e.name)+'</td><td>'+esc(e.email)+'</td><td>'+esc(e.meta)+'</td><td>'+esc(e.createdAt)+'</td></tr>';}).join('')||'<tr><td colspan="4" class="empty-copy">No signup or contact requests available.</td></tr>';
 var cU=(aD.users||[]).filter(function(x){return x.role==='client';});
@@ -82,4 +83,35 @@ document.getElementById('consignmentRows').innerHTML='<tr><td colspan="10" class
 show(err.message||'Could not load admin data.','error');
 }}
 load();
+// Price update handler
+document.getElementById('updatePricesBtn')?.addEventListener('click', async function(){
+  const btn = this;
+  btn.disabled = true;
+  btn.textContent = 'Updating...';
+  try{
+    const res = await fetch('/api/update-prices', {method:'POST'});
+    const data = await sj(res);
+    if(data.ok){
+      show('Prices updated from live sources! Reloading data...','success');
+      load();
+    } else {
+      show('Update failed: '+data.error,'error');
+    }
+  }catch(err){
+    show('Update error: '+err.message,'error');
+  }
+  btn.disabled = false;
+  btn.textContent = '🔄 Update Prices Now';
+});
+function displayPrices(prices){
+  const minerals = ['gold','platinum','silver'];
+  minerals.forEach(m => {
+    const el = document.getElementById(m+'-price-display');
+    if(el && prices && prices[m]){
+      const p = prices[m];
+      const cls = p.percent > 0 ? 'price-rise' : p.percent < 0 ? 'price-fall' : 'price-neutral';
+      el.innerHTML = `$${p.oz}/oz <span class="${cls}"> ${p.percent}%</span>`;
+    }
+  });
+}
 })();
