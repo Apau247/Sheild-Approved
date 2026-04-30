@@ -839,10 +839,36 @@ function clone(value) {
     console.log("Dashboard synced:", dashboardData);
   }
 
-  // -----------------------------
+// -----------------------------
   // INITIAL LOAD
   // -----------------------------
   updateDashboard(dashboardData);
+
+  // -----------------------------
+  // SCROLL REVEAL ANIMATIONS
+  // -----------------------------
+  function initScrollReveal() {
+    var reveals = document.querySelectorAll('.service-card, .info-card, .portal-card, .pricing-card');
+    reveals.forEach(function(el) {
+      el.classList.add('reveal');
+    });
+
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  }
+
+  initScrollReveal();
+});
 
   // -----------------------------
   // PERIODIC UPDATE (NOT every second)

@@ -1,38 +1,31 @@
-# Price Update System - Implementation TODO
+# TODO: Touches & Perfection Improvements
+## Priority 1: Accessibility & Focus States
+- [x] Add focus-visible styles for keyboard navigation
+- [x] Add focus ring animation on interactive elements
 
-## Status: [x] 33% Complete (Deps + Scraper ✅)
+## Priority 2: Micro-interactions
+- [x] Add hover glow effects on buttons and cards
+- [x] Add button loading state animations
+- [x] Add subtle scale animations on hover
 
-### Step 1: Setup Dependencies [x]
-- [ ] `npm install puppeteer axios cheerio node-cron`
-- [ ] Test: `npm run scrape-test`
+## Priority 3: Scroll Animations
+- [x] Add smooth reveal animations on scroll
+- [x] Add fade-in-up animations for sections
+- [x] Add staggered animations for lists
 
-### Step 2: Create Price Scraper [x]
-- [x] `scripts/update-prices.js` - Node scraper for 4 sites
-- [x] `data/prices-history.json` - Init empty history
-- [x] Test scraper locally
+## Priority 4: Service Worker Improvements
+- [ ] Enhance offline caching strategy
+- [ ] Add cache versioning
 
-### Step 3: Update Data Structure [ ]
-- [ ] `data/dashboard.json` - Add `prices` object (gold/platinum/silver/diamonds)
-- [ ] Extract spot prices to assets/shipments
+## Priority 5: Form UX Improvements
+- [x] Add input validation animations
+- [x] Add shake animation on error
+- [ ] Add success checkmark animation
 
-### Step 4: API Endpoints [ ]
-- [ ] `api/update-prices.js` - Vercel endpoint to trigger scrape
-- [ ] Update `api/dashboard.js` to include prices
-
-### Step 5: UI Updates [ ]
-- [ ] `admin-dashboard.html` - Charts section + price tables + update button
-- [ ] `client-portal.html` - Add price charts + indicators
-- [ ] `js/admin.js` - Update button handler + rise/fall display
-
-### Step 6: CSS & Polish [ ]
-- [ ] `css/__custom.css` - Price rise/fall styles + chart responsive
-
-### Step 7: Test & Deploy [ ]
-- [ ] Local test full flow
-- [ ] Deploy Vercel
-- [ ] Setup cron for auto-updates
-
-**Next Action**: Add client portal charts + final testing.
-
-**Progress Tracking**: Update this file after each step completion.
-
+---
+## Completed:
+- [x] Initial analysis complete
+- [x] Button polish: glow, loading states, gradient hover
+- [x] Accessibility: focus-visible ring animation
+- [x] Scroll reveal: IntersectionObserver-based animations
+- [x] Form focus: pulse animation on inputs

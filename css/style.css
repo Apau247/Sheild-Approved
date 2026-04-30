@@ -111,12 +111,61 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 2px;
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.btn:hover::after {
+  opacity: 1;
 }
 
 .btn:hover {
   background-color: #b8962f;
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.35);
+}
+
+/* Focus visible for accessibility */
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-white), 0 0 0 5px var(--color-accent-gold);
+  animation: focusPulse 1s ease infinite;
+}
+
+@keyframes focusPulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--color-white), 0 0 0 5px var(--color-accent-gold); }
+  50% { box-shadow: 0 0 0 5px var(--color-white), 0 0 0 7px var(--color-accent-gold); }
+}
+
+/* Loading state */
+.btn.btn-loading {
+  pointer-events: none;
+  color: transparent;
+}
+
+.btn.btn-loading::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-primary-dark);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .btn-simple {
@@ -2638,6 +2687,48 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform 0.3s ease;
 }
 .offline-indicator.active { transform: translateY(0); }
+
+/* ---------- Scroll Reveal Animations ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal:nth-child(4) { transition-delay: 0.3s; }
+.reveal:nth-child(5) { transition-delay: 0.4s; }
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Focus animation for inputs */
+.form-field input:focus,
+.form-field textarea:focus {
+  animation: inputFocusPulse 0.3s ease;
+}
+
+@keyframes inputFocusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
+  100% { box-shadow: 0 0 0 4px rgba(212,175,55,0.15); }
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
 
 /* ---------- Responsive Table Cards (Mobile) ---------- */
 @media (max-width: 768px) {
