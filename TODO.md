@@ -1,31 +1,26 @@
-# TODO: Touches & Perfection Improvements
-## Priority 1: Accessibility & Focus States
-- [x] Add focus-visible styles for keyboard navigation
-- [x] Add focus ring animation on interactive elements
+# Sheild-Approved — Next.js 15 Modernization TODO
 
-## Priority 2: Micro-interactions
-- [x] Add hover glow effects on buttons and cards
-- [x] Add button loading state animations
-- [x] Add subtle scale animations on hover
-
-## Priority 3: Scroll Animations
-- [x] Add smooth reveal animations on scroll
-- [x] Add fade-in-up animations for sections
-- [x] Add staggered animations for lists
-
-## Priority 4: Service Worker Improvements
-- [ ] Enhance offline caching strategy
-- [ ] Add cache versioning
-
-## Priority 5: Form UX Improvements
-- [x] Add input validation animations
-- [x] Add shake animation on error
-- [ ] Add success checkmark animation
-
----
-## Completed:
-- [x] Initial analysis complete
-- [x] Button polish: glow, loading states, gradient hover
-- [x] Accessibility: focus-visible ring animation
-- [x] Scroll reveal: IntersectionObserver-based animations
-- [x] Form focus: pulse animation on inputs
+- [ ] Update package.json: add framer-motion, react-hook-form, zod (and @hookform/resolvers if used)
+- [ ] Create src/app/providers.tsx (client) to move AuthProvider + Toaster out of src/app/layout.tsx
+- [ ] Refactor src/app/layout.tsx: keep as server component; add next/font; clean metadata; ensure correct imports
+- [ ] Fix CSS: modernize src/app/globals.css (remove @import); move/verify typings in src/types/globals.d.ts
+- [ ] Add missing Next routes (App Router pages):
+  - [ ] /about
+  - [ ] /services
+  - [ ] /request-access
+  - [ ] /login
+  - [ ] /signup
+  - [ ] /privacy
+  - [ ] /terms
+- [ ] Upgrade ContactSection:
+  - [ ] Replace useState validation with React Hook Form + Zod schema
+  - [ ] Ensure accessible field errors + disabled/loading states
+- [ ] Upgrade Testimonials:
+  - [ ] Replace grid with a premium Framer Motion carousel (keyboard + reduced-motion support)
+- [ ] Performance/a11y pass:
+  - [ ] Add prefers-reduced-motion handling to animations/components
+  - [ ] Replace legacy img tags with next/image where appropriate
+  - [ ] Improve mobile nav (focus + escape handling)
+- [ ] Add fake data realism for counters/testimonials (seeded per session)
+- [ ] Remove legacy unused root-level files/folders after confirming they’re not referenced by Next routes
+- [ ] Run build + lint + TS check, fix any remaining errors permanently

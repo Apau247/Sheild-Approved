@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shield-approved"),
+  metadataBase: new URL("https://sheild-approved.vercel.app"),
   title: {
     default: "Iron Vault Security – Fortified Storage for Gold, Gems & Legacy",
     template: "%s | Iron Vault Security",
@@ -55,7 +55,6 @@ export const metadata: Metadata = {
     icon: "/images/logo.png",
     apple: "/images/logo.png",
   },
-  themeColor: "#d4af37",
 };
 
 export default function RootLayout({
