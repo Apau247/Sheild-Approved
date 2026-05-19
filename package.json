@@ -1,18 +1,30 @@
 {
   "name": "iron-vault-security",
+  "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "scrape-test": "node scripts/update-prices.js test",
-    "scrape": "node scripts/update-prices.js",
-    "prices:cron": "node scripts/cron-prices.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@vercel/blob": "^1.0.0",
-    "puppeteer": "^23.0.0",
-    "axios": "^1.7.7",
-    "cheerio": "^1.0.0-rc.12",
-    "node-cron": "^3.0.3"
+    "next": "15.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.4.1",
+    "lucide-react": "^0.469.0",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "typescript": "^5",
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1"
   }
 }
