@@ -3,16 +3,33 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "scrape-test": "node scripts/update-prices.js test",
     "scrape": "node scripts/update-prices.js",
     "prices:cron": "node scripts/cron-prices.js"
   },
   "dependencies": {
     "@vercel/blob": "^1.0.0",
-    "puppeteer": "^23.0.0",
     "axios": "^1.7.7",
     "cheerio": "^1.0.0-rc.12",
-    "node-cron": "^3.0.3"
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.505.0",
+    "next": "^15.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.0",
+    "node-cron": "^3.0.3",
+    "puppeteer": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.7.4"
   }
 }

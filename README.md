@@ -15,7 +15,7 @@ This site now includes:
 2. Start with `vercel dev`
 3. Open the local site and use the dashboard forms
 
-When you run locally, dashboard data is saved to [data/dashboard.json](/c:/Users/Mr.%20Apau/Documents/GitHub/Sheild-Approved/data/dashboard.json:1) and auth users are saved to [data/users.json](/c:/Users/Mr.%20Apau/Documents/GitHub/Sheild-Approved/data/users.json:1).
+When you run locally, dashboard data is saved to [data/dashboard.json](/c:/Users/Mr.%20Apau/Documents/GitHub/Shield-Approved/data/dashboard.json:1) and auth users are saved to [data/users.json](/c:/Users/Mr.%20Apau/Documents/GitHub/Shield-Approved/data/users.json:1).
 
 ## Vercel deployment
 

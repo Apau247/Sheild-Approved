@@ -1,4 +1,4 @@
-// EmailJS Integration for Sheild-Approved
+// EmailJS Integration for Shield-Approved
 // 1. Go to https://www.emailjs.com → Dashboard → Add Service (Gmail/Outlook)
 // 2. Add Email Template (Signup/Contact)
 // 3. Get SERVICE_ID, PUBLIC_KEY, TEMPLATE_IDs below
