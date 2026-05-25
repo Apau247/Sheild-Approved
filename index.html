@@ -50,6 +50,10 @@
       background: rgba(7, 11, 16, 0.78);
       border: 1px solid rgba(255, 255, 255, 0.07);
       backdrop-filter: blur(18px);
+      transition: background 220ms ease, border-color 220ms ease, transform 220ms ease;
+    }
+    .glass-panel:hover {
+      transform: translateY(-1px);
     }
     .hero-bg {
       background-image: linear-gradient(180deg, rgba(7,11,16,0.55), rgba(7,11,16,0.95)), url('images/hero5.jpg');
@@ -81,6 +85,14 @@
       color: #f6e6b0;
       background: rgba(255,255,255,0.03);
     }
+    .storage-card.selected {
+      border-color: rgba(212,175,55,0.65);
+      background: rgba(212,175,55,0.08);
+      box-shadow: 0 30px 80px rgba(212,175,55,0.16);
+    }
+    .storage-card:hover {
+      background: rgba(255,255,255,0.05);
+    }
     .hero-eyebrow::before {
       content: '';
       display: inline-block;
@@ -102,6 +114,13 @@
     .scrollbar-thin::-webkit-scrollbar-thumb {
       background: rgba(212,175,55,0.35);
       border-radius: 9999px;
+    }
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    a:focus-visible {
+      outline: 2px solid rgba(212,175,55,0.65);
+      outline-offset: 3px;
     }
   </style>
 </head>
@@ -127,7 +146,7 @@
         <a href="#contact" class="transition hover:text-gold">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a href="login.html" id="openLogin" class="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-[#081113] transition hover:shadow-glow lg:inline-flex">Login</a>
+        <a href="#" data-no-scroll id="openLogin" class="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-[#081113] transition hover:shadow-glow lg:inline-flex">Login</a>
         <button id="openSignup" class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-gold hover:text-gold">Sign Up</button>
         <button id="mobileMenuButton" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white lg:hidden" aria-label="Open menu">
           <span class="sr-only">Open menu</span>
@@ -162,7 +181,7 @@
       <a href="#contact" class="block">Contact</a>
     </div>
     <div class="mt-10 flex flex-col gap-3">
-      <a href="login.html" id="mobileLogin" class="rounded-full bg-gold px-5 py-3 text-center text-sm font-semibold text-[#081113]">Login</a>
+      <a href="#" data-no-scroll id="mobileLogin" class="rounded-full bg-gold px-5 py-3 text-center text-sm font-semibold text-[#081113]">Login</a>
       <button id="mobileSignup" class="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100">Sign Up</button>
     </div>
   </div>
@@ -177,7 +196,7 @@
           <p class="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">Premium secure vault storage for gold, diamonds, gems, jewelry and high-value holdings, designed for private clients, family offices and institutional collections.</p>
           <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
             <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-gold px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-[#081113] shadow-glow transition hover:scale-[1.01]">Secure Your Vault</a>
-            <a href="login.html" id="heroLogin" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-gold hover:text-gold">Client Login</a>
+            <a href="#" data-no-scroll id="heroLogin" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-gold hover:text-gold">Client Login</a>
           </div>
           <div class="grid gap-4 sm:grid-cols-3 mt-10 text-center">
             <div class="glass-panel rounded-[2rem] px-6 py-5 shadow-soft">
@@ -270,7 +289,7 @@
               <span class="text-xs uppercase tracking-[0.35em] text-gold">Existing Clients</span>
               <h3 class="mt-5 text-2xl font-semibold text-white">Log in to the secure vault portal</h3>
               <p class="mt-4 text-slate-300">Access stored asset records, active vault requests, and high-value cargo status in one place.</p>
-              <a href="login.html" id="portalLogin" class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gold px-5 py-3 text-sm font-semibold text-[#081113] transition hover:shadow-glow">Login</a>
+              <a href="#" data-no-scroll id="portalLogin" class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gold px-5 py-3 text-sm font-semibold text-[#081113] transition hover:shadow-glow">Login</a>
             </article>
             <article class="rounded-[2rem] border border-white/10 bg-[#07141f] p-7 shadow-soft">
               <span class="text-xs uppercase tracking-[0.35em] text-gold">New Clients</span>
@@ -728,11 +747,12 @@
     loginTriggers.forEach(button => {
       button?.addEventListener('click', event => {
         event.preventDefault();
-        window.location.href = 'login.html';
+        toggleLoginModal(true);
       });
     });
     signupTriggers.forEach(button => {
-      button?.addEventListener('click', () => {
+      button?.addEventListener('click', event => {
+        event.preventDefault();
         document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
         toggleLoginModal(false);
       });
@@ -757,8 +777,8 @@
 
     storageCards.forEach(card => {
       card.addEventListener('click', () => {
-        storageCards.forEach(item => item.classList.remove('border-gold', 'bg-[#111926]'));
-        card.classList.add('border-gold', 'bg-[#111926]');
+        storageCards.forEach(item => item.classList.remove('selected', 'border-gold', 'bg-[#111926]'));
+        card.classList.add('selected');
         selectedSize.textContent = card.dataset.size;
       });
     });
@@ -771,6 +791,11 @@
       });
       testimonialDots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
     }
+    loginModal.addEventListener('click', event => {
+      if (event.target === loginModal) {
+        toggleLoginModal(false);
+      }
+    });
     testimonialDots.forEach((dot, idx) => dot.addEventListener('click', () => {
       testimonialIndex = idx;
       setTestimonial(idx);
@@ -907,7 +932,7 @@
       contactForm.reset();
     });
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]:not([data-no-scroll])').forEach(anchor => {
       anchor.addEventListener('click', event => {
         const targetId = anchor.getAttribute('href').slice(1);
         const targetEl = document.getElementById(targetId);
