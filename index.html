@@ -1,744 +1,923 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iron Vault Security – Fortified Storage for Gold, Gems & Legacy</title>
-    <meta name="description" content="Iron Vault Security provides elite, high-security vault storage for precious minerals, gold, diamonds, and fine jewelry in London.">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Iron Vault Security – Fortified Storage for Gold, Gems & Legacy">
-    <meta property="og:description" content="Premier vault storage company specializing in secure storage of precious minerals, gold, diamonds, fine jewelry, and high-value assets.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ironvaultsecurity.co.uk">
-    <meta property="og:image" content="images/hero1.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="images/logo.png">
-    <link rel="apple-touch-icon" href="images/logo.png">
-
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#d4af37">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Archivo+Black&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/__colors_default.css">
-    <link rel="stylesheet" href="css/__colors_dark.css">
-    <link rel="stylesheet" href="css/__custom.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Iron Vault Security",
-        "description": "Elite high-security vault storage for precious minerals, gold, diamonds, and fine jewelry.",
-        "url": "https://ironvaultsecurity.co.uk",
-        "telephone": "+442079460958",
-        "email": "secure@ironvaultsecurity.co.uk",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "45 Bankside Lane",
-            "addressLocality": "London",
-            "postalCode": "EC2V 7NQ",
-            "addressCountry": "UK"
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shield Approved | Iron Vault Security - Premium Vault Storage London</title>
+  <meta name="description" content="Shield Approved by Iron Vault Security offers premium vault storage for gold, diamonds, gems, jewelry and high-value assets in London with private access, live tracking and fortified client service." />
+  <meta property="og:title" content="Shield Approved | Iron Vault Security - Premium Vault Storage London" />
+  <meta property="og:description" content="Luxury secure vault storage for gold, diamonds, gems and legacy assets with expert monitoring and discreet London facilities." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sheild-approved.vercel.app/" />
+  <meta property="og:locale" content="en_GB" />
+  <meta name="theme-color" content="#0b131a" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            midnight: '#020609',
+            obsidian: '#07101a',
+            vault: '#0c1720',
+            emerald: '#0f3429',
+            smoke: '#bcc7d1'
+          },
+          boxShadow: {
+            glow: '0 30px 80px rgba(212,175,55,0.18)',
+            soft: '0 20px 55px rgba(0,0,0,0.24)'
+          },
+          backgroundImage: {
+            'hero-glow': 'radial-gradient(circle at top, rgba(212,175,55,0.14), transparent 35%)',
+            'panel-glow': 'radial-gradient(circle at top left, rgba(212,175,55,0.14), transparent 35%)'
+          }
         }
-    }
-    </script>
-</head>
-<body class="scheme_default">
-
-    <!-- 1. Header -->
-    <header class="site-header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="top-bar-left">
-                    <span>Contact Us Via <a href="tel:+442079460958">+44 20 7946 0958</a></span>
-                </div>
-                <div class="top-bar-right">
-                    <a href="signup.html" class="btn-request-access">Sign Up</a>
-                    <a href="login.html" class="btn-secure-vault">Login</a>
-                </div>
-            </div>
-        </div>
-        <div class="main-nav" id="mainNav">
-            <div class="container">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="Iron Vault Security" width="258" height="57">
-                </a>
-                <div class="nav-actions">
-                    <button class="search-toggle" aria-label="Open search">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
-                    <button class="menu-toggle" aria-label="Open menu" id="menuToggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- 2. Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenu">
-        <div class="mobile-menu-content">
-            <button class="menu-close" aria-label="Close menu" id="menuClose">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <a href="index.html" class="mobile-logo">
-                <img src="images/logo.png" alt="Iron Vault Security" width="230" height="51">
-            </a>
-            <nav class="mobile-nav">
-                <a href="signup.html">Sign Up</a>
-                <a href="login.html">Login</a>
-                <a href="about.html">About Us</a>
-                <a href="services.html">Services</a>
-                <a href="security-compliance.html">Security &amp; Compliance</a>
-                <a href="client-portal.html#tracking">Tracking</a>
-                <a href="request-access.html">Contact Us</a>
-            </nav>
-            <form class="mobile-search" action="search.html" method="get">
-                <input type="text" name="s" placeholder="Search..." aria-label="Search">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Search Overlay -->
-    <div class="search-overlay" id="searchOverlay">
-        <button class="search-close" aria-label="Close search" id="searchClose">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        </button>
-        <form class="search-form" action="search.html" method="get">
-            <input type="text" name="s" placeholder="Type to search..." aria-label="Search">
-        </form>
-    </div>
-
-    <!-- 3. Hero Section -->
-    <section class="hero-section" id="hero">
-        <div class="hero-slider" id="heroSlider">
-            <div class="slide active" style="background-image: url('images/hero5.jpg');">
-                <div class="slide-bg"></div>
-            </div>
-            <div class="slide" style="background-image: url('images/hero2.jpg');">
-                <div class="slide-bg"></div>
-            </div>
-            <div class="slide" style="background-image: url('images/hero10.jpg');">
-                <div class="slide-bg"></div>
-            </div>
-            <div class="slide" style="background-image: url('images/hero1.avif');">
-                <div class="slide-bg"></div>
-            </div>
-        </div>
-        <div class="slider-nav">
-            <button class="slider-dot active" data-slide="0" aria-label="Slide 1"></button>
-            <button class="slider-dot" data-slide="1" aria-label="Slide 2"></button>
-            <button class="slider-dot" data-slide="2" aria-label="Slide 3"></button>
-            <button class="slider-dot" data-slide="3" aria-label="Slide 4"></button>
-        </div>
-    </section>
-
-    <!-- 4. Secure Vault Storage in London -->
-    <section class="intro-section" style="background-image: url('images/sample.png');">
-        <div class="container">
-            <h1>Secure Vault Storage in London</h1>
-            <hr class="section-rule">
-            <div class="contact-callout">
-                <p>You can reach us either by calling us or by sending us an email – <a href="mailto:secure@ironvaultsecurity.co.uk">secure@ironvaultsecurity.co.uk</a></p>
-                <div class="phone-link">
-                    <svg class="icon-phone" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                    <a href="tel:+442079460958">+44 20 7946 0958</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Services Grid -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <div class="services-grid">
-                <a href="services.html#vaulting-facilities" class="service-card">
-                    <div class="service-image">
-                        <img src="images/VaultFacilities.png" alt="Vaulting Facilities" loading="lazy" width="370" height="208">
-                        <div class="service-overlay">
-                            <span class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    <line x1="11" y1="8" x2="11" y2="14"></line>
-                                    <line x1="8" y1="11" x2="14" y2="11"></line>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <h3>Vaulting Facilities</h3>
-                </a>
-                <a href="services.html#diamond-jewellery" class="service-card">
-                    <div class="service-image">
-                        <img src="images/Diamond.png" alt="Diamond & Jewellery" loading="lazy" width="370" height="208">
-                        <div class="service-overlay">
-                            <span class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    <line x1="11" y1="8" x2="11" y2="14"></line>
-                                    <line x1="8" y1="11" x2="14" y2="11"></line>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <h3>Diamond & Jewellery</h3>
-                </a>
-                <a href="services.html#precious-metals" class="service-card">
-                    <div class="service-image">
-                        <img src="images/Predious.png" alt="Precious Metals" loading="lazy" width="370" height="208">
-                        <div class="service-overlay">
-                            <span class="preview-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    <line x1="11" y1="8" x2="11" y2="14"></line>
-                                    <line x1="8" y1="11" x2="14" y2="11"></line>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
-                    <h3>Precious Metals</h3>
-                </a>
-            </div>
-            <div class="services-footer">
-                <p>See what we can offer just for your needs</p>
-                <a href="services.html" class="btn btn-arrow">
-                    More services
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <h2>Delivering Absolute Peace Of Mind.</h2>
-            <div class="about-grid">
-                <div class="about-left">
-                    <p>At Iron Vault Security, we provide elite, high-security vault storage for precious minerals, gold, diamonds, and fine jewelry. Situated in the heart of London's financial district, our world-class facility was founded with a singular purpose: to offer discreet, dependable, and internationally accredited protection for your most valuable assets.</p>
-                    <a href="about.html" class="btn btn-simple">more info</a>
-                </div>
-                <div class="about-right">
-                    <h6 class="subtitle">benefits</h6>
-                    <div class="benefits-grid">
-                        <ul class="benefits-list">
-                            <li>Private, secure access to your vault</li>
-                            <li>Confidential registration process</li>
-                            <li>Biometric verification and two-factor access</li>
-                            <li>Vault sizes from 1m² to 30m²</li>
-                        </ul>
-                        <ul class="benefits-list">
-                            <li>24/7 on-site armed response team</li>
-                            <li>Discreet, no-name labeling on storage units</li>
-                            <li>Optional transport and collection services</li>
-                            <li>Custom insurance options for high-value holdings</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. Client Portal -->
-    <section class="portal-section" id="portal">
-        <div class="container">
-            <div class="portal-header">
-                <h2>Client Access, Delivery Oversight, and Live Asset Control</h2>
-                <p>Give clients a fast way to log in, create a profile, register new assets, and monitor secure cargo movements from one operations view.</p>
-            </div>
-            <div class="portal-grid">
-                <article class="portal-card">
-                    <span class="portal-kicker">Existing Clients</span>
-                    <h3>Log in to the secure vault portal</h3>
-                    <p>Access stored asset records, active vault requests, and high-value cargo status in one place.</p>
-                    <a href="login.html" class="btn">Login</a>
-                </article>
-                <article class="portal-card portal-card-accent">
-                    <span class="portal-kicker">New Clients</span>
-                    <h3>Create a monitored storage account</h3>
-                    <p>Register a client profile and send the details into your Vercel-hosted backend for follow-up and onboarding.</p>
-                    <a href="signup.html" class="btn btn-simple">Sign Up</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. Statistics Counter -->
-    <section class="stats-section" style="background-image: url('images/hero1.jpg');">
-        <div class="container">
-            <h2>Why people choose us</h2>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-number" data-target="2500" id="assetsSecuredCount">0</div>
-                    <span class="stat-suffix">+</span>
-                    <div class="stat-label">Assets Secured</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number" data-target="1200" id="vaultsCount">0</div>
-                    <span class="stat-suffix">+</span>
-                    <div class="stat-label">Private Vaults in Operation</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number" data-target="300" id="deliveriesCount">0</div>
-                    <span class="stat-suffix">+</span>
-                    <div class="stat-label">Tracked Deliveries Completed</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. Storage Unit Sizes -->
-    <section class="pricing-section" id="pricing">
-        <div class="container">
-            <h2>What size storage unit do you need?</h2>
-            <div class="pricing-slider-wrapper">
-                <div class="pricing-slider" id="pricingSlider">
-                    <div class="pricing-card">
-                        <h3>1m²</h3>
-                        <p>Watches, small jewelry sets, coin collections</p>
-                        <a href="request-access.html?unit=1m2" class="btn">Enquire Now</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>5m²</h3>
-                        <p>Larger jewelry boxes, gold bars, luxury items</p>
-                        <a href="request-access.html?unit=5m2" class="btn">Enquire Now</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>10m²</h3>
-                        <p>Multiple safe boxes, diversified asset holdings</p>
-                        <a href="request-access.html?unit=10m2" class="btn">Enquire Now</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>20m²</h3>
-                        <p>Institutional or family holdings</p>
-                        <a href="request-access.html?unit=20m2" class="btn">Enquire Now</a>
-                    </div>
-                </div>
-                <div class="slider-controls">
-                    <button class="slider-prev" aria-label="Previous">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <button class="slider-next" aria-label="Next">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="pricing-footer">
-                <p>Need a custom solution? <a href="request-access.html">Contact us</a> for a private consultation.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. Testimonials -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="container">
-            <h2>Trusted by Clients Worldwide</h2>
-            <div class="testimonials-slider" id="testimonialsSlider">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        <p>"Iron Vault Security gave me confidence that my investment gold was in the safest possible place. Highly professional and absolutely secure."</p>
-                        <div class="testimonial-author">
-                            <img src="images/face1.jpg" alt="Client Testimonial" width="80" height="80" loading="lazy">
-                            <div class="author-info">
-                                <strong>J.H.</strong>
-                                <span>Private Collector, Northern Europe</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                         
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"Discreet and efficient. I trust Iron Vault with our family's heirloom jewelry. Their London facility is exceptional."</p>
-                        <div class="testimonial-author">
-                            <img src="images/Face2.jpg" alt="Client Testimonial" width="80" height="80" loading="lazy">
-                            <div class="author-info">
-                                <strong>M.T.</strong>
-                                <span>Family Office, Central Europe</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"We transferred our company's diamond inventory from a bank to Iron Vault Security due to their superior security. Outstanding service."</p>
-                        <div class="testimonial-author">
-                            <img src="images/face3.jpg" alt="Client Testimonial" width="80" height="80" loading="lazy">
-                            <div class="author-info">
-                                <strong>R.M.</strong>
-                                <span>Corporate Client, UK</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <p>"Iron Vault defines excellence in asset protection. Their London facility offers a level of discretion and security that is truly unmatched. My family's heirloom jewelry couldn't be in better hands."
-</p>
-                        <div class="testimonial-author">
-                            <img src="images/face4.jpg" alt="Client Testimonial" width="80" height="80" loading="lazy">
-                            <div class="author-info">
-                                <strong>E.S.</strong>
-                                <span>Private Client, Western Europe</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-nav">
-                <button class="testimonial-dot active" data-slide="0" aria-label="Testimonial 1">
-                    <img src="images/face1.jpg" alt="">
-                </button>
-                <button class="testimonial-dot" data-slide="1" aria-label="Testimonial 2">
-                    <img src="images/Face2.jpg" alt="">
-                </button>
-                <button class="testimonial-dot" data-slide="2" aria-label="Testimonial 3">
-                    <img src="images/face3.jpg" alt="">
-                </button>
-                <button class="testimonial-dot" data-slide="3" aria-label="Testimonial 4">
-                    <img src="images/face4.jpg" alt="">
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- 10. Cargo & Delivery Tracking -->
-    <section class="tracking-section" id="tracking">
-        <div class="container">
-            <h2>Cargo & Delivery Tracking</h2>
-            <p>Track secure cargo, update shipment progress, and keep client asset records growing from one Vercel-connected dashboard.</p>
-
-            <div class="ops-overview">
-                <div class="ops-card">
-                    <span class="ops-label">Assets on Record</span>
-                    <strong id="opsAssetsCount">0</strong>
-                    <p>Auto-updates as new client assets are added.</p>
-                </div>
-                <div class="ops-card">
-                    <span class="ops-label">Active Deliveries</span>
-                    <strong id="opsActiveDeliveries">0</strong>
-                    <p>Secure shipments currently processing or in transit.</p>
-                </div>
-                <div class="ops-card">
-                    <span class="ops-label">Delivered Cargo</span>
-                    <strong id="opsDeliveredCount">0</strong>
-                    <p>Completed deliveries stored in the same dataset.</p>
-                </div>
-                <div class="ops-card">
-                    <span class="ops-label">Client Signups</span>
-                    <strong id="opsSignupCount">0</strong>
-                    <p>New account requests captured for follow-up.</p>
-                </div>
-            </div>
-
-            <div class="tracking-workspace">
-                <div class="tracking-stack">
-                    <div class="tracking-panel">
-                        <div class="tracking-input-row">
-                            <input type="text" id="trackInput" placeholder="Enter Tracking ID (e.g. IVS-78432)" aria-label="Tracking ID">
-                            <button type="button" class="btn" id="trackBtn">Track Shipment</button>
-                        </div>
-                        <div class="tracking-quick-list" id="trackingQuickList"></div>
-                        <div class="tracking-result" id="trackingResult"></div>
-                    </div>
-
-                    <div class="cargo-table-wrap">
-                        <table class="cargo-table">
-                            <thead>
-                                <tr>
-                                    <th>Tracking ID</th>
-                                    <th>Contents</th>
-                                    <th>Origin</th>
-                                    <th>Destination</th>
-                                    <th>Status</th>
-                                    <th>ETA</th>
-                                </tr>
-                            </thead>
-                            <tbody id="cargoTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <aside class="ops-sidebar">
-                    <div class="ops-form-card">
-                        <h3>Update Delivery Data</h3>
-                        <p>Edit shipment status, location, ETA, and progress to simulate live delivery movement.</p>
-                        <form id="shipmentUpdateForm" class="dashboard-form">
-                            <div class="form-field">
-                                <input type="text" name="trackingId" placeholder="Tracking ID" required aria-label="Tracking ID">
-                            </div>
-                            <div class="form-field">
-                                <input type="text" name="status" placeholder="Status" required aria-label="Status">
-                            </div>
-                            <div class="form-field">
-                                <input type="text" name="current" placeholder="Current Location" required aria-label="Current Location">
-                            </div>
-                            <div class="form-field">
-                                <input type="text" name="eta" placeholder="ETA or Delivery Note" required aria-label="ETA">
-                            </div>
-                            <div class="form-field">
-                                <input type="number" name="progress" min="0" max="100" placeholder="Progress %" required aria-label="Progress">
-                            </div>
-                            <button type="submit" class="btn btn-submit">Update Shipment</button>
-                        </form>
-                    </div>
-                </aside>
-            </div>
-
-            <div class="asset-management">
-                <div class="asset-panel">
-                    <div class="asset-panel-head">
-                        <h3>Client Asset Register</h3>
-                        <p>Add gold, gems, jewelry, documents, and other secured holdings to grow the live asset total.</p>
-                    </div>
-                    <form id="assetForm" class="dashboard-form dashboard-form-grid">
-                        <div class="form-field">
-                            <input type="text" name="owner" placeholder="Client Name" required aria-label="Client Name">
-                        </div>
-                        <div class="form-field">
-                            <input type="text" name="assetName" placeholder="Asset Name" required aria-label="Asset Name">
-                        </div>
-                        <div class="form-field">
-                            <input type="text" name="assetType" placeholder="Asset Type" required aria-label="Asset Type">
-                        </div>
-                        <div class="form-field">
-                            <input type="text" name="quantity" placeholder="Quantity / Weight" required aria-label="Quantity">
-                        </div>
-                        <div class="form-field">
-                            <input type="text" name="vault" placeholder="Vault Assignment" required aria-label="Vault Assignment">
-                        </div>
-                        <div class="form-field">
-                            <input type="text" name="status" placeholder="Stored / Awaiting Intake" required aria-label="Asset Status">
-                        </div>
-                        <button type="submit" class="btn">Add Asset</button>
-                    </form>
-                </div>
-
-                <div class="asset-panel">
-                    <div class="asset-panel-head">
-                        <h3>New Client Sign Up</h3>
-                        <p>Collect onboarding details and send them to your Vercel backend for storage and follow-up.</p>
-                    </div>
-                    <form id="signupForm" class="dashboard-form dashboard-form-grid">
-                        <div class="form-field">
-                            <input type="text" name="fullName" placeholder="Full Name" required aria-label="Full Name">
-                        </div>
-                        <div class="form-field">
-                            <input type="email" name="email" placeholder="Email Address" required aria-label="Email Address">
-                        </div>
-                        <div class="form-field">
-                            <input type="tel" name="phone" placeholder="Phone Number" required aria-label="Phone Number">
-                        </div>
-                        <div class="form-field">
-                            <input type="text" name="company" placeholder="Company or Family Office" aria-label="Company">
-                        </div>
-                        <div class="form-field form-field-full">
-                            <textarea name="needs" rows="4" placeholder="What assets or cargo do you need us to secure?" required aria-label="Storage Needs"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-submit">Create Sign Up Request</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="asset-list-wrap">
-                <table class="cargo-table asset-table">
-                    <thead>
-                        <tr>
-                            <th>Client</th>
-                            <th>Asset</th>
-                            <th>Type</th>
-                            <th>Quantity</th>
-                            <th>Vault</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="assetTableBody"></tbody>
-                </table>
-            </div>
-
-            <div class="dashboard-message" id="dashboardMessage" aria-live="polite"></div>
-        </div>
-    </section>
-
-    <!-- 11. Contact Section -->
-    <section class="contact-section" id="contact" style="background-image: url('images/hero2.jpg');">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-left">
-                    <h2>Have Questions? Contact Us!</h2>
-                    <form class="contact-form" id="contactForm" action="request-access.html" method="post">
-                        <div class="form-row">
-                            <div class="form-field">
-                                <input type="text" name="name" placeholder="Enter Your Name" required aria-label="Name">
-                            </div>
-                            <div class="form-field">
-                                <input type="email" name="email" placeholder="Enter Your Email" required aria-label="Email">
-                            </div>
-                        </div>
-                        <div class="form-field">
-                            <textarea name="message" rows="5" placeholder="Enter Your Message" required aria-label="Message"></textarea>
-                        </div>
-                        <div class="form-field checkbox-field">
-                            <label>
-                                <input type="checkbox" name="consent" required>
-                                <span>I agree that my submitted data is being collected and stored.</span>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-submit">Send Message</button>
-                    </form>
-                </div>
-                <div class="contact-right">
-                    <h6 class="subtitle">contacts</h6>
-                    <div class="contact-details" style="background-image: url('images/sample.png');">
-                        <div class="detail-item">
-                            <span class="detail-label">Location</span>
-                            <p>45 Bankside Lane, London EC2V 7NQ, UK</p>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Email</span>
-                            <p><a href="mailto:secure@ironvaultsecurity.co.uk">secure@ironvaultsecurity.co.uk</a></p>
-                            <p><a href="mailto:IronVaultSecurity@protonmail.com">IronVaultSecurity@protonmail.com</a></p>
-                        </div>
-                        <div class="detail-item detail-highlight">
-                            <span class="detail-label">Call Us Today</span>
-                            <p><a href="tel:+442079460958">+44 20 7946 0958</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 12. Google Map -->
-    <section class="map-section">
-        <iframe
-            src="https://maps.google.com/maps?q=45+Bankside+Lane,+London+EC2V+7NQ,+UK&t=k&z=16&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="500"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Iron Vault Security Location">
-        </iframe>
-    </section>
-
-    <!-- 13. Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col footer-logo">
-                    <img src="images/logo.png" alt="Iron Vault Security" width="230" height="51">
-                </div>
-                <div class="footer-col">
-                    <h4>Company info</h4>
-                    <nav>
-                        <a href="about.html">About page</a>
-                    </nav>
-                </div>
-                <div class="footer-col">
-                    <h4>Our services</h4>
-                    <nav>
-                        <a href="services.html">Services page</a>
-                    </nav>
-                </div>
-                <div class="footer-col footer-cta">
-                    <a href="client-portal.html" class="btn btn-simple">Client Portal</a>
-                    <div class="social-icons">
-                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=Facebook%20Inquiry" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=X%20Inquiry" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
-                        <a href="mailto:secure@ironvaultsecurity.co.uk?subject=LinkedIn%20Inquiry" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright-bar">
-                <p>Iron Vault Security © 2025. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/nav.js"></script>
-    <script src="js/__scripts.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js').catch(function() {});
       }
-    </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background-color: #060b12;
+      color: #f7f7f7;
+    }
+    .glass-panel {
+      background: rgba(7, 11, 16, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(18px);
+    }
+    .hero-bg {
+      background-image: linear-gradient(180deg, rgba(7,11,16,0.55), rgba(7,11,16,0.95)), url('images/hero5.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .section-line {
+      border-top: 1px solid rgba(212,175,55,0.15);
+    }
+    .slider-dot.active,
+    .testimonial-dot.active {
+      background: rgba(212,175,55,0.98);
+    }
+    .slider-dot,
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 9999px;
+      border: 1px solid rgba(212,175,55,0.55);
+      background: rgba(255,255,255,0.08);
+      transition: all 200ms ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #d4af37, #f7d37a);
+      color: #081113;
+    }
+    .btn-outline-gold {
+      border-color: rgba(212,175,55,0.5);
+      color: #f6e6b0;
+      background: rgba(255,255,255,0.03);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background: #d4af37;
+      margin-right: 0.75rem;
+      vertical-align: middle;
+    }
+    .modal-backdrop {
+      background: rgba(2, 6, 12, 0.92);
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+      width: 8px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: rgba(212,175,55,0.35);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100">
+  <div class="fixed inset-x-0 top-0 z-50 bg-[#060b11]/95 backdrop-blur-xl border-b border-white/5">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#hero" class="flex items-center gap-3 text-white no-underline">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gold/15 shadow-glow">
+          <img src="images/logo.png" alt="Iron Vault Security" class="h-8 w-8 rounded-xl object-contain" />
+        </div>
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-slate-300">Shield Approved</p>
+          <p class="font-semibold text-lg leading-tight">Iron Vault Security</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-8 text-sm font-medium text-slate-300 lg:flex">
+        <a href="#about" class="transition hover:text-gold">About</a>
+        <a href="#benefits" class="transition hover:text-gold">Benefits</a>
+        <a href="#portal" class="transition hover:text-gold">Portal</a>
+        <a href="#pricing" class="transition hover:text-gold">Storage</a>
+        <a href="#testimonials" class="transition hover:text-gold">Testimonials</a>
+        <a href="#tracking" class="transition hover:text-gold">Tracking</a>
+        <a href="#contact" class="transition hover:text-gold">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="login.html" id="openLogin" class="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-[#081113] transition hover:shadow-glow lg:inline-flex">Login</a>
+        <button id="openSignup" class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:border-gold hover:text-gold">Sign Up</button>
+        <button id="mobileMenuButton" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white lg:hidden" aria-label="Open menu">
+          <span class="sr-only">Open menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="fixed inset-0 z-50 hidden bg-[#02060c]/95 p-6 backdrop-blur-xl">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3 text-white">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-gold/15">
+          <img src="images/logo.png" alt="Iron Vault Security" class="h-8 w-8 rounded-xl object-contain" />
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-[0.35em] text-slate-400">Shield Approved</p>
+          <p class="font-semibold">Iron Vault Security</p>
+        </div>
+      </div>
+      <button id="mobileClose" class="rounded-full bg-white/5 p-3 text-slate-200" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="mt-10 space-y-6 text-lg font-semibold text-slate-100">
+      <a href="#about" class="block">About</a>
+      <a href="#benefits" class="block">Benefits</a>
+      <a href="#portal" class="block">Portal</a>
+      <a href="#pricing" class="block">Storage</a>
+      <a href="#testimonials" class="block">Testimonials</a>
+      <a href="#tracking" class="block">Tracking</a>
+      <a href="#contact" class="block">Contact</a>
+    </div>
+    <div class="mt-10 flex flex-col gap-3">
+      <a href="login.html" id="mobileLogin" class="rounded-full bg-gold px-5 py-3 text-center text-sm font-semibold text-[#081113]">Login</a>
+      <button id="mobileSignup" class="rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100">Sign Up</button>
+    </div>
+  </div>
+
+  <main class="overflow-hidden">
+    <section id="hero" class="hero-bg relative min-h-[calc(100vh-72px)] pt-28">
+      <div class="absolute inset-x-0 top-0 h-40 bg-hero-glow opacity-90"></div>
+      <div class="mx-auto flex max-w-7xl items-center px-4 pb-20 pt-20 sm:px-6 lg:px-8">
+        <div class="w-full max-w-3xl space-y-8 text-center sm:text-left">
+          <p class="hero-eyebrow text-sm uppercase tracking-[0.35em] text-slate-300">Luxury secure vault storage</p>
+          <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">Shield Approved for London's most precious assets.</h1>
+          <p class="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">Premium secure vault storage for gold, diamonds, gems, jewelry and high-value holdings, designed for private clients, family offices and institutional collections.</p>
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
+            <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-gold px-7 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-[#081113] shadow-glow transition hover:scale-[1.01]">Secure Your Vault</a>
+            <a href="login.html" id="heroLogin" class="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:border-gold hover:text-gold">Client Login</a>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-3 mt-10 text-center">
+            <div class="glass-panel rounded-[2rem] px-6 py-5 shadow-soft">
+              <span class="text-sm uppercase tracking-[0.28em] text-gold">London base</span>
+              <p class="mt-3 text-xl font-semibold text-white">45 Bankside Lane, London EC2V 7NQ</p>
+            </div>
+            <div class="glass-panel rounded-[2rem] px-6 py-5 shadow-soft">
+              <span class="text-sm uppercase tracking-[0.28em] text-gold">Contact</span>
+              <p class="mt-3 text-xl font-semibold text-white">+44 20 7946 0958</p>
+            </div>
+            <div class="glass-panel rounded-[2rem] px-6 py-5 shadow-soft">
+              <span class="text-sm uppercase tracking-[0.28em] text-gold">Email</span>
+              <p class="mt-3 text-xl font-semibold text-white">secure@ironvaultsecurity.co.uk</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="border-t border-white/5 py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[1.35fr_minmax(320px,0.85fr)]">
+          <div class="space-y-6">
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">About</p>
+            <h2 class="text-4xl font-semibold tracking-tight text-white">Delivering absolute peace of mind.</h2>
+            <p class="max-w-2xl text-lg leading-8 text-slate-300">At Iron Vault Security, we provide elite, high-security vault storage for precious minerals, gold, diamonds, and fine jewelry. Situated in the heart of London's financial district, our world-class facility was founded with a singular purpose: to offer discreet, dependable, and internationally accredited protection for your most valuable assets.</p>
+            <a href="#contact" class="inline-flex items-center rounded-full border border-gold/25 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:bg-gold/10">Arrange a private consultation</a>
+          </div>
+          <div class="glass-panel rounded-[2rem] border border-white/10 p-8 shadow-soft">
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Benefits</p>
+            <div class="mt-8 grid gap-6 sm:grid-cols-2">
+              <ul class="space-y-3 text-slate-200">
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">Private, secure access to your vault</li>
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">Confidential registration process</li>
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">Biometric verification and two-factor access</li>
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">Vault sizes from 1m2 to 30m2</li>
+              </ul>
+              <ul class="space-y-3 text-slate-200">
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">24/7 on-site armed response team</li>
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">Discreet, no-name labeling on storage units</li>
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">Optional transport and collection services</li>
+                <li class="rounded-3xl border border-white/10 bg-white/5 px-5 py-4">Custom insurance options for high-value holdings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits" class="bg-[#07101a] py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] items-center">
+          <div>
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Experience</p>
+            <h2 class="text-4xl font-semibold tracking-tight text-white">Private vault storage shaped for luxury, trust and control.</h2>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">Shield Approved combines concierge-level service with hardened London infrastructure, so clients can manage assets, shipments and secure access in one refined experience.</p>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div class="glass-panel rounded-[2rem] p-8 shadow-soft">
+              <h3 class="text-xl font-semibold text-white">Secure asset inventories</h3>
+              <p class="mt-4 text-slate-300">Live asset registers, private storage details and fast updates for high-value collections.</p>
+            </div>
+            <div class="glass-panel rounded-[2rem] p-8 shadow-soft">
+              <h3 class="text-xl font-semibold text-white">Discreet delivery movements</h3>
+              <p class="mt-4 text-slate-300">Cargo & delivery tracking that keeps sensitive shipments under control with clear internal visibility.</p>
+            </div>
+            <div class="glass-panel rounded-[2rem] p-8 shadow-soft">
+              <h3 class="text-xl font-semibold text-white">Dedicated client access</h3>
+              <p class="mt-4 text-slate-300">Private login and onboarding portals for existing clients and new accounts.</p>
+            </div>
+            <div class="glass-panel rounded-[2rem] p-8 shadow-soft">
+              <h3 class="text-xl font-semibold text-white">High-value support</h3>
+              <p class="mt-4 text-slate-300">Professional intake, transport options and insurance guidance for luxury assets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portal" class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 xl:grid-cols-[1fr_0.95fr] items-end">
+          <div class="space-y-5">
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Client Portal</p>
+            <h2 class="text-4xl font-semibold tracking-tight text-white">Client access, delivery oversight, and live asset control.</h2>
+            <p class="max-w-2xl text-lg leading-8 text-slate-300">Give clients a fast way to log in, create a profile, register new assets, and monitor secure cargo movements from one operations view.</p>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2">
+            <article class="glass-panel rounded-[2rem] p-7 shadow-soft">
+              <span class="text-xs uppercase tracking-[0.35em] text-gold">Existing Clients</span>
+              <h3 class="mt-5 text-2xl font-semibold text-white">Log in to the secure vault portal</h3>
+              <p class="mt-4 text-slate-300">Access stored asset records, active vault requests, and high-value cargo status in one place.</p>
+              <a href="login.html" id="portalLogin" class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-gold px-5 py-3 text-sm font-semibold text-[#081113] transition hover:shadow-glow">Login</a>
+            </article>
+            <article class="rounded-[2rem] border border-white/10 bg-[#07141f] p-7 shadow-soft">
+              <span class="text-xs uppercase tracking-[0.35em] text-gold">New Clients</span>
+              <h3 class="mt-5 text-2xl font-semibold text-white">Create a monitored storage account</h3>
+              <p class="mt-4 text-slate-300">Register a client profile and send the details into your Vercel-hosted backend for follow-up and onboarding.</p>
+              <button id="portalSignup" class="mt-8 inline-flex w-full items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-gold hover:text-gold">Sign Up</button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="bg-[#07101a] py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-3">
+          <div class="glass-panel rounded-[2rem] p-10 shadow-soft">
+            <span class="text-sm uppercase tracking-[0.35em] text-gold">Why people choose us</span>
+            <div class="mt-10 flex items-end gap-4">
+              <div>
+                <p class="text-5xl font-semibold text-white" id="assetsSecureCount">0</p>
+                <p class="mt-3 text-sm uppercase tracking-[0.3em] text-slate-400">Assets Secured</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-panel rounded-[2rem] p-10 shadow-soft">
+            <div class="mt-10 flex items-end gap-4">
+              <div>
+                <p class="text-5xl font-semibold text-white" id="vaultsCount">0</p>
+                <p class="mt-3 text-sm uppercase tracking-[0.3em] text-slate-400">Private Vaults in Operation</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-panel rounded-[2rem] p-10 shadow-soft">
+            <div class="mt-10 flex items-end gap-4">
+              <div>
+                <p class="text-5xl font-semibold text-white" id="deliveriesCount">0</p>
+                <p class="mt-3 text-sm uppercase tracking-[0.3em] text-slate-400">Tracked Deliveries Completed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Storage units</p>
+            <h2 class="text-4xl font-semibold tracking-tight text-white">What size storage unit do you need?</h2>
+          </div>
+          <p class="max-w-xl text-sm leading-7 text-slate-400">Choose from compact safe deposit solutions to family office suites designed for high-value holdings. The selector updates instantly for a premium planning experience.</p>
+        </div>
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <button class="storage-card rounded-[2rem] border border-white/10 bg-white/5 p-8 text-left transition hover:border-gold hover:shadow-glow" data-size="1m2">
+            <h3 class="text-3xl font-semibold text-white">1m2</h3>
+            <p class="mt-4 text-slate-300">Watches, small jewelry sets, coin collections</p>
+          </button>
+          <button class="storage-card rounded-[2rem] border border-white/10 bg-white/5 p-8 text-left transition hover:border-gold hover:shadow-glow" data-size="5m2">
+            <h3 class="text-3xl font-semibold text-white">5m2</h3>
+            <p class="mt-4 text-slate-300">Larger jewelry boxes, gold bars, luxury items</p>
+          </button>
+          <button class="storage-card rounded-[2rem] border border-white/10 bg-white/5 p-8 text-left transition hover:border-gold hover:shadow-glow" data-size="10m2">
+            <h3 class="text-3xl font-semibold text-white">10m2</h3>
+            <p class="mt-4 text-slate-300">Multiple safe boxes, diversified asset holdings</p>
+          </button>
+          <button class="storage-card rounded-[2rem] border border-white/10 bg-white/5 p-8 text-left transition hover:border-gold hover:shadow-glow" data-size="20m2">
+            <h3 class="text-3xl font-semibold text-white">20m2</h3>
+            <p class="mt-4 text-slate-300">Institutional or family holdings</p>
+          </button>
+        </div>
+        <div class="mt-10 rounded-[2rem] border border-white/10 bg-[#07101a] p-8 shadow-soft">
+          <p class="text-slate-300">Selected storage size: <span id="selectedSize" class="font-semibold text-white">1m2</span></p>
+          <p class="mt-3 text-slate-400">Every unit includes secure access, private key control and optional transport services tailored to your asset class.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="bg-[#07101a] py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <p class="text-sm uppercase tracking-[0.35em] text-gold">Trusted by clients worldwide</p>
+          <h2 class="mt-4 text-4xl font-semibold tracking-tight text-white">Testimonials from our most discerning clients.</h2>
+        </div>
+        <div class="relative mt-14 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-soft">
+          <div id="testimonialSlides" class="min-h-[280px]">
+            <article class="testimonial-slide active space-y-6 text-center">
+              <p class="mx-auto max-w-3xl text-lg leading-8 text-slate-300">"Iron Vault Security gave me confidence that my investment gold was in the safest possible place. Highly professional and absolutely secure."</p>
+              <div class="mx-auto flex max-w-xs items-center justify-center gap-4 rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-left shadow-soft">
+                <img src="images/face1.jpg" alt="J.H. client testimonial" class="h-16 w-16 rounded-full object-cover" loading="lazy" />
+                <div>
+                  <p class="font-semibold text-white">J.H.</p>
+                  <p class="text-sm text-slate-400">Private Collector, Northern Europe</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-slide hidden space-y-6 text-center opacity-0 transition-opacity duration-500">
+              <p class="mx-auto max-w-3xl text-lg leading-8 text-slate-300">"Discreet and efficient. I trust Iron Vault with our family's heirloom jewelry. Their London facility is exceptional."</p>
+              <div class="mx-auto flex max-w-xs items-center justify-center gap-4 rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-left shadow-soft">
+                <img src="images/Face2.jpg" alt="M.T. client testimonial" class="h-16 w-16 rounded-full object-cover" loading="lazy" />
+                <div>
+                  <p class="font-semibold text-white">M.T.</p>
+                  <p class="text-sm text-slate-400">Family Office, Central Europe</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-slide hidden space-y-6 text-center opacity-0 transition-opacity duration-500">
+              <p class="mx-auto max-w-3xl text-lg leading-8 text-slate-300">"We transferred our company's diamond inventory from a bank to Iron Vault Security due to their superior security. Outstanding service."</p>
+              <div class="mx-auto flex max-w-xs items-center justify-center gap-4 rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-left shadow-soft">
+                <img src="images/face3.jpg" alt="R.M. client testimonial" class="h-16 w-16 rounded-full object-cover" loading="lazy" />
+                <div>
+                  <p class="font-semibold text-white">R.M.</p>
+                  <p class="text-sm text-slate-400">Corporate Client, UK</p>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-slide hidden space-y-6 text-center opacity-0 transition-opacity duration-500">
+              <p class="mx-auto max-w-3xl text-lg leading-8 text-slate-300">"Iron Vault defines excellence in asset protection. Their London facility offers a level of discretion and security that is truly unmatched. My family's heirloom jewelry couldn't be in better hands."</p>
+              <div class="mx-auto flex max-w-xs items-center justify-center gap-4 rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-left shadow-soft">
+                <img src="images/face4.jpg" alt="E.S. client testimonial" class="h-16 w-16 rounded-full object-cover" loading="lazy" />
+                <div>
+                  <p class="font-semibold text-white">E.S.</p>
+                  <p class="text-sm text-slate-400">Private Client, Western Europe</p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="mt-10 flex items-center justify-center gap-3">
+            <button class="testimonial-dot active" aria-label="Testimonial 1"></button>
+            <button class="testimonial-dot" aria-label="Testimonial 2"></button>
+            <button class="testimonial-dot" aria-label="Testimonial 3"></button>
+            <button class="testimonial-dot" aria-label="Testimonial 4"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracking" class="py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 xl:grid-cols-[0.9fr_0.95fr]">
+          <div class="space-y-6">
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Cargo & Delivery Tracking</p>
+            <h2 class="text-4xl font-semibold tracking-tight text-white">Cargo & Delivery Tracking</h2>
+            <p class="max-w-2xl text-lg leading-8 text-slate-300">Track secure cargo, update shipment progress, and keep client asset records growing from one Vercel-connected dashboard.</p>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="glass-panel rounded-[2rem] p-7 shadow-soft">
+                <span class="text-sm uppercase tracking-[0.35em] text-gold">Assets on record</span>
+                <p class="mt-4 text-5xl font-semibold text-white" id="opsAssetsCount">0</p>
+                <p class="mt-3 text-slate-300">Auto-updates as new client assets are added.</p>
+              </div>
+              <div class="glass-panel rounded-[2rem] p-7 shadow-soft">
+                <span class="text-sm uppercase tracking-[0.35em] text-gold">Active deliveries</span>
+                <p class="mt-4 text-5xl font-semibold text-white" id="opsActiveCount">0</p>
+                <p class="mt-3 text-slate-300">Secure shipments currently processing or in transit.</p>
+              </div>
+              <div class="glass-panel rounded-[2rem] p-7 shadow-soft">
+                <span class="text-sm uppercase tracking-[0.35em] text-gold">Delivered cargo</span>
+                <p class="mt-4 text-5xl font-semibold text-white" id="opsDeliveredCount">0</p>
+                <p class="mt-3 text-slate-300">Completed deliveries stored in the same dataset.</p>
+              </div>
+              <div class="glass-panel rounded-[2rem] p-7 shadow-soft">
+                <span class="text-sm uppercase tracking-[0.35em] text-gold">Client signups</span>
+                <p class="mt-4 text-5xl font-semibold text-white" id="opsSignupCount">0</p>
+                <p class="mt-3 text-slate-300">New account requests captured for follow-up.</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-panel rounded-[2rem] border border-white/10 p-8 shadow-soft">
+            <div class="space-y-6">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <input id="trackInput" type="text" placeholder="Enter Tracking ID (e.g. IVS-78432)" aria-label="Tracking ID" class="w-full rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+                <button id="trackBtn" class="inline-flex h-14 items-center justify-center rounded-full bg-gold px-6 text-sm font-semibold uppercase tracking-[0.15em] text-[#081113] transition hover:shadow-glow">Track Shipment</button>
+              </div>
+              <div id="trackingResult" class="min-h-[120px] rounded-[1.75rem] border border-white/10 bg-[#06101a] p-6 text-slate-300"></div>
+              <div class="overflow-x-auto rounded-[1.75rem] border border-white/10 bg-[#06101a] p-4">
+                <table class="min-w-full text-left text-sm text-slate-300">
+                  <thead>
+                    <tr class="border-b border-white/10 text-slate-400">
+                      <th class="px-3 py-3">Tracking ID</th>
+                      <th class="px-3 py-3">Contents</th>
+                      <th class="px-3 py-3">Origin</th>
+                      <th class="px-3 py-3">Destination</th>
+                      <th class="px-3 py-3">Status</th>
+                      <th class="px-3 py-3">ETA</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cargoTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="assets" class="bg-[#07101a] py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 xl:grid-cols-2">
+          <div class="glass-panel rounded-[2rem] p-8 shadow-soft">
+            <div class="space-y-5">
+              <p class="text-sm uppercase tracking-[0.35em] text-gold">Client Asset Register</p>
+              <h2 class="text-3xl font-semibold tracking-tight text-white">Register assets, manage holdings, and preview secure storage details.</h2>
+              <p class="text-slate-300">Add gold, gems, jewelry, documents, and other secured holdings to grow the live asset total.</p>
+            </div>
+            <form id="assetForm" class="mt-10 grid gap-4">
+              <input type="text" name="owner" placeholder="Client Name" aria-label="Client Name" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="text" name="assetName" placeholder="Asset Name" aria-label="Asset Name" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="text" name="assetType" placeholder="Asset Type" aria-label="Asset Type" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="text" name="quantity" placeholder="Quantity / Weight" aria-label="Quantity" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="text" name="vault" placeholder="Vault Assignment" aria-label="Vault Assignment" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="text" name="status" placeholder="Stored / Awaiting Intake" aria-label="Asset Status" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <button type="submit" class="rounded-full bg-gold px-6 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#081113] transition hover:shadow-glow">Add Asset</button>
+            </form>
+            <p id="assetFormStatus" class="mt-4 hidden rounded-2xl border border-gold/20 bg-gold/10 px-5 py-3 text-sm text-gold" aria-live="polite"></p>
+          </div>
+          <div class="glass-panel rounded-[2rem] p-8 shadow-soft">
+            <div class="space-y-5">
+              <p class="text-sm uppercase tracking-[0.35em] text-gold">New Client Signup</p>
+              <h2 class="text-3xl font-semibold tracking-tight text-white">New Client Signup</h2>
+              <p class="text-slate-300">Collect onboarding details and send them to your Vercel backend for storage and follow-up.</p>
+            </div>
+            <form id="signupForm" class="mt-10 grid gap-4">
+              <input type="text" name="fullName" placeholder="Full Name" aria-label="Full Name" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="tel" name="phone" placeholder="Phone Number" aria-label="Phone Number" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="text" name="company" placeholder="Company or Family Office" aria-label="Company" class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <textarea name="needs" placeholder="What assets or cargo do you need us to secure?" aria-label="Storage Needs" rows="4" required class="rounded-[1.75rem] border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20"></textarea>
+              <button type="submit" class="rounded-full bg-white/5 px-6 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-slate-100 transition hover:border-gold hover:text-gold border border-white/10">Create Sign Up Request</button>
+            </form>
+            <p id="signupFormStatus" class="mt-4 hidden rounded-2xl border border-gold/20 bg-gold/10 px-5 py-3 text-sm text-gold" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-[#061018] p-5 shadow-soft">
+          <table class="min-w-full divide-y divide-white/5 text-left text-sm text-slate-300">
+            <thead>
+              <tr class="border-b border-white/10 text-slate-400">
+                <th class="px-4 py-3">Client</th>
+                <th class="px-4 py-3">Asset</th>
+                <th class="px-4 py-3">Type</th>
+                <th class="px-4 py-3">Quantity</th>
+                <th class="px-4 py-3">Vault</th>
+                <th class="px-4 py-3">Status</th>
+              </tr>
+            </thead>
+            <tbody id="assetTableBody" class="divide-y divide-white/5"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-[#060b11] py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[0.95fr_0.9fr]">
+          <div class="glass-panel rounded-[2rem] p-10 shadow-soft">
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Contact</p>
+            <h2 class="mt-4 text-4xl font-semibold tracking-tight text-white">Have questions? Contact us.</h2>
+            <p class="mt-6 text-lg leading-8 text-slate-300">Send a secure inquiry and receive concierge follow-up for vault booking, collection, and asset registration.</p>
+            <form id="contactForm" class="mt-10 grid gap-4">
+              <input type="text" name="name" placeholder="Enter Your Name" aria-label="Name" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <input type="email" name="email" placeholder="Enter Your Email" aria-label="Email" required class="rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+              <textarea name="message" placeholder="Enter Your Message" aria-label="Message" rows="5" required class="rounded-[1.75rem] border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20"></textarea>
+              <label class="inline-flex items-center gap-3 text-slate-300">
+                <input type="checkbox" name="consent" required class="h-4 w-4 rounded border-white/20 bg-[#081018] text-gold focus:ring-gold" />
+                <span>I agree that my submitted data is being collected and stored.</span>
+              </label>
+              <button type="submit" class="rounded-full bg-gold px-6 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#081113] transition hover:shadow-glow">Send Message</button>
+            </form>
+            <p id="contactFormStatus" class="mt-4 hidden rounded-2xl border border-gold/20 bg-gold/10 px-5 py-3 text-sm text-gold" aria-live="polite"></p>
+          </div>
+          <div class="glass-panel rounded-[2rem] p-10 shadow-soft">
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Contacts</p>
+            <div class="mt-8 space-y-8 rounded-[2rem] border border-white/10 bg-[#061018] p-8">
+              <div>
+                <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Location</p>
+                <p class="mt-3 text-lg font-semibold text-white">45 Bankside Lane, London EC2V 7NQ, UK</p>
+              </div>
+              <div>
+                <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Email</p>
+                <p class="mt-3 text-lg font-semibold text-white"><a href="mailto:secure@ironvaultsecurity.co.uk" class="text-white hover:text-gold">secure@ironvaultsecurity.co.uk</a></p>
+                <p class="mt-2 text-sm text-slate-400">IronVaultSecurity@protonmail.com</p>
+              </div>
+              <div class="rounded-[1.75rem] bg-[#08131f] p-6">
+                <p class="text-sm uppercase tracking-[0.3em] text-slate-400">Call Us Today</p>
+                <p class="mt-3 text-2xl font-semibold text-white"><a href="tel:+442079460958" class="hover:text-gold">+44 20 7946 0958</a></p>
+              </div>
+              <div class="flex items-center gap-4 text-slate-400">
+                <a href="mailto:secure@ironvaultsecurity.co.uk?subject=Facebook%20Inquiry" aria-label="Facebook" class="transition hover:text-gold">Facebook</a>
+                <a href="mailto:secure@ironvaultsecurity.co.uk?subject=X%20Inquiry" aria-label="Twitter" class="transition hover:text-gold">X</a>
+                <a href="mailto:secure@ironvaultsecurity.co.uk?subject=LinkedIn%20Inquiry" aria-label="LinkedIn" class="transition hover:text-gold">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 bg-[#05080f] py-10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center lg:justify-between">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.35em] text-gold">Shield Approved</p>
+        <p class="mt-3 max-w-2xl text-sm text-slate-400">Made with Shield Approved - a premium vault storage experience for gold, diamonds, gems, jewelry and high-value assets.</p>
+      </div>
+      <p class="text-sm text-slate-500">Iron Vault Security (c) 2026. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div id="loginModal" class="fixed inset-0 z-50 flex hidden items-center justify-center modal-backdrop px-4 py-10">
+    <div class="relative w-full max-w-xl rounded-[2rem] border border-white/10 bg-[#07101a] p-8 shadow-soft">
+      <button id="closeModal" class="absolute right-5 top-5 rounded-full border border-white/10 bg-white/5 p-3 text-slate-200 transition hover:bg-white/10" aria-label="Close login modal">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+      <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="space-y-4">
+          <p class="text-sm uppercase tracking-[0.35em] text-gold">Client login</p>
+          <h2 class="text-3xl font-semibold text-white">Secure vault portal access</h2>
+          <p class="text-slate-300">Use the secure login to preview your dashboard, deliveries, and asset registers. Enter your credentials to simulate a private client session.</p>
+        </div>
+        <div class="rounded-[2rem] bg-[#06101a] p-8 shadow-soft">
+          <form id="loginForm" class="space-y-5">
+            <div>
+              <label class="text-sm font-semibold text-slate-200" for="loginEmail">Email</label>
+              <input id="loginEmail" type="email" name="email" placeholder="secure@ironvaultsecurity.co.uk" required class="mt-3 w-full rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-slate-200" for="loginPassword">Password</label>
+              <input id="loginPassword" type="password" name="password" placeholder="Enter your password" required class="mt-3 w-full rounded-3xl border border-white/10 bg-[#081018] px-5 py-4 text-white outline-none focus:border-gold focus:ring-2 focus:ring-gold/20" />
+            </div>
+            <button type="submit" class="inline-flex w-full items-center justify-center rounded-full bg-gold px-6 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-[#081113] transition hover:shadow-glow">Login Securely</button>
+            <p class="text-sm text-slate-400">Use <strong>secure@ironvaultsecurity.co.uk</strong> and password <strong>Vault2026!</strong> to preview the dashboard.</p>
+            <p id="loginError" class="text-sm text-rose-400 hidden"></p>
+          </form>
+        </div>
+      </div>
+      <div id="dashboardPreview" class="mt-10 hidden rounded-[2rem] border border-gold/20 bg-[#08131b] p-8 text-slate-200 shadow-soft">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-sm uppercase tracking-[0.35em] text-gold">Dashboard preview</p>
+            <h3 class="mt-3 text-2xl font-semibold text-white">Welcome back, Avery Sinclair.</h3>
+            <p class="mt-2 text-slate-400">This simulated overview shows securely registered assets, active deliveries and client shipment status.</p>
+          </div>
+          <span class="rounded-full bg-gold/10 px-4 py-2 text-sm font-semibold text-gold">Verified User</span>
+        </div>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          <div class="rounded-[1.75rem] bg-[#09131b] p-6">
+            <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Assets</p>
+            <p class="mt-4 text-3xl font-semibold text-white">18</p>
+            <p class="mt-2 text-slate-400">Active holdings under protection.</p>
+          </div>
+          <div class="rounded-[1.75rem] bg-[#09131b] p-6">
+            <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Deliveries</p>
+            <p class="mt-4 text-3xl font-semibold text-white">6</p>
+            <p class="mt-2 text-slate-400">En-route and completed shipments.</p>
+          </div>
+          <div class="rounded-[1.75rem] bg-[#09131b] p-6">
+            <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Vaults</p>
+            <p class="mt-4 text-3xl font-semibold text-white">12</p>
+            <p class="mt-2 text-slate-400">Private units currently in use.</p>
+          </div>
+          <div class="rounded-[1.75rem] bg-[#09131b] p-6">
+            <p class="text-sm uppercase tracking-[0.35em] text-slate-400">Tracking</p>
+            <p class="mt-4 text-3xl font-semibold text-white">IVS-78432</p>
+            <p class="mt-2 text-slate-400">Latest secured cargo movement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    const openLogin = document.getElementById('openLogin');
+    const openSignup = document.getElementById('openSignup');
+    const mobileLogin = document.getElementById('mobileLogin');
+    const mobileSignup = document.getElementById('mobileSignup');
+    const heroLogin = document.getElementById('heroLogin');
+    const portalLogin = document.getElementById('portalLogin');
+    const portalSignup = document.getElementById('portalSignup');
+    const loginModal = document.getElementById('loginModal');
+    const closeModal = document.getElementById('closeModal');
+    const loginForm = document.getElementById('loginForm');
+    const loginError = document.getElementById('loginError');
+    const dashboardPreview = document.getElementById('dashboardPreview');
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    const storageCards = document.querySelectorAll('.storage-card');
+    const selectedSize = document.getElementById('selectedSize');
+    const trackBtn = document.getElementById('trackBtn');
+    const trackInput = document.getElementById('trackInput');
+    const trackingResult = document.getElementById('trackingResult');
+    const cargoTableBody = document.getElementById('cargoTableBody');
+    const assetTableBody = document.getElementById('assetTableBody');
+    const assetForm = document.getElementById('assetForm');
+    const signupForm = document.getElementById('signupForm');
+    const contactForm = document.getElementById('contactForm');
+    const assetFormStatus = document.getElementById('assetFormStatus');
+    const signupFormStatus = document.getElementById('signupFormStatus');
+    const contactFormStatus = document.getElementById('contactFormStatus');
+    const loginTriggers = [openLogin, mobileLogin, heroLogin, portalLogin];
+    const signupTriggers = [openSignup, mobileSignup, portalSignup];
+    const validCredentials = { email: 'secure@ironvaultsecurity.co.uk', password: 'Vault2026!' };
+
+    const testimonials = Array.from(document.querySelectorAll('.testimonial-slide'));
+    const testimonialDots = Array.from(document.querySelectorAll('.testimonial-dot'));
+    let testimonialIndex = 0;
+
+    const cargoRecords = [
+      { id: 'IVS-78432', contents: 'Diamond collection', origin: 'Zurich', destination: 'London', status: 'In transit', eta: '2 days' },
+      { id: 'IVS-66321', contents: 'Gold bar shipment', origin: 'Dubai', destination: 'London', status: 'Arrived', eta: 'Delivered' },
+      { id: 'IVS-91203', contents: 'Antique jewelry', origin: 'Geneva', destination: 'London', status: 'Security check', eta: '1 day' },
+      { id: 'IVS-33450', contents: 'Rare coin vault', origin: 'Monaco', destination: 'London', status: 'Dispatched', eta: '3 days' }
+    ];
+
+    const assetRows = [
+      { client: 'Avery Sinclair', asset: 'Investment gold bars', type: 'Metal', quantity: '45 kg', vault: 'Vault 5', status: 'Stored' },
+      { client: 'M. Thompson', asset: 'Heirloom jewelry set', type: 'Jewelry', quantity: '1 set', vault: 'Vault 9', status: 'Stored' },
+      { client: 'Royal Estates', asset: 'Emerald portfolio', type: 'Gemstones', quantity: '12 items', vault: 'Vault 2', status: 'Awaiting intake' },
+      { client: 'Covenant Trust', asset: 'Coin collection', type: 'Numismatics', quantity: '240 coins', vault: 'Vault 11', status: 'Stored' }
+    ];
+
+    const shippingData = [
+      { id: 'IVS-78432', location: 'Calais security hub', status: 'In transit', eta: '2026-06-02' },
+      { id: 'IVS-66321', location: 'London distribution', status: 'Delivered', eta: '2026-05-22' },
+      { id: 'IVS-91203', location: 'Customs clearance', status: 'Security check', eta: '2026-06-01' },
+      { id: 'IVS-33450', location: 'On route to London', status: 'Dispatched', eta: '2026-06-04' }
+    ];
+
+    const counters = {
+      assets: 2500,
+      vaults: 1200,
+      deliveries: 300,
+      opsAssets: 824,
+      opsActive: 18,
+      opsDelivered: 132,
+      opsSignup: 72
+    };
+
+    function toggleMobileMenu(open) {
+      mobileMenu.classList.toggle('hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    function toggleLoginModal(open) {
+      loginModal.classList.toggle('hidden', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (!open) {
+        dashboardPreview.classList.add('hidden');
+        loginError.classList.add('hidden');
+        loginForm.reset();
+      }
+    }
+
+    loginTriggers.forEach(button => {
+      button?.addEventListener('click', event => {
+        event.preventDefault();
+        window.location.href = 'login.html';
+      });
+    });
+    signupTriggers.forEach(button => {
+      button?.addEventListener('click', () => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        toggleLoginModal(false);
+      });
+    });
+    mobileMenuButton.addEventListener('click', () => toggleMobileMenu(true));
+    mobileClose.addEventListener('click', () => toggleMobileMenu(false));
+    closeModal.addEventListener('click', () => toggleLoginModal(false));
+
+    loginForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const email = loginEmail.value.trim();
+      const password = loginPassword.value.trim();
+      if (email === validCredentials.email && password === validCredentials.password) {
+        loginError.classList.add('hidden');
+        dashboardPreview.classList.remove('hidden');
+      } else {
+        loginError.textContent = 'Authentication failed. Use secure@ironvaultsecurity.co.uk and Vault2026!';
+        loginError.classList.remove('hidden');
+        dashboardPreview.classList.add('hidden');
+      }
+    });
+
+    storageCards.forEach(card => {
+      card.addEventListener('click', () => {
+        storageCards.forEach(item => item.classList.remove('border-gold', 'bg-[#111926]'));
+        card.classList.add('border-gold', 'bg-[#111926]');
+        selectedSize.textContent = card.dataset.size;
+      });
+    });
+    storageCards[0]?.click();
+
+    function setTestimonial(index) {
+      testimonials.forEach((slide, idx) => {
+        slide.classList.toggle('hidden', idx !== index);
+        slide.style.opacity = idx === index ? '1' : '0';
+      });
+      testimonialDots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
+    }
+    testimonialDots.forEach((dot, idx) => dot.addEventListener('click', () => {
+      testimonialIndex = idx;
+      setTestimonial(idx);
+    }));
+    setInterval(() => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      setTestimonial(testimonialIndex);
+    }, 8500);
+
+    function renderCargoTable(records) {
+      cargoTableBody.innerHTML = records.map(item => `
+        <tr class="border-b border-white/10 even:bg-white/5">
+          <td class="px-4 py-4">${item.id}</td>
+          <td class="px-4 py-4">${item.contents}</td>
+          <td class="px-4 py-4">${item.origin}</td>
+          <td class="px-4 py-4">${item.destination}</td>
+          <td class="px-4 py-4">${item.status}</td>
+          <td class="px-4 py-4">${item.eta}</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderAssetTable(records) {
+      assetTableBody.innerHTML = records.map(item => `
+        <tr class="border-b border-white/10 even:bg-white/5">
+          <td class="px-4 py-4">${item.client}</td>
+          <td class="px-4 py-4">${item.asset}</td>
+          <td class="px-4 py-4">${item.type}</td>
+          <td class="px-4 py-4">${item.quantity}</td>
+          <td class="px-4 py-4">${item.vault}</td>
+          <td class="px-4 py-4">${item.status}</td>
+        </tr>
+      `).join('');
+    }
+
+    function setFormStatus(element, message) {
+      element.textContent = message;
+      element.classList.remove('hidden');
+    }
+
+    function setCounterText(id, value) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = value.toString();
+      }
+    }
+
+    function updateCounter(id, target) {
+      const element = document.getElementById(id);
+      if (!element) return;
+      let count = 0;
+      const step = Math.ceil(target / 60);
+      const interval = setInterval(() => {
+        count += step;
+        if (count >= target) {
+          element.textContent = target.toString();
+          clearInterval(interval);
+        } else {
+          element.textContent = count.toString();
+        }
+      }, 20);
+    }
+
+    window.addEventListener('load', () => {
+      updateCounter('assetsSecureCount', counters.assets);
+      updateCounter('vaultsCount', counters.vaults);
+      updateCounter('deliveriesCount', counters.deliveries);
+      updateCounter('opsAssetsCount', counters.opsAssets);
+      updateCounter('opsActiveCount', counters.opsActive);
+      updateCounter('opsDeliveredCount', counters.opsDelivered);
+      updateCounter('opsSignupCount', counters.opsSignup);
+      renderCargoTable(cargoRecords);
+      renderAssetTable(assetRows);
+      trackingResult.textContent = 'Enter a tracking ID to view the latest secure shipment status.';
+    });
+
+    trackBtn.addEventListener('click', () => {
+      const query = trackInput.value.trim().toUpperCase();
+      if (!query) {
+        trackingResult.innerHTML = '<p class="text-slate-300">Enter a valid Tracking ID like IVS-78432 to see results.</p>';
+        return;
+      }
+      const record = shippingData.find(row => row.id === query);
+      if (!record) {
+        trackingResult.innerHTML = '<p class="text-rose-300">No shipment was found for that ID. Check the tracking number and try again.</p>';
+        return;
+      }
+      trackingResult.innerHTML = `
+        <div class="rounded-3xl border border-gold/20 bg-[#09131f] p-6">
+          <p class="text-sm uppercase tracking-[0.35em] text-gold">${record.id}</p>
+          <h3 class="mt-3 text-2xl font-semibold text-white">${record.status}</h3>
+          <p class="mt-2 text-slate-300">Current location: <strong class="text-white">${record.location}</strong></p>
+          <p class="mt-1 text-slate-400">Estimated arrival: <strong class="text-white">${record.eta}</strong></p>
+        </div>
+      `;
+    });
+
+    assetForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const formData = new FormData(assetForm);
+      const asset = {
+        client: formData.get('owner'),
+        asset: formData.get('assetName'),
+        type: formData.get('assetType'),
+        quantity: formData.get('quantity'),
+        vault: formData.get('vault'),
+        status: formData.get('status')
+      };
+      assetRows.unshift(asset);
+      counters.assets += 1;
+      counters.opsAssets += 1;
+      renderAssetTable(assetRows);
+      setCounterText('assetsSecureCount', counters.assets);
+      setCounterText('opsAssetsCount', counters.opsAssets);
+      setFormStatus(assetFormStatus, `${asset.asset} has been added to ${asset.vault}.`);
+      assetForm.reset();
+    });
+
+    signupForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const formData = new FormData(signupForm);
+      const fullName = formData.get('fullName');
+      counters.opsSignup += 1;
+      setCounterText('opsSignupCount', counters.opsSignup);
+      setFormStatus(signupFormStatus, `Signup request received for ${fullName}.`);
+      signupForm.reset();
+    });
+
+    contactForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      setFormStatus(contactFormStatus, `Thank you, ${name}. The concierge team will follow up shortly.`);
+      contactForm.reset();
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', event => {
+        const targetId = anchor.getAttribute('href').slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          event.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          toggleMobileMenu(false);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
