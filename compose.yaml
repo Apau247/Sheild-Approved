@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+    command: next start
+    ports:
+      - mode: ingress
+        target: 3000
+        published: 3000
+    deploy:
+      resources:
+        reservations:
+          cpus: "0.5"
+          memory: 512M
