@@ -79,7 +79,7 @@ export default function ContactSection() {
                   <Mail className="h-4 w-4 text-vault-gold" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-white/90">{COMPANY.email}</div>
+                  <div className="break-all text-sm font-semibold text-white/90">{COMPANY.email}</div>
                   <div className="text-xs text-white/60">Secure email inbox</div>
                 </div>
               </div>

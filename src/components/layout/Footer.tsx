@@ -34,7 +34,7 @@ export default function Footer() {
               <span className="text-vault-gold">Phone:</span>{" "}
               {COMPANY.phone}
             </div>
-            <div className="text-sm text-white/70">
+            <div className="break-all text-sm text-white/70">
               <span className="text-vault-gold">Email:</span>{" "}
               {COMPANY.email}
             </div>

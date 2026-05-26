@@ -6,8 +6,8 @@ export const COMPANY = {
   name: "Iron Vault Security",
   tagline: "Fortified Storage for Gold, Gems & Legacy",
   phone: "+44 20 7946 0958",
-  email: "secure@ironvaultsecurity.co.uk",
-  emailAlt: "IronVaultSecurity@protonmail.com",
+  email: "IronVaultSecurity@protonmail.com",
+  emailAlt: "ironvaultsecurity.co.uk",
   address: "45 Bankside Lane, London EC2V 7NQ, UK",
   mapEmbedUrl:
     "https://maps.google.com/maps?q=45+Bankside+Lane,+London+EC2V+7NQ,+UK&t=k&z=16&ie=UTF8&iwloc=&output=embed",

@@ -11,7 +11,7 @@ Build a professional, high-end WordPress website for **Iron Vault Security**, a 
 - **Industry:** High-security vault storage and asset protection
 - **Location:** 45 Bankside Lane, London EC2V 7NQ, UK
 - **Contact Phone:** +44 20 7946 0958
-- **Contact Email:** secure@ironvaultsecurity.co.uk
+- **Contact Email:** IronVaultSecurity@protonmail.com
 - **Personal Vault Login URL:** https://ironvaultsecurity.co.uk/secure-vault/login.php
 
 ---
@@ -71,7 +71,7 @@ Build a professional, high-end WordPress website for **Iron Vault Security**, a 
 - **Headline:** "Secure Vault Storage in London" (h1, left-aligned)
 - **Sub-section:** Dark horizontal rule (`#1a1a1a`, 8px thick)
 - **Contact Callout:**
-  - "You can reach us either by calling us or by sending us an email – secure@ironvaultsecurity.co.uk"
+  - "You can reach us either by calling us or by sending us an email – IronVaultSecurity@protonmail.com"
   - Phone: +44 20 7946 0958 (clickable)
   - Icon: Phone icon (icon-phone-1)
 
@@ -143,7 +143,7 @@ Build a professional, high-end WordPress website for **Iron Vault Security**, a 
 
   1. **1m²**
      - Description: "Watches, small jewelry sets, coin collections"
-     - CTA: "Enquire Now" (mailto:secure@ironvaultsecurity.co.uk)
+     - CTA: "Enquire Now" (mailto:IronVaultSecurity@protonmail.com)
 
   2. **5m²**
      - Description: "Larger jewelry boxes, gold bars, luxury items"
@@ -200,7 +200,7 @@ Build a professional, high-end WordPress website for **Iron Vault Security**, a 
   - **Subtitle:** "contacts" (h6, right-aligned)
   - **Contact Details Box** (with background image of London skyline):
     - **Location:** 45 Bankside Lane, London EC2V 7NQ, UK
-    - **Email:** secure@ironvaultsecurity.co.uk
+    - **Email:** IronVaultSecurity@protonmail.com
     - **Call Us Today:** +44 20 7946 0958 (large, prominent)
 
 ---
@@ -318,7 +318,7 @@ Build a professional, high-end WordPress website for **Iron Vault Security**, a 
    - `Gold Shield Security` → `Iron Vault Security`
    - `gssltduk.com` → `ironvaultsecurity.co.uk`
    - `+447349601478` → `+44 20 7946 0958`
-   - `info@gssltduk.com` → `secure@ironvaultsecurity.co.uk`
+   - `info@gssltduk.com` → `IronVaultSecurity@protonmail.com`
    - `20 Farringdon St, London EC4A 4AB, UK` → `45 Bankside Lane, London EC2V 7NQ, UK`
 5. **Update the JivoSite widget code** if live chat is required, or remove the script line entirely.
 6. **Ensure all `mailto:` and `tel:` links** use the new contact details.
