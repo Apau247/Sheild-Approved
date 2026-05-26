@@ -18,6 +18,7 @@
     "react-hook-form": "^7.54.2",
     "react-hot-toast": "^2.4.1",
     "resend": "^6.12.4",
+    "uuid": "^14.0.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
