@@ -5,11 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shield Approved | Elite Asset Protection</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        midnight: '#020609',
+                        obsidian: '#07101a',
+                        vault: '#0c1720'
+                    },
+                    boxShadow: {
+                        gold: '0 0 20px rgba(212, 175, 55, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
     <style type="text/tailwindcss">
         @layer components {
+            .luxury-text {
+                @apply font-bold uppercase tracking-widest;
+            }
             .glass-panel {
-                @apply bg-obsidian/80 border border-white/10 backdrop-blur-xl transition-all duration-300;
+                @apply bg-obsidian/80 border border-white/5 backdrop-blur-xl transition-all duration-300;
+            }
+            .glass-card {
+                @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-500 hover:border-gold/40 hover:bg-white/10;
+            }
+            .btn-luxury {
+                @apply bg-gradient-to-r from-gold to-[#F7D37A] text-midnight font-bold tracking-wider transition-all duration-300 hover:scale-[1.02] hover:shadow-gold;
+            }
+            .gold-gradient-text {
+                @apply bg-gradient-to-r from-gold via-white to-gold bg-clip-text text-transparent;
             }
             .marquee-wrapper {
                 @apply overflow-hidden w-full py-5;
@@ -26,15 +55,43 @@
             .testimonial-card {
                 @apply w-[400px] flex-shrink-0;
             }
+            .security-scan::after {
+                @apply content-[''] absolute w-full h-0.5 bg-gold shadow-[0_0_15px_#D4AF37] animate-[scan_3s_linear_infinite] z-10;
+            }
+            @keyframes scan {
+                0% { top: 0%; }
+                100% { top: 100%; }
+            }
         }
     </style>
 </head>
 <body class="scrollbar-thin">
     <!-- Sticky Navbar -->
     <nav id="navbar" class="fixed w-full z-[100] transition-all duration-500 py-6 px-8 flex justify-between items-center bg-transparent">
-        <div class="flex items-centerlrlr: i
-        <dive inset-0 bg-[url('images/hero5.jpg')] bg-cover bg-center opacity-30"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#020609]/80 to-[#020609]"></div>
+        <div class="flex items-center gap-3">
+            <img src="images/logo.png" alt="Logo" class="h-10 w-10">
+            <span class="luxury-text text-xl font-bold tracking-widest text-white">Shield <span class="text-gold">Approved</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm uppercase font-semibold text-slate-300">
+            <a href="#services" class="hover:text-gold transition">Operations</a>
+            <a href="#testimonials" class="hover:text-gold transition">Testimonials</a>
+            <a href="#tracking" class="hover:text-gold transition">Tracking</a>
+            <a href="#contact" class="hover:text-gold transition">Contact</a>
+            <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/20">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="online-users" class="text-[10px] text-emerald-400 font-mono">0</span>
+                <span class="text-[10px] text-slate-400 uppercase">Live</span>
+            </div>
+        </div>
+        <div class="flex gap-4">
+            <a href="login.html" class="px-6 py-2 rounded-full border border-gold text-gold text-sm font-bold hover:bg-gold hover:text-midnight transition">PORTAL ACCESS</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('images/hero5.jpg')] bg-cover bg-center opacity-30"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-midnight/80 to-midnight"></div>
         
         <div class="container mx-auto px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
@@ -102,16 +159,65 @@
 
     <!-- Services Grid (Dynamic) -->
     <section id="services" class="py-24">
+    <!-- Services Grid (Featured Cards) -->
+    <section id="services" class="py-24 bg-midnight">
         <div class="container mx-auto px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                 <div class="space-y-4">
                     <h2 class="text-4xl text-white">Elite <span class="text-[#D4AF37]">Services</span></h2>
                     <p class="text-slate-400 max-w-lg">Bespoke security protocols designed for the world's most demanding environments.</p>
+            <div class="text-center mb-16">
+                <p class="text-sm uppercase tracking-[0.35em] text-gold mb-4">Core Specializations</p>
+                <h2 class="text-4xl font-semibold text-white">Elite <span class="text-gold">Custody Solutions</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Vaulting Facilities -->
+                <div class="glass-card group overflow-hidden rounded-[2rem] border border-white/5">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://yourdomain.com/images/vault-door.jpg" alt="Vault interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/20 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-white mb-3">Vaulting Facilities</h3>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">Grade 10 deep underground storage with biometric airlocks and institutional-grade climate control for precious assets.</p>
+                        <a href="login.html" class="text-gold text-xs font-bold uppercase tracking-widest hover:text-white transition inline-flex items-center gap-2">Explore Facility <span class="text-lg">→</span></a>
+                    </div>
                 </div>
                 <button class="text-sm font-bold text-[#D4AF37] border-b border-[#D4AF37] pb-1">VIEW ALL PROTOCOLS</button>
+
+                <!-- Diamond & Jewellery -->
+                <div class="glass-card group overflow-hidden rounded-[2rem] border border-white/5">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://yourdomain.com/images/private-client.jpg" alt="Luxury client silhouette" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/20 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-white mb-3">Diamond & Jewellery</h3>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">Specialized handling and discreet storage for rare gemstones, fine jewelry, and luxury watch collections.</p>
+                        <a href="login.html" class="text-gold text-xs font-bold uppercase tracking-widest hover:text-white transition inline-flex items-center gap-2">Private Access <span class="text-lg">→</span></a>
+                    </div>
+                </div>
+
+                <!-- Precious Metals -->
+                <div class="glass-card group overflow-hidden rounded-[2rem] border border-white/5">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://yourdomain.com/images/gold-vault.jpg" alt="Gold bars close-up" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-midnight/90 via-midnight/20 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-white mb-3">Precious Metals</h3>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">Secure custody for gold, silver, and platinum bullion with fully insured transit and international accreditation.</p>
+                        <a href="login.html" class="text-gold text-xs font-bold uppercase tracking-widest hover:text-white transition inline-flex items-center gap-2">Secure Storage <span class="text-lg">→</span></a>
+                    </div>
+                </div>
             </div>
             <div id="services-container" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Injected via JavaScript -->
+            
+            <div class="text-center mt-12">
+                <p class="text-slate-500 text-sm italic mb-6">"See what we can offer just for your needs"</p>
+                <button class="px-8 py-3 rounded-full border border-gold/30 text-gold font-bold uppercase text-xs hover:bg-gold hover:text-midnight transition">More Services</button>
             </div>
         </div>
     </section>
