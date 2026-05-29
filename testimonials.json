@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Marcus Vane",
+        "role": "Hedge Fund Manager",
+        "text": "Shield Approved redefined what I consider security. Their response time is unmatched.",
+        "rating": 5,
+        "image": "images/face1.jpg"
+    },
+    {
+        "name": "Elena Rossi",
+        "role": "Art Collector",
+        "text": "The vaulting system for my collection provides absolute peace of mind. Truly elite.",
+        "rating": 5,
+        "image": "images/face1.jpg"
+    }
+]

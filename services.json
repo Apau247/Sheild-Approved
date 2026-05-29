@@ -1,0 +1,22 @@
+[
+    {
+        "title": "VIP Protection",
+        "icon": "🛡️",
+        "desc": "Close protection details for ultra-high-net-worth individuals."
+    },
+    {
+        "title": "Secure Vaulting",
+        "icon": "💎",
+        "desc": "Grade 10 deep underground storage with biometric airlocks."
+    },
+    {
+        "title": "Armed Escort",
+        "icon": "🔫",
+        "desc": "Global transit protection for physical bullion and currency."
+    },
+    {
+        "title": "Cyber Intelligence",
+        "icon": "💻",
+        "desc": "Active threat hunting and digital asset fortification."
+    }
+]
