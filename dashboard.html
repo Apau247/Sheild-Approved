@@ -25,8 +25,8 @@
             <header class="flex justify-between items-center mb-10">
                 <div>
                     <h1 class="text-2xl text-white">System <span class="text-[#D4AF37]">Overview</span></h1>
-                    <p class="text-slate-500 text-xs mt-1">GUEST SESSION: 10.0.42.1 | ENCRYPTED</p>
                 </div>
+                <!-- User Profile -->
                 <div class="flex items-center gap-4">
                     <div class="text-right">
                         <p class="text-sm text-white font-bold">Avery Sinclair</p>
@@ -87,19 +87,62 @@
                             <th class="pb-4">Status</th>
                         </tr>
                     </thead>
-                    <tbody class="text-sm text-slate-300">
-                        <tr class="border-b border-white/5">
-                            <td class="py-4 font-mono">#IVS-AU-992</td>
-                            <td class="py-4">Bullion Gold</td>
-                            <td class="py-4">Vault 05</td>
-                            <td class="py-4 font-bold text-white">£2,450,000</td>
-                            <td class="py-4"><span class="px-2 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] rounded-md font-bold">FORTIFIED</span></td>
-                        </tr>
+                    <tbody id="asset-tracking-body" class="text-sm text-slate-300">
+                        <!-- Asset data will be injected here -->
                     </tbody>
                 </table>
             </div>
         </main>
     </div>
-    <script src="script.js"></script>
+    <script>
+        // Check for logged-in user and role
+        const user = JSON.parse(localStorage.getItem('ivsCurrentUser') || 'null');
+        if (!user || user.role !== 'admin') {
+            // Redirect to login if not logged in or not an admin
+            window.location.href = 'login.html';
+        }
+
+        // Update header with admin's name
+        document.querySelector('header .text-right p:first-child').textContent = user.name;
+        document.querySelector('header .text-right p:last-child').textContent = user.role.toUpperCase();
+
+        async function loadAssetData() {
+            try {
+                const response = await fetch('data/users.json');
+                const data = await response.json();
+                const users = data.users;
+
+                const assetTrackingBody = document.getElementById('asset-tracking-body');
+                assetTrackingBody.innerHTML = ''; // Clear existing rows
+
+                let hasAssets = false;
+                users.forEach(client => {
+                    if (client.role === 'client' && client.assetDetails) {
+                        hasAssets = true;
+                        const asset = client.assetDetails;
+                        const logistics = client.logistics;
+                        const row = `
+                            <tr class="border-b border-white/5">
+                                <td class="py-4 font-mono">${asset.securityCode || 'N/A'}</td>
+                                <td class="py-4">${asset.assetType || 'N/A'}</td>
+                                <td class="py-4">${asset.storageLocation || 'N/A'}</td>
+                                <td class="py-4 font-bold text-white">${asset.currency || ''} ${asset.consignmentValue?.toLocaleString() || 'N/A'}</td>
+                                <td class="py-4"><span class="px-2 py-1 ${logistics?.status === 'Secured and Monitored' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-yellow-500/10 text-yellow-500'} text-[10px] rounded-md font-bold">${logistics?.status?.toUpperCase() || 'FORTIFIED'}</span></td>
+                            </tr>
+                        `;
+                        assetTrackingBody.innerHTML += row;
+                    }
+                });
+
+                if (!hasAssets) {
+                    assetTrackingBody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-slate-500">No client assets to display.</td></tr>';
+                }
+            } catch (error) {
+                console.error("Failed to load asset data for dashboard:", error);
+            }
+        }
+
+        loadAssetData();
+    </script>
 </body>
 </html>

@@ -7,10 +7,24 @@
         "image": "images/face1.jpg"
     },
     {
+        "name": "Alexander Hartmann",
+        "role": "Private Equity Investor",
+        "text": "The level of discretion and protection for my assets is unparalleled. Iron Vault has become my trusted partner.",
+        "rating": 5,
+        "image": "images/face2.jpg"
+    },
+    {
+        "name": "David Okoro",
+        "role": "Oil & Gas Executive",
+        "text": "Finally found a vault service that matches the standards of my industry. Professional, secure, and reliable.",
+        "rating": 5,
+        "image": "images/face3.jpg"
+    },
+    {
         "name": "Elena Rossi",
         "role": "Art Collector",
-        "text": "The vaulting system for my collection provides absolute peace of mind. Truly elite.",
+        "text": "The vaulting system for my collection provides absolute peace of mind. Truly elite service.",
         "rating": 5,
-        "image": "images/face1.jpg"
+        "image": "images/face4.jpg"
     }
 ]

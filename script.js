@@ -5,15 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
 async function initApp() {
     try {
         // Fetch all data in parallel
-        const [services, testimonials, faq] = await Promise.all([
+        const [services, testimonials, faq, usersData] = await Promise.all([
             fetch('data/services.json').then(res => res.json()),
             fetch('data/testimonials.json').then(res => res.json()),
-            fetch('data/faq.json').then(res => res.json())
+            fetch('data/faq.json').then(res => res.json()),
+            fetch('data/users.json').then(res => res.json())
         ]);
 
         renderServices(services);
         renderTestimonials(testimonials);
         renderFAQ(faq);
+        applyLiveIntelligence(usersData.users);
     } catch (error) {
         console.error("Critical: Failed to load intelligence data.", error);
     }
@@ -21,6 +23,24 @@ async function initApp() {
     initCounters();
     initNavbar();
     simulateActiveUsers();
+}
+
+/**
+ * Calculates statistics from the user database to apply to the landing page
+ */
+function applyLiveIntelligence(users) {
+    const clients = users.filter(u => u.role === 'client');
+    const assetsWithValues = clients.filter(u => u.assetDetails && u.assetDetails.consignmentValue);
+    
+    const totalValue = assetsWithValues.reduce((sum, u) => sum + u.assetDetails.consignmentValue, 0);
+    const totalVaults = new Set(assetsWithValues.map(u => u.assetDetails.storageLocation)).size;
+    const totalCountries = new Set(clients.map(u => u.country)).size;
+
+    // Apply targets to counter elements
+    const stats = document.querySelectorAll('.counter');
+    if(stats[0]) stats[0].setAttribute('data-target', Math.floor(totalValue / 1000000)); // In Millions
+    if(stats[1]) stats[1].setAttribute('data-target', totalVaults);
+    if(stats[3]) stats[3].setAttribute('data-target', totalCountries);
 }
 
 // 1. Dynamic Rendering
@@ -41,8 +61,30 @@ function renderTestimonials(testimonials) {
     const container = document.getElementById('testimonials-container');
     if (!container) return;
 
-    // Implementation for a testimonial slider would go here
-    console.log("Intelligence: Testimonials loaded", testimonials.length);
+    const cardsHtml = testimonials.map(t => `
+        <div class="glass-card testimonial-card p-8 rounded-3xl space-y-6 relative overflow-hidden group border-b-2 border-transparent hover:border-[#D4AF37]">
+            <div class="flex gap-1 text-[#D4AF37]">
+                ${'★'.repeat(t.rating)}
+            </div>
+            <p class="text-slate-300 italic relative z-10 leading-relaxed text-sm">"${t.text}"</p>
+            <div class="flex items-center gap-4 pt-4">
+                <div class="h-12 w-12 rounded-full border border-[#D4AF37]/30 p-1">
+                    <img src="${t.image}" alt="${t.name}" class="rounded-full h-full w-full object-cover">
+                </div>
+                <div>
+                    <h5 class="text-white font-bold text-sm">${t.name}</h5>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest">${t.role}</p>
+                </div>
+            </div>
+            <!-- Decorative Quote Mark -->
+            <div class="absolute -bottom-4 -right-2 text-8xl text-white/5 font-serif select-none group-hover:text-[#D4AF37]/10 transition-colors">"</div>
+        </div>
+    `).join('');
+
+    // Duplicate the content to create a seamless loop
+    container.innerHTML = cardsHtml + cardsHtml;
+    
+    console.log("Intelligence: Testimonials deployed to marquee.");
 }
 
 function renderFAQ(faq) {
