@@ -53,8 +53,8 @@ function HeroSection() {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020609]/80 to-[#020609]" />
-      <div className="container mx-auto px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="space-y-8">
+      <div className="container mx-auto px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-start">
+        <div className="space-y-8 lg:pt-12">
           <div className="inline-block px-4 py-1 rounded-full border border-gold/30 bg-gold/10 text-gold text-xs font-bold tracking-widest">
             MILITARY GRADE SECURITY
           </div>
@@ -69,11 +69,11 @@ function HeroSection() {
             <a href="#services" className="glass-card px-10 py-4 rounded-full text-white font-bold">VIEW OPERATIONS</a>
           </div>
         </div>
-        <div className="hidden lg:block relative">
+        <div className="hidden lg:flex flex-col gap-6">
           <div className="glass-card p-2 rounded-3xl security-scan relative">
-            <Image src="/hero-queen.jpg" alt="Vault Security" width={600} height={400} className="rounded-2xl w-full object-cover" />
+            <Image src="https://cdn.prod.website-files.com/5ce3e78374fe12ece8160ee5/5d63a08b5bf4d84c4c2a77f9_ahmedabad-p-1080.png" alt="Vault Security" width={600} height={400} className="rounded-2xl w-full object-cover" />
           </div>
-          <div className="absolute -bottom-10 -left-10 glass-card p-6 rounded-2xl w-64 space-y-4">
+          <div className="glass-card p-6 rounded-2xl space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-xs text-slate-500">SYSTEM STATUS</span>
               <span className="text-[10px] text-emerald-500 font-bold">● ACTIVE</span>
@@ -158,7 +158,7 @@ function ServicesSection() {
           {[
             { title: 'Vaulting Facilities', img: 'https://picsum.photos/seed/vault-facility/400/300', desc: 'Grade 10 deep underground storage with biometric airlocks and institutional-grade climate control for precious assets.' },
             { title: 'Diamond & Jewellery', img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=400&h=300&q=80', desc: 'Specialized handling and discreet storage for rare gemstones, fine jewelry, and luxury watch collections.' },
-            { title: 'Precious Metals', img: 'https://picsum.photos/seed/gold-bullion/400/300', desc: 'Secure custody for gold, silver, and platinum bullion with fully insured transit and international accreditation.' },
+            { title: 'Precious Metals', img: 'https://www.moneymetals.com/uploads/content/sub-category-banner-gold-eagles.jpg', desc: 'Secure custody for gold, silver, and platinum bullion with fully insured transit and international accreditation.' },
           ].map((s, i) => (
             <div key={i} className="glass-card group overflow-hidden rounded-[2rem] border border-white/5">
               <div className="h-72 overflow-hidden relative">
