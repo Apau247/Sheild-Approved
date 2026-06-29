@@ -4,27 +4,27 @@
         "role": "Hedge Fund Manager",
         "text": "Shield Approved redefined what I consider security. Their response time is unmatched.",
         "rating": 5,
-        "image": "images/face1.jpg"
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&q=80"
     },
     {
         "name": "Alexander Hartmann",
         "role": "Private Equity Investor",
-        "text": "The level of discretion and protection for my assets is unparalleled. Iron Vault has become my trusted partner.",
+        "text": "The level of discretion and protection for my assets is unparalleled. Shield Approved has become my trusted partner.",
         "rating": 5,
-        "image": "images/face2.jpg"
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&q=80"
     },
     {
         "name": "David Okoro",
         "role": "Oil & Gas Executive",
         "text": "Finally found a vault service that matches the standards of my industry. Professional, secure, and reliable.",
         "rating": 5,
-        "image": "images/face3.jpg"
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=48&q=80"
     },
     {
         "name": "Elena Rossi",
         "role": "Art Collector",
         "text": "The vaulting system for my collection provides absolute peace of mind. Truly elite service.",
         "rating": 5,
-        "image": "images/face4.jpg"
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=48&q=80"
     }
 ]

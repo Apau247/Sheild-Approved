@@ -47,11 +47,11 @@ export default function ClientPortalPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3 text-white">
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gold/15">
-              <Image src="/images/logo.png" alt="Iron Vault Security" width={32} height={32} className="h-8 w-8 rounded-xl object-contain" />
+              <Image src="/logo.jpg" alt="Shield Approved" width={32} height={32} className="h-8 w-8 rounded-xl object-contain" />
             </span>
             <span>
               <span className="block text-xs uppercase tracking-[0.35em] text-gold">Client Portal</span>
-              <span className="block font-semibold">Iron Vault Security</span>
+              <span className="block font-semibold">Shield Approved</span>
             </span>
           </Link>
           <div className="flex items-center gap-3">
@@ -66,7 +66,7 @@ export default function ClientPortalPage() {
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
               <div className="hidden sm:block">
-                <Image src={fullUser.clientImage || '/images/logo.png'} alt="Client" width={80} height={80} className="h-20 w-20 rounded-2xl border border-gold/30 object-cover shadow-2xl" />
+                <Image src={fullUser.clientImage || '/logo.jpg'} alt="Client" width={80} height={80} className="h-20 w-20 rounded-2xl border border-gold/30 object-cover shadow-2xl" />
               </div>
               <div>
                 <p className="text-sm uppercase tracking-[0.35em] text-gold">Verified session</p>

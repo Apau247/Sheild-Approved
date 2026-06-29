@@ -14,17 +14,17 @@ export default function SignupPage() {
   };
 
   return (
-    <main className="min-h-screen" style={{ backgroundImage: 'linear-gradient(120deg, rgba(3,7,12,0.88), rgba(3,7,12,0.62)), url(/images/hero5.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <main className="min-h-screen" style={{ backgroundImage: 'linear-gradient(120deg, rgba(3,7,12,0.88), rgba(3,7,12,0.62)), url(https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="mx-auto flex min-h-screen max-w-7xl items-center px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <section className="grid w-full gap-10 lg:grid-cols-[0.95fr_0.75fr] lg:items-center">
           <div className="max-w-2xl">
             <Link href="/" className="inline-flex items-center gap-3 text-white">
               <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/15">
-                <Image src="/images/logo.png" alt="Iron Vault Security" width={36} height={36} className="h-9 w-9 rounded-xl object-contain" />
+                <Image src="/logo.jpg" alt="Shield Approved" width={36} height={36} className="h-9 w-9 rounded-xl object-contain" />
               </span>
               <span>
                 <span className="block text-sm uppercase tracking-[0.35em] text-gold">Shield Approved</span>
-                <span className="block text-xl font-semibold">Iron Vault Security</span>
+                <span className="block text-xl font-semibold">Shield Approved</span>
               </span>
             </Link>
             <p className="mt-10 text-xs uppercase tracking-[0.28em] text-gold sm:mt-12 sm:text-sm sm:tracking-[0.35em]">Secure enrolment</p>

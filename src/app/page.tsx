@@ -19,7 +19,7 @@ function Navbar() {
   return (
     <nav className={`fixed w-full z-[100] transition-all duration-500 py-6 px-8 flex justify-between items-center ${scrolled ? 'bg-[#020609]/95 backdrop-blur-xl' : 'bg-transparent'}`}>
       <div className="flex items-center gap-3">
-        <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="h-10 w-10" />
+        <Image src="/logo.jpg" alt="Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
         <span className="font-bold uppercase tracking-widest text-xl text-white">
           Shield <span className="text-gold">Approved</span>
         </span>
@@ -51,7 +51,7 @@ function Navbar() {
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/images/hero5.jpg')] bg-cover bg-center opacity-30" />
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1920&q=80')] bg-cover bg-center opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020609]/80 to-[#020609]" />
       <div className="container mx-auto px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
@@ -71,7 +71,7 @@ function HeroSection() {
         </div>
         <div className="hidden lg:block relative">
           <div className="glass-card p-2 rounded-3xl security-scan relative">
-            <Image src="/images/hero2.jpg" alt="Vault" width={600} height={400} className="rounded-2xl w-full" />
+            <Image src="https://images.unsplash.com/photo-1589756823692-82dab34e4f7b?w=600&q=80" alt="Vault Security" width={600} height={400} className="rounded-2xl w-full" />
           </div>
           <div className="absolute -bottom-10 -left-10 glass-card p-6 rounded-2xl w-64 space-y-4">
             <div className="flex justify-between items-center">
@@ -156,9 +156,9 @@ function ServicesSection() {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { title: 'Vaulting Facilities', img: '/images/VaultFacilities.png', desc: 'Grade 10 deep underground storage with biometric airlocks and institutional-grade climate control for precious assets.' },
-            { title: 'Diamond & Jewellery', img: '/images/Diamond.png', desc: 'Specialized handling and discreet storage for rare gemstones, fine jewelry, and luxury watch collections.' },
-            { title: 'Precious Metals', img: '/images/Predious.png', desc: 'Secure custody for gold, silver, and platinum bullion with fully insured transit and international accreditation.' },
+            { title: 'Vaulting Facilities', img: 'https://images.unsplash.com/photo-1606041008023-472dfb5e5303?w=400&h=300&q=80', desc: 'Grade 10 deep underground storage with biometric airlocks and institutional-grade climate control for precious assets.' },
+            { title: 'Diamond & Jewellery', img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=300&q=80', desc: 'Specialized handling and discreet storage for rare gemstones, fine jewelry, and luxury watch collections.' },
+            { title: 'Precious Metals', img: 'https://images.unsplash.com/photo-1610374792793-fefb57e1d82c?w=400&h=300&q=80', desc: 'Secure custody for gold, silver, and platinum bullion with fully insured transit and international accreditation.' },
           ].map((s, i) => (
             <div key={i} className="glass-card group overflow-hidden rounded-[2rem] border border-white/5">
               <div className="h-72 overflow-hidden relative">
@@ -290,7 +290,7 @@ function Footer() {
     <footer className="border-t border-white/5 py-12 px-8">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-3">
-          <Image src="/images/logo.png" alt="Logo" width={32} height={32} className="h-8 w-8" />
+          <Image src="/logo.jpg" alt="Logo" width={32} height={32} className="h-8 w-8 rounded-full" />
           <span className="text-sm text-slate-400">© {new Date().getFullYear()} Shield Approved. All rights reserved.</span>
         </div>
         <div className="flex gap-6 text-xs text-slate-500 uppercase tracking-widest">

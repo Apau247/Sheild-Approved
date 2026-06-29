@@ -57,7 +57,7 @@ export default function AdminPage() {
                 <p className="text-[10px] text-emerald-500">LEVEL 5 ACCESS</p>
               </div>
               <div className="h-12 w-12 rounded-full border-2 border-gold p-1">
-                <Image src="/images/face1.jpg" alt="User" width={48} height={48} className="rounded-full" />
+                <Image src="/logo.jpg" alt="User" width={48} height={48} className="rounded-full" />
               </div>
               <button onClick={handleLogout} className="text-xs text-slate-500 hover:text-white ml-4 uppercase tracking-widest">Logout</button>
             </div>
@@ -68,11 +68,11 @@ export default function AdminPage() {
               <div className="relative rounded-2xl border border-white/10 overflow-hidden">
                 <div className="absolute top-4 left-4 z-20 text-[10px] font-mono text-white">CAM_01 / NORTH_VAULT</div>
                 <div className="absolute top-4 right-4 z-20"><span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-1" /><span className="text-[10px] text-white">REC</span></div>
-                <Image src="/images/hero10.jpg" alt="Camera feed" width={600} height={400} className="opacity-50 grayscale hover:grayscale-0 transition-all duration-700 w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1589756823692-82dab34e4f7b?w=600&q=80" alt="Camera feed" width={600} height={400} className="opacity-50 grayscale hover:grayscale-0 transition-all duration-700 w-full h-full object-cover" />
               </div>
               <div className="relative rounded-2xl border border-white/10 overflow-hidden">
                 <div className="absolute top-4 left-4 z-20 text-[10px] font-mono text-white">CAM_02 / ENTRANCE</div>
-                <Image src="/images/hero5.jpg" alt="Camera feed" width={600} height={400} className="opacity-50 grayscale w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80" alt="Camera feed" width={600} height={400} className="opacity-50 grayscale w-full h-full object-cover" />
               </div>
             </div>
             <div className="glass-card p-6 rounded-3xl space-y-6">
