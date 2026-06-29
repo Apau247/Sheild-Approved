@@ -51,7 +51,7 @@ function Navbar() {
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1920&q=80')] bg-cover bg-center opacity-30" />
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020609]/80 to-[#020609]" />
       <div className="container mx-auto px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
@@ -71,7 +71,7 @@ function HeroSection() {
         </div>
         <div className="hidden lg:block relative">
           <div className="glass-card p-2 rounded-3xl security-scan relative">
-            <Image src="https://images.unsplash.com/photo-1589756823692-82dab34e4f7b?w=600&q=80" alt="Vault Security" width={600} height={400} className="rounded-2xl w-full" />
+            <Image src="/hero-queen.jpg" alt="Vault Security" width={600} height={400} className="rounded-2xl w-full object-cover" />
           </div>
           <div className="absolute -bottom-10 -left-10 glass-card p-6 rounded-2xl w-64 space-y-4">
             <div className="flex justify-between items-center">
@@ -156,9 +156,9 @@ function ServicesSection() {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { title: 'Vaulting Facilities', img: 'https://images.unsplash.com/photo-1606041008023-472dfb5e5303?w=400&h=300&q=80', desc: 'Grade 10 deep underground storage with biometric airlocks and institutional-grade climate control for precious assets.' },
-            { title: 'Diamond & Jewellery', img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=300&q=80', desc: 'Specialized handling and discreet storage for rare gemstones, fine jewelry, and luxury watch collections.' },
-            { title: 'Precious Metals', img: 'https://images.unsplash.com/photo-1610374792793-fefb57e1d82c?w=400&h=300&q=80', desc: 'Secure custody for gold, silver, and platinum bullion with fully insured transit and international accreditation.' },
+            { title: 'Vaulting Facilities', img: 'https://picsum.photos/seed/vault-facility/400/300', desc: 'Grade 10 deep underground storage with biometric airlocks and institutional-grade climate control for precious assets.' },
+            { title: 'Diamond & Jewellery', img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=400&h=300&q=80', desc: 'Specialized handling and discreet storage for rare gemstones, fine jewelry, and luxury watch collections.' },
+            { title: 'Precious Metals', img: 'https://picsum.photos/seed/gold-bullion/400/300', desc: 'Secure custody for gold, silver, and platinum bullion with fully insured transit and international accreditation.' },
           ].map((s, i) => (
             <div key={i} className="glass-card group overflow-hidden rounded-[2rem] border border-white/5">
               <div className="h-72 overflow-hidden relative">

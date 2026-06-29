@@ -35,7 +35,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen" style={{ backgroundImage: 'linear-gradient(120deg, rgba(3,7,12,0.88), rgba(3,7,12,0.62)), url(https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <main className="min-h-screen" style={{ backgroundImage: 'linear-gradient(120deg, rgba(3,7,12,0.88), rgba(3,7,12,0.62)), url(https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="mx-auto flex min-h-screen max-w-7xl items-center px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <section className="grid w-full gap-10 lg:grid-cols-[0.95fr_0.75fr] lg:items-center">
           <div className="max-w-2xl">
