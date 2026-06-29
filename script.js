@@ -6,10 +6,10 @@ async function initApp() {
     try {
         // Fetch all data in parallel
         const [services, testimonials, faq, usersData] = await Promise.all([
-            fetch('data/services.json').then(res => res.json()),
-            fetch('data/testimonials.json').then(res => res.json()),
-            fetch('data/faq.json').then(res => res.json()),
-            fetch('data/users.json').then(res => res.json())
+            fetch('/services.json').then(res => res.json()),
+            fetch('/testimonials.json').then(res => res.json()),
+            fetch('/faq.json').then(res => res.json()),
+            fetch('/users.json').then(res => res.json())
         ]);
 
         renderServices(services);
@@ -134,7 +134,7 @@ function initCounters() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entries[0].isIntersecting) startCounter(entry.target);
+            if (entry.isIntersecting) startCounter(entry.target);
         });
     }, { threshold: 0.5 });
 

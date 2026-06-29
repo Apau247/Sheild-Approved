@@ -102,7 +102,7 @@
       const password = form.password.value;
 
       try {
-        const response = await fetch('data/users.json');
+        const response = await fetch('/users.json');
         const data = await response.json();
         const users = data.users;
 
